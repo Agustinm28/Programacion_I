@@ -1,2 +1,2 @@
 source bin/activate
-python3 test.py
+python3 app.py
