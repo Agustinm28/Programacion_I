@@ -10,5 +10,7 @@ def create_app():
     load_dotenv()
     api.add_resource(resources.PoemsResource, '/poem')
     api.add_resource(resources.PoemResource, '/poem/<id>')
+    api.add_resource(resources.PoetsResource, '/poet')
+    api.add_resource(resources.PoetResource, '/poet/<id>')
     api.init_app(app)
     return app
