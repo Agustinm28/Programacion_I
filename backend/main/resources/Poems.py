@@ -2,8 +2,8 @@ from flask_restful import Resource
 from flask import request
 
 POEMS = {
-    1: {'title': 'prueba', 'alias': 'Marco', 'body': 'Lorem ipsum', 'date': '22/02/2022', 'av_rating' : 4.2},
-    2: {'title': 'prueba1', 'alias': 'Sosa', 'body': 'Lorem ipsum', 'date': '04/08/2021', 'av_rating' : 3.6},
+    1: {'title': 'prueba', 'body': 'Lorem ipsum', 'date': '22/02/2022', 'av_rating' : 4.2, 'fk_author': 1},
+    2: {'title': 'prueba1', 'body': 'Lorem ipsum', 'date': '04/08/2021', 'av_rating' : 3.6, 'fk_author': 3},
 }
 
 class Poem(Resource):

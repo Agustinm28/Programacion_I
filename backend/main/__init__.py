@@ -12,7 +12,7 @@ def create_app():
     api.add_resource(resources.PoemResource, '/poem/<id>')
     api.add_resource(resources.PoetsResource, '/poet')
     api.add_resource(resources.PoetResource, '/poet/<id>')
-    api.add_resource(resources.CommentsResource, '/comment')
-    api.add_resource(resources.CommentResource, '/comment/<id>')
+    api.add_resource(resources.RatingsResource, '/rating')
+    api.add_resource(resources.RatingResource, '/rating/<id>')
     api.init_app(app)
     return app
