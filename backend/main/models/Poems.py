@@ -8,10 +8,10 @@ class Poem(db.Model):
     title = db.Column(db.String(100), nullable = False)
     body = db.Column(db.String(1000), nullable = False)
     date = db.Column(db.DateTime())
-    # poet_id = db.Column(db.Integer, db.ForeignKey('poets.id', ondelete = 'CASCADE'))
+    poet_id = db.Column(db.Integer, nullable = False)
         
     def __repr__(self):
-        return '({}) {}:\n{}\nDate: {}\nWritten by {}'.format(self.id, self.title, self.body, self.date, 0) #self.poet_id
+        return '({}) {}:\n{}\nDate: {}\nWritten by {}'.format(self.id, self.title, self.body, self.date, self.poet_id)
 
     def to_json(self):
         poem_json = {
@@ -19,7 +19,7 @@ class Poem(db.Model):
             'title': str(self.title),
             'body': str(self.body),
             'date': str(self.date),
-            # 'poet_id' : self.poet_id
+            'poet_id' : self.poet_id
         }
         return poem_json
 
@@ -37,10 +37,10 @@ class Poem(db.Model):
         title = poem_json.get('title')
         body = poem_json.get('body')
         date = poem_json.get('date')
-        # poet_id = poem_json.get('poet_id')
+        poet_id = poem_json.get('poet_id')
         return Poem(id = id,
                     title = title,
                     body = body,
                     date = date,
-                    # poet_id = poet_id
+                    poet_id = poet_id
                     )

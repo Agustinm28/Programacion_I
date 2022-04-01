@@ -2,8 +2,11 @@ from .. import db
 
 class Poet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    firstname = db.Column (db.String(100), nullable = False)
-    lastname = db.Column (db.String(100), nullable = False)
+    name = db.Column(db.String(100), nullable = False)
+    lname = db.Column(db.String(100), nullable = False)
+    mail = db.Column(db.String(100), nullable = False)
+    passw = db.Column(db.String(30), nullable = False)
+    admin = db.Column(db.Bool(), nullable = False, default = False)
 
     def __repr__(self):
         return '<Poet: %r %r >' % (self.name, self.lname, self.mail, self.passw, self.admin)
