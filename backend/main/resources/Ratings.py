@@ -1,31 +1,28 @@
 from flask_restful import Resource
-from flask import request
-
-RATINGS = {
-    1: {'fk_user': 2, 'fk_poem': 1 , 'body': 'Nice poem bro!!', 'rating': 4},
-    2: {'fk_user': 1, 'fk_poem': 2, 'body': 'Boring', 'rating': 1},
-}
+from flask import jsonify, request
+from .. import db
+from main.models import RatingModel
 
 class Rating(Resource):
     
     def get(self, id):
-        if int(id) in RATINGS:                                   
-            return RATINGS[int(id)]
-        return '', 404
+        rating = db.session.query(RatingModel).get_or_404(id)
+        return rating.to_json()
 
     def delete(self, id):
-        if int(id) in RATINGS:
-            del RATINGS[int(id)]
-            return '', 204
-        return '', 404
+        rating = db.session.query(RatingModel).get_or_404(id)
+        db.session.delete(rating)
+        db.session.commit()
+        return '', 204
 
 class Ratings(Resource):
 
     def get(self):
-        return RATINGS
+        ratings = db.session.query(RatingModel).all()
+        return jsonify([rating.to_json_short() for rating in ratings])
         
     def post(self):
-        rat = request.get_json()
-        id = int(max(RATINGS.keys())) + 1
-        RATINGS[id] = rat
-        return RATINGS[id], 201
+        rating = RatingModel.from_json(request.get_json())
+        db.session.add(rating)
+        db.session.commit()
+        return rating.to_json(), 201
