@@ -1,3 +1,4 @@
 Flask
 python-dotenv
 flask-restful
+flask_sqlalchemy
