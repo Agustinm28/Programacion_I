@@ -17,6 +17,8 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////'+os.getenv('DATABASE_PATH')+os.getenv('DATABASE_NAME')    #* Url de configuración de base de datos
     db.init_app(app)
 
+    import main.resources as resources
+
     api.add_resource(resources.PoemsResource, '/poem')
     api.add_resource(resources.PoemResource, '/poem/<id>')
     api.add_resource(resources.PoetsResource, '/poet')
