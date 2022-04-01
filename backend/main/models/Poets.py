@@ -6,10 +6,10 @@ class Poet(db.Model):
     lname = db.Column(db.String(100), nullable = False)
     mail = db.Column(db.String(100), nullable = False)
     passw = db.Column(db.String(30), nullable = False)
-    admin = db.Column(db.Bool(), nullable = False, default = False)
+    admin = db.Column(db.Boolean(), nullable = False, default = False)
 
     def __repr__(self):
-        return '<Poet: %r %r >' % (self.name, self.lname, self.mail, self.passw, self.admin)
+        return '<Poet: %r %r >' % (self.id, self.name, self.lname, self.mail, self.passw, self.admin)
 
     def to_json(self):
         poet_json = {

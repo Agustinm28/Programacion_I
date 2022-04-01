@@ -19,7 +19,7 @@ class Ratings(Resource):
 
     def get(self):
         ratings = db.session.query(RatingModel).all()
-        return jsonify([rating.to_json_short() for rating in ratings])
+        return jsonify([rating.to_json() for rating in ratings])
         
     def post(self):
         rating = RatingModel.from_json(request.get_json())

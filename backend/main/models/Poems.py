@@ -1,4 +1,5 @@
 from .. import db
+import datetime
 
 class Poem(db.Model):
     
@@ -7,7 +8,7 @@ class Poem(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), nullable = False)
     body = db.Column(db.String(1000), nullable = False)
-    date = db.Column(db.DateTime())
+    date = db.Column(db.DateTime(), default = datetime.datetime.now())
     poet_id = db.Column(db.Integer, nullable = False)
         
     def __repr__(self):
