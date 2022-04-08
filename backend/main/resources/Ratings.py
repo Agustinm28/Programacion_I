@@ -7,7 +7,7 @@ class Rating(Resource):
     
     def get(self, id):
         rating = db.session.query(RatingModel).get_or_404(id)
-        return rating.to_json()
+        return rating.to_json_short()
 
     def delete(self, id):
         rating = db.session.query(RatingModel).get_or_404(id)
@@ -19,7 +19,7 @@ class Ratings(Resource):
 
     def get(self):
         ratings = db.session.query(RatingModel).all()
-        return jsonify([rating.to_json() for rating in ratings])
+        return jsonify([rating.to_json_short() for rating in ratings])
         
     def post(self):
         rating = RatingModel.from_json(request.get_json())

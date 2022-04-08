@@ -7,18 +7,28 @@ class Poet(db.Model):
     mail = db.Column(db.String(100), nullable = False)
     passw = db.Column(db.String(30), nullable = False)
     admin = db.Column(db.Boolean(), nullable = False, default = False)
+    poems = db.relationship('Poem', back_populates='poet', cascade='all, delete-orphan')
+    rating = db.relationship('Rating', back_populates='poet', cascade='all, delete-orphan', single_parent=False)
 
     def __repr__(self):
         return '<Poet: %r %r >' % (self.id, self.name, self.lname, self.mail, self.passw, self.admin)
 
     def to_json(self):
+        poems = [poem.to_json_short() for poem in self.poems]
         poet_json = {
             'id':self.id,
             'name':str(self.name),
             'lname':str(self.lname),
             'mail':str(self.mail),
             'passw':str(self.passw),
-            'admin':bool(self.admin)
+            'admin':bool(self.admin),
+            'poems': poems
+        }
+        return poet_json
+
+    def to_json_short(self):
+        poet_json = {
+            'name': str(self.name)+' '+str(self.lname)+', user_id: '+str(self.id)
         }
         return poet_json
 

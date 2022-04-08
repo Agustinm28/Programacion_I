@@ -9,18 +9,24 @@ class Poem(db.Model):
     title = db.Column(db.String(100), nullable = False)
     body = db.Column(db.String(1000), nullable = False)
     date = db.Column(db.DateTime(), default = datetime.datetime.now())
-    poet_id = db.Column(db.Integer, nullable = False)
+    poet_id = db.Column(db.Integer, db.ForeignKey('poet.id'), nullable = False)                            # Clave foranea
+    poet = db.relationship('Poet', back_populates="poems", uselist=False)
+    rating = db.relationship('Rating', back_populates='poem', cascade='all, delete-orphan', single_parent=False)
         
     def __repr__(self):
         return '({}) {}:\n{}\nDate: {}\nWritten by {}'.format(self.id, self.title, self.body, self.date, self.poet_id)
 
     def to_json(self):
+        poet = self.poet.to_json_short()
+        rating = [rating.to_json_rate()['rating'] for rating in self.rating]
+        av_rating = sum(rating)/len(rating) if len(rating) > 0 else None
         poem_json = {
             'id': self.id,
             'title': str(self.title),
             'body': str(self.body),
             'date': str(self.date),
-            'poet_id' : self.poet_id
+            'poet': poet,
+            'av_rating': av_rating
         }
         return poem_json
 
