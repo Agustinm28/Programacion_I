@@ -14,22 +14,20 @@ class Rating(db.Model):
         return f'Rating: {self.poet_id}: {self.body}, {self.rating} in {self.poem_id}' (self.poet_id, self.poem_id, self.body, self.rating)
 
     def to_json(self):
-        poet = self.poet.to_json()
-        poem = self.poem.to_json()
+        poet = self.poet.to_json_short()
+        poem = self.poem.to_json_short()['title']
         rating_json = {
             'id': self.id,
-            'poet_id': self.poet_id,
-            'poem_id': self.poem_id,
-            'body': str(self.body),
+            'reviewer': poet,
+            'poem': poem,
+            'review_body': str(self.body),
             'rating': self.rating,
-            'poet': poet,
-            'poem': poem
         }
         return rating_json
 
     def to_json_short(self):
         poet = self.poet.to_json_short()
-        poem = self.poem.to_json_short()
+        poem = self.poem.to_json_short()['title']
         rating_json = {            
             'reviewer': poet,
             'poem': poem,

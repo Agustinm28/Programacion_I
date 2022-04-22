@@ -4,7 +4,6 @@ from .. import db
 from main.models import PoemModel, RatingModel
 from sqlalchemy import func
 
-
 class Poem(Resource):
 
     def get(self, id):
@@ -32,7 +31,7 @@ class Poems(Resource):
     def get(self):
         # Pagina inicial por defecto
         page = 1
-        # Cantidad de paginas por defecto a mostrar
+        # Cantidad de elementos a mostrar por página por defecto
         per_page = 5
         # Obtener valores del request
         filters = request.data
@@ -61,9 +60,9 @@ class Poems(Resource):
                 elif key == 'per_page':
                     per_page = int(value)
                 else:
-                # en lugar de usar if, almacena todas las opciones en un diccionario
-                # y devuele el filtro seleccionado indexándolo con la llave y el valor
-                # para luego ejecutar la consulta con la función "eval"
+                    # en lugar de usar if, almacena todas las opciones en un diccionario
+                    # y devuele el filtro seleccionado indexándolo con la llave y el valor
+                    # para luego ejecutar la consulta con la función "eval"
                     poems = eval(actions[key]) if key != 'order_by' else eval(actions[key][value])        
         
         # Obtener valor paginado
@@ -73,9 +72,6 @@ class Poems(Resource):
                         'pages': poems.pages,
                         'page': page
                         })
-        
-        poems = poems.all()
-        return jsonify({'poems': [poem.to_json() for poem in poems]})
 
     def post(self):
         poem = PoemModel.from_json(request.get_json())

@@ -18,8 +18,28 @@ class Rating(Resource):
 class Ratings(Resource):
 
     def get(self):
-        ratings = db.session.query(RatingModel).all()
-        return jsonify([rating.to_json_short() for rating in ratings])
+        # Pagina inicial por defecto
+        page = 1
+        # Cantidad de elementos a mostrar por página por defecto
+        per_page = 5
+        # Obtener valores del request
+        filters = request.data
+        ratings = db.session.query(RatingModel)
+        # Verificar si hay filtros
+        if filters:
+            for key, value in request.get_json().items():
+                if key == 'page':
+                    page = int(value)
+                elif key == 'per_page':
+                    per_page = int(value)
+        
+        # Obtener valor paginado
+        ratings = ratings.paginate(page, per_page, True, 20)
+        return jsonify({'rating': [rating.to_json() for rating in ratings.items],
+                        'total': ratings.total,
+                        'pages': ratings.pages,
+                        'page': page
+                        })
         
     def post(self):
         rating = RatingModel.from_json(request.get_json())

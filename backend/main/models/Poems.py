@@ -32,9 +32,8 @@ class Poem(db.Model):
 
     def to_json_short(self):
         poem_json = {
+            'id': self.id,
             'title': str(self.title),
-            'body': str(self.body),
-            'date': str(self.date)
         }
         return poem_json
 
