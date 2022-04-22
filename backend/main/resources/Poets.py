@@ -48,19 +48,32 @@ class Poets(Resource):
                     per_page = int(value)
                 if key == 'name':
                     poets = poets.filter(PoetModel.name.like('%'+value+'%'))
-                if key == 'poems_count':
+                if key == 'poems_count[gte]':
                     poets = poets.outerjoin(PoetModel.poems).group_by(
                         PoetModel.id).having(func.count(PoemModel.id) >= value)
-                if key == 'ratings_count':
+                if key == 'poems_count[lte]':
+                    poets = poets.outerjoin(PoetModel.poems).group_by(
+                        PoetModel.id).having(func.count(PoemModel.id) <= value)
+                if key == 'ratings_count[gte]':
                     poets = poets.outerjoin(PoetModel.rating).group_by(
                         PoetModel.id).having(func.count(RatingModel.id) >= value)
-                if key == "order_by":
+                if key == 'ratings_count[lte]':
+                    poets = poets.outerjoin(PoetModel.rating).group_by(
+                        PoetModel.id).having(func.count(RatingModel.id) <= value)
+                if key == 'order_by':
                     if value == 'name[desc]':
                         poets = poets.order_by(PoetModel.name.desc())
                     if value == 'name':
                         poets = poets.order_by(PoetModel.name)
                     if value == 'poems_count[desc]':
-                        poets = poets.order_by(PoetModel.poets.desc())
+                        poets = poets.order_by(func.count(PoetModel.id).desc())
+                    if value == 'poems_count':
+                        poets = poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).order_by(func.count(PoetModel.id))
+                    if value == 'ratings_count[desc]':
+                        poets = poets.order_by(func.count(PoetModel.rating).desc())
+                    if value == 'ratings_count':
+                        poets = poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).order_by(func.count(PoetModel.id))
+        
         # Obtener valor paginado
         poets = poets.paginate(page, per_page, True, 20)
         return jsonify({'poet': [poet.to_json() for poet in poets.items],
