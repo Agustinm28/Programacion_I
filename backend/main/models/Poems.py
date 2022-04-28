@@ -2,9 +2,6 @@ from .. import db
 import datetime
 
 class Poem(db.Model):
-    
-    # user = db.relationship('poems', backref='poets')
-
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), nullable = False)
     body = db.Column(db.String(1000), nullable = False)

@@ -25,7 +25,6 @@ class Poem(Resource):
         db.session.commit()
         return poem.to_json(), 201
 
-
 class Poems(Resource):
 
     def get(self):
@@ -44,13 +43,15 @@ class Poems(Resource):
                     'date[gte]': 'poems.filter(PoemModel.date >= value)',
                     'date[lte]': 'poems.filter(PoemModel.date <= value)',
                     'title': 'poems.filter(PoemModel.title.like("%"+value+"%"))',
-                    'av_rating[gte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having((func.sum(RatingModel.rating) / func.count(RatingModel.id)) >= value)',
-                    'av_rating[lte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having((func.sum(RatingModel.rating) / func.count(RatingModel.id)) <= value)',
+                    'av_rating[gte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) >= value)',
+                    'av_rating[lte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) <= value)',
                     'order_by': {
                         'date': 'poems.order_by(PoemModel.date)',
                         'date[desc]': 'poems.order_by(PoemModel.date.desc())',
-                        'av_rating': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).order_by(func.sum(RatingModel.rating) / func.count(RatingModel.id))',
-                        'av_rating[desc]': 'poems.order_by(func.sum(RatingModel.rating) / func.count(RatingModel.id).desc())',
+                        'av_rating': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).order_by(func.avg(RatingModel.rating))',
+                        'av_rating[desc]': 'poems.order_by(func.avg(RatingModel.rating).desc())',
+                        'title': 'poems.order_by(PoemModel.title)',
+                        'title[desc]': 'poems.order_by(PoemModel.title.desc())'
                     }
                 }
             

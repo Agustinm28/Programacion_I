@@ -1,6 +1,5 @@
 from .. import db
 
-
 class Rating(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     poet_id = db.Column(db.Integer, db.ForeignKey('poet.id'), nullable=False)
@@ -8,7 +7,7 @@ class Rating(db.Model):
     body = db.Column(db.String(140), nullable=False)
     rating = db.Column(db.Integer, nullable=False)  
     poet = db.relationship('Poet', back_populates='rating')
-    poem = db.relationship('Poem', back_populates='rating') #ratings
+    poem = db.relationship('Poem', back_populates='rating')
 
     def __repr__(self):
         return f'Rating: {self.poet_id}: {self.body}, {self.rating} in {self.poem_id}' (self.poet_id, self.poem_id, self.body, self.rating)
