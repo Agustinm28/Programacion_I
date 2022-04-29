@@ -14,7 +14,7 @@ class Poet(Resource):
         poet = db.session.query(PoetModel).get_or_404(id)
         return poet.to_json()
 
-    @jwt_required()
+    @admin_required(roles=["admin"])
     def delete(self, id):
         poet = db.session.query(PoetModel).get_or_404(id)
         db.session.delete(poet)

@@ -1,15 +1,18 @@
 from .. import db
 import datetime
 
+
 class Poem(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String(100), nullable = False)
-    body = db.Column(db.String(1000), nullable = False)
-    date = db.Column(db.DateTime(), default = datetime.datetime.now())
-    poet_id = db.Column(db.Integer, db.ForeignKey('poet.id'), nullable = False)                            # Clave foranea
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    body = db.Column(db.String(1000), nullable=False)
+    date = db.Column(db.DateTime(), default=datetime.datetime.now())
+    poet_id = db.Column(db.Integer, db.ForeignKey(
+        'poet.id'), nullable=False)                            # Clave foranea
     poet = db.relationship('Poet', back_populates="poems", uselist=False)
-    rating = db.relationship('Rating', back_populates='poem', cascade='all, delete-orphan', single_parent=False)
-        
+    rating = db.relationship('Rating', back_populates='poem',
+                             cascade='all, delete-orphan', single_parent=False)
+
     def __repr__(self):
         return '({}) {}:\n{}\nDate: {}\nWritten by {}'.format(self.id, self.title, self.body, self.date, self.poet_id)
 
@@ -41,9 +44,9 @@ class Poem(db.Model):
         body = poem_json.get('body')
         date = poem_json.get('date')
         poet_id = poem_json.get('poet_id')
-        return Poem(id = id,
-                    title = title,
-                    body = body,
-                    date = date,
-                    poet_id = poet_id
+        return Poem(id=id,
+                    title=title,
+                    body=body,
+                    date=date,
+                    poet_id=poet_id
                     )

@@ -1,4 +1,7 @@
 from .. import db
+from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 class Poet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,6 +14,17 @@ class Poet(db.Model):
                             cascade='all, delete-orphan')
     rating = db.relationship('Rating', back_populates='poet',
                              cascade='all, delete-orphan', single_parent=False)
+
+    @property
+    def plain_password(self):
+        raise AttributeError('Password cant be read')
+
+    @plain_password.setter
+    def plain_password(self, password):
+        self.passw = generate_password_hash(password)
+
+    def validate_pass(self, password):
+        return check_password_hash(self.passw, password)
 
     def __repr__(self):
         return '<Poet: %r %r >' % (self.id, self.name, self.lname, self.mail, self.passw, self.admin)

@@ -4,6 +4,8 @@ from .. import db
 from main.models import PoemModel, RatingModel
 from sqlalchemy import func
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import admin_required
+
 
 class Poem(Resource):
 
@@ -33,8 +35,10 @@ class Poem(Resource):
         db.session.commit()
         return poem.to_json(), 201
 
+
 class Poems(Resource):
 
+    @jwt_required()
     def get(self):
         # Pagina inicial por defecto
         page = 1
@@ -47,22 +51,22 @@ class Poems(Resource):
         if filters:
             # Recorrer filtros
             actions = {
-                    'poet_id': 'poems.filter(PoemModel.poet_id == value)',
-                    'date[gte]': 'poems.filter(PoemModel.date >= value)',
-                    'date[lte]': 'poems.filter(PoemModel.date <= value)',
-                    'title': 'poems.filter(PoemModel.title.like("%"+value+"%"))',
-                    'av_rating[gte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) >= value)',
-                    'av_rating[lte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) <= value)',
-                    'order_by': {
-                        'date': 'poems.order_by(PoemModel.date)',
-                        'date[desc]': 'poems.order_by(PoemModel.date.desc())',
-                        'av_rating': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).order_by(func.avg(RatingModel.rating))',
-                        'av_rating[desc]': 'poems.order_by(func.avg(RatingModel.rating).desc())',
-                        'title': 'poems.order_by(PoemModel.title)',
-                        'title[desc]': 'poems.order_by(PoemModel.title.desc())'
-                    }
+                'poet_id': 'poems.filter(PoemModel.poet_id == value)',
+                'date[gte]': 'poems.filter(PoemModel.date >= value)',
+                'date[lte]': 'poems.filter(PoemModel.date <= value)',
+                'title': 'poems.filter(PoemModel.title.like("%"+value+"%"))',
+                'av_rating[gte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) >= value)',
+                'av_rating[lte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) <= value)',
+                'order_by': {
+                    'date': 'poems.order_by(PoemModel.date)',
+                    'date[desc]': 'poems.order_by(PoemModel.date.desc())',
+                    'av_rating': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).order_by(func.avg(RatingModel.rating))',
+                    'av_rating[desc]': 'poems.order_by(func.avg(RatingModel.rating).desc())',
+                    'title': 'poems.order_by(PoemModel.title)',
+                    'title[desc]': 'poems.order_by(PoemModel.title.desc())'
                 }
-            
+            }
+
             for key, value in request.get_json().items():
                 if key == 'page':
                     page = int(value)
@@ -72,8 +76,9 @@ class Poems(Resource):
                     # en lugar de usar if, almacena todas las opciones en un diccionario
                     # y devuele el filtro seleccionado indexándolo con la llave y el valor
                     # para luego ejecutar la consulta con la función "eval"
-                    poems = eval(actions[key]) if key != 'order_by' else eval(actions[key][value])        
-        
+                    poems = eval(actions[key]) if key != 'order_by' else eval(
+                        actions[key][value])
+
         # Obtener valor paginado
         poems = poems.paginate(page, per_page, True, 20)
         return jsonify({'poem': [poem.to_json() for poem in poems.items],
