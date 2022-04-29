@@ -3,20 +3,28 @@ from flask import request, jsonify
 from .. import db
 from main.models import PoemModel, RatingModel
 from sqlalchemy import func
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 
 class Poem(Resource):
 
+    @jwt_required(optional=True)
     def get(self, id):
         poem = db.session.query(PoemModel).get_or_404(id)
-        return poem.to_json()
+        current_identity = get_jwt_identity()
+        if current_identity:
+            return poem.to_json()
+        else:
+            return poem.to_json_public()
 
+    @jwt_required()
     def delete(self, id):
         poem = db.session.query(PoemModel).get_or_404(id)
         db.session.delete(poem)
         db.session.commit()
         return '', 204
 
+    @jwt_required()
     def put(self, id):
         poem = db.session.query(PoemModel).get_or_404(id)
         data = request.get_json().items()
@@ -58,8 +66,11 @@ class Poems(Resource):
         poems = poems.all()
         return jsonify({'poems': [poem.to_json() for poem in poems]})
 
+    @jwt_required()
     def post(self):
         poem = PoemModel.from_json(request.get_json())
+        current_user = get_jwt_identity()
+        poem.poetid = current_user
         try:
             db.session.add(poem)
             db.session.commit()

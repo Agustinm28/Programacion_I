@@ -3,23 +3,25 @@ from flask import request, jsonify
 from .. import db
 from main.models import PoetModel, PoemModel, RatingModel
 from sqlalchemy import func
-'''
-Poeta: nombre(asc,desc), cantidad de poemas(asc,desc), cantidad de reseñas(asc,desc).
-'''
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.auth.decorators import admin_required
 
 
 class Poet(Resource):
 
+    @jwt_required()
     def get(self, id):
         poet = db.session.query(PoetModel).get_or_404(id)
         return poet.to_json()
 
+    @jwt_required()
     def delete(self, id):
         poet = db.session.query(PoetModel).get_or_404(id)
         db.session.delete(poet)
         db.session.commit()
         return '', 204
 
+    @jwt_required()
     def put(self, id):
         poet = db.session.query(PoetModel).get_or_404(id)
         data = request.get_json().items()
@@ -32,6 +34,7 @@ class Poet(Resource):
 
 class Poets(Resource):
 
+    @jwt_required()
     def get(self):
         # Pagina inicial por defecto
         page = 1
