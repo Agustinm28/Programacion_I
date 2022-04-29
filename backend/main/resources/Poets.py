@@ -3,12 +3,9 @@ from flask import request, jsonify
 from .. import db
 from main.models import PoetModel, PoemModel, RatingModel
 from sqlalchemy import func
-<<<<<<< HEAD
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import admin_required
 
-=======
->>>>>>> f1d09dc3e7dcb220ac6c2dcfab73eae8e832c0b6
 
 class Poet(Resource):
 
@@ -64,7 +61,7 @@ class Poets(Resource):
                     'ratings_count[desc]': 'poets.order_by(func.count(PoetModel.rating).desc())'
                 }
             }
-            
+
             # Paginacion
             for key, value in filters:
                 if key == 'page':
@@ -75,8 +72,9 @@ class Poets(Resource):
                     # en lugar de usar if, almacena todas las opciones en un diccionario
                     # y devuele el filtro seleccionado indexándolo con la llave y el valor
                     # para luego ejecutar la consulta con la función "eval"
-                    poets = eval(actions[key]) if key != 'order_by' else eval(actions[key][value]) 
-        
+                    poets = eval(actions[key]) if key != 'order_by' else eval(
+                        actions[key][value])
+
         # Obtener valor paginado
         poets = poets.paginate(page, per_page, True, 20)
         return jsonify({'poet': [poet.to_json() for poet in poets.items],
