@@ -3,9 +3,12 @@ from flask import request, jsonify
 from .. import db
 from main.models import PoetModel, PoemModel, RatingModel
 from sqlalchemy import func
+<<<<<<< HEAD
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import admin_required
 
+=======
+>>>>>>> f1d09dc3e7dcb220ac6c2dcfab73eae8e832c0b6
 
 class Poet(Resource):
 
@@ -38,32 +41,42 @@ class Poets(Resource):
     def get(self):
         # Pagina inicial por defecto
         page = 1
-        # Cantidad de paginas por defecto a mostrar
+        # Cantidad de elementos a mostrar por página por defecto
         per_page = 5
+        # Obtener valores del request
+        filters = request.get_json().items()
         poets = db.session.query(PoetModel)
-        if request.get_json():
-            filters = request.get_json().items()
+        # Verificar si hay filtros
+        if filters:
+            # Recorrer filtros
+            actions = {
+                'name': 'poets.filter(PoetModel.name.like("%"+value+"%"))',
+                'poems_count[gte]': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).having(func.count(PoemModel.id) >= value)',
+                'poems_count[lte]': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).having(func.count(PoemModel.id) <= value)',
+                'ratings_count[gte]': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) >= value)',
+                'ratings_count[lte]': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) <= value)',
+                'order_by': {
+                    'name': 'poets.order_by(PoetModel.name)',
+                    'name[desc]': 'poets.order_by(PoetModel.name.desc())',
+                    'poems_count': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).order_by(func.count(PoetModel.poems))',
+                    'poems_count[desc]': 'poets.order_by(func.count(PoetModel.poems).desc())',
+                    'ratings_count': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).order_by(func.count(PoetModel.rating))',
+                    'ratings_count[desc]': 'poets.order_by(func.count(PoetModel.rating).desc())'
+                }
+            }
+            
             # Paginacion
             for key, value in filters:
                 if key == 'page':
                     page = int(value)
-                if key == 'per page':
+                elif key == 'per_page':
                     per_page = int(value)
-                if key == 'name':
-                    poets = poets.filter(PoetModel.name.like('%'+value+'%'))
-                if key == 'poems_count':
-                    poets = poets.outerjoin(PoetModel.poems).group_by(
-                        PoetModel.id).having(func.count(PoemModel.id) >= value)
-                if key == 'ratings_count':
-                    poets = poets.outerjoin(PoetModel.rating).group_by(
-                        PoetModel.id).having(func.count(RatingModel.id) >= value)
-                if key == "order_by":
-                    if value == 'name[desc]':
-                        poets = poets.order_by(PoetModel.name.desc())
-                    if value == 'name':
-                        poets = poets.order_by(PoetModel.name)
-                    if value == 'poems_count[desc]':
-                        poets = poets.order_by(PoetModel.poets.desc())
+                else:
+                    # en lugar de usar if, almacena todas las opciones en un diccionario
+                    # y devuele el filtro seleccionado indexándolo con la llave y el valor
+                    # para luego ejecutar la consulta con la función "eval"
+                    poets = eval(actions[key]) if key != 'order_by' else eval(actions[key][value]) 
+        
         # Obtener valor paginado
         poets = poets.paginate(page, per_page, True, 20)
         return jsonify({'poet': [poet.to_json() for poet in poets.items],

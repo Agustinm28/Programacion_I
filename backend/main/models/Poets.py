@@ -1,6 +1,5 @@
 from .. import db
 
-
 class Poet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -17,7 +16,7 @@ class Poet(db.Model):
         return '<Poet: %r %r >' % (self.id, self.name, self.lname, self.mail, self.passw, self.admin)
 
     def to_json(self):
-        poems = [poem.to_json_short() for poem in self.poems]
+        poems = [poem.to_json_short()['title'] for poem in self.poems]
         rating = [rating.to_json_short() for rating in self.rating]
         poet_json = {
             'id': self.id,
@@ -34,7 +33,8 @@ class Poet(db.Model):
 
     def to_json_short(self):
         poet_json = {
-            'name': str(self.name)+' '+str(self.lname)+', user_id: '+str(self.id)
+            'name': str(self.name) + ' ' + str(self.lname),
+            'user_id': str(self.id)
         }
         return poet_json
 

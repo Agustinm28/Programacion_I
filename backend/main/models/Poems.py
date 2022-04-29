@@ -2,9 +2,6 @@ from .. import db
 import datetime
 
 class Poem(db.Model):
-    
-    # user = db.relationship('poems', backref='poets')
-
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), nullable = False)
     body = db.Column(db.String(1000), nullable = False)
@@ -32,9 +29,8 @@ class Poem(db.Model):
 
     def to_json_short(self):
         poem_json = {
+            'id': self.id,
             'title': str(self.title),
-            'body': str(self.body),
-            'date': str(self.date)
         }
         return poem_json
 
