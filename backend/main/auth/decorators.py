@@ -20,18 +20,15 @@ def admin_required(fn):
     return wrapper
 
 # Define el atributo que se utilizará para identificar el usuario
-
-def owner_or_admin_required(fn):
+def valid_user_required(fn):
     @wraps(fn)
     def wrapper(*args, **kwargs):
         # Verificar que el JWT es correcto
         verify_jwt_in_request()
         # Obtener claims de adentro del JWT
         claims = get_jwt()
-        # Obtener el id del objeto a modificar
-        targetId = id
         # Verificar que el rol sea admin
-        if claims['id'] == targetId or claims['admin'] == True:
+        if claims['admin'] == True:
             # Ejecutar función
             return fn(*args, **kwargs)
         else:

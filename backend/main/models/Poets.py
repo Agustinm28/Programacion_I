@@ -32,7 +32,7 @@ class Poet(db.Model):
         return check_password_hash(self.passw, password)
 
     def __repr__(self):
-        return '<Poet: %r %r >' % (self.id, self.name, self.lname, self.mail, self.passw, self.admin)
+        return '<Poet: %r %r >' % (self.id, self.name + '' + self.lname)
 
     def to_json(self):
         poems = [poem.to_json_short()['title'] for poem in self.poems]
@@ -42,7 +42,6 @@ class Poet(db.Model):
             'name': str(self.name),
             'lname': str(self.lname),
             'mail': str(self.mail),
-            'passw': str(self.passw),
             'admin': bool(self.admin),
             'poems': poems,
             'poems_count': len(poems),
@@ -69,6 +68,6 @@ class Poet(db.Model):
                     name=name,
                     lname=lname,
                     mail=mail,
-                    passw=passw,
+                    plain_password=passw,
                     admin=admin
                     )

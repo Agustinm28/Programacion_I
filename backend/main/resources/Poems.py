@@ -1,11 +1,10 @@
 from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
-from main.models import PoemModel, RatingModel
+from main.models import PoemModel, RatingModel, PoetModel
 from sqlalchemy import func
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from main.auth.decorators import admin_required, owner_or_admin_required
-
+from main.auth.decorators import admin_required
 
 class Poem(Resource):
 
@@ -18,7 +17,7 @@ class Poem(Resource):
         else:
             return poem.to_json_public()
 
-    @owner_or_admin_required
+    @admin_required # a cambiar
     def delete(self, id):
         poem = db.session.query(PoemModel).get_or_404(id)
         db.session.delete(poem)
@@ -87,14 +86,16 @@ class Poems(Resource):
                         'page': page
                         })
 
-    @jwt_required()
+    @valid_user_required()
     def post(self):
         poem = PoemModel.from_json(request.get_json())
         current_user = get_jwt_identity()
-        poem.poetid = current_user
+        poem.poet_id = current_user
+        poem_count = db.session.query(PoetModel).get(current_user)
+        print(poem_count)
         try:
             db.session.add(poem)
             db.session.commit()
         except:
-            return 'Formato no valido', 400
+            return 'Non valid format', 400
         return poem.to_json(), 201

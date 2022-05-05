@@ -39,6 +39,6 @@ def create_app():
         os.getenv('JWT_ACCESS_TOKEN_EXPIRES'))
     jwt.init_app(app)
     from main.auth import routes
-    app.register_blueprint(auth.routes.auth)
+    app.register_blueprint(routes.auth)
     app.config['PROPAGATE_EXCEPTIONS'] = True
     return app

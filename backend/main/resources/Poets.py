@@ -20,7 +20,7 @@ class Poet(Resource):
         db.session.commit()
         return '', 204
 
-    @jwt_required()
+    @admin_required  # a cambiar
     def put(self, id):
         poet = db.session.query(PoetModel).get_or_404(id)
         data = request.get_json().items()
@@ -81,8 +81,13 @@ class Poets(Resource):
                         'page': page
                         })
 
+    @admin_required
     def post(self):
         poet = PoetModel.from_json(request.get_json())
+        poets = db.session.query(PoetModel)
+        poets = poets.filter(PoetModel.mail.like(poet.mail))
+        if len([poet.to_json() for poet in poets]) > 0:
+            return 'Mail already taken', 400
         db.session.add(poet)
         db.session.commit()
         return poet.to_json(), 201

@@ -11,15 +11,15 @@ auth = Blueprint('auth', __name__, url_prefix = '/auth')
 def login():
     # Busca al poet en la db por mail
     poet = db.session.query(PoetModel).filter(
-        PoetModel.email == request.get_json().get("mail")).first_or_404()
+        PoetModel.mail == request.get_json().get("mail")).first_or_404()
     # Valida la contraseña
-    if poet.validate_pass(request.get_json().get("password")):
+    if poet.validate_pass(request.get_json().get("passw")):
         # Genera un nuevo token
         # Pasa el objeto professor como identidad
         access_token = create_access_token(identity = poet)
         # Devolver valores y token
         data = {
-            'id': str(poet.id),
+            'id': poet.id,
             'user': poet.name,
             'mail': poet.mail,
             'access_token': access_token
