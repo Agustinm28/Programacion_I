@@ -20,6 +20,7 @@ def login():
         # Devolver valores y token
         data = {
             'id': str(poet.id),
+            'user': poet.name,
             'mail': poet.mail,
             'access_token': access_token
         }

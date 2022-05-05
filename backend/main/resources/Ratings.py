@@ -8,12 +8,12 @@ from main.auth.decorators import admin_required
 
 class Rating(Resource):
 
-    @jwt_required(optional=True)
+    @jwt_required(optional = True)
     def get(self, id):
         rating = db.session.query(RatingModel).get_or_404(id)
         return rating.to_json_short()
 
-    @admin_required(admin=["admin"])
+    @admin_required
     def delete(self, id):
         rating = db.session.query(RatingModel).get_or_404(id)
         db.session.delete(rating)

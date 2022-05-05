@@ -4,12 +4,12 @@ from .. import db
 from main.models import PoemModel, RatingModel
 from sqlalchemy import func
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from main.auth.decorators import admin_required
+from main.auth.decorators import admin_required, owner_or_admin_required
 
 
 class Poem(Resource):
 
-    @jwt_required(optional=True)
+    @jwt_required(optional = True)
     def get(self, id):
         poem = db.session.query(PoemModel).get_or_404(id)
         current_identity = get_jwt_identity()
@@ -18,7 +18,7 @@ class Poem(Resource):
         else:
             return poem.to_json_public()
 
-    @jwt_required()
+    @owner_or_admin_required
     def delete(self, id):
         poem = db.session.query(PoemModel).get_or_404(id)
         db.session.delete(poem)
@@ -38,7 +38,7 @@ class Poem(Resource):
 
 class Poems(Resource):
 
-    @jwt_required()
+    @jwt_required(optional = True)
     def get(self):
         # Pagina inicial por defecto
         page = 1

@@ -6,7 +6,6 @@ from sqlalchemy import func
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import admin_required
 
-
 class Poet(Resource):
 
     @jwt_required()
@@ -14,7 +13,7 @@ class Poet(Resource):
         poet = db.session.query(PoetModel).get_or_404(id)
         return poet.to_json()
 
-    @admin_required(roles=["admin"])
+    @admin_required
     def delete(self, id):
         poet = db.session.query(PoetModel).get_or_404(id)
         db.session.delete(poet)
@@ -30,7 +29,6 @@ class Poet(Resource):
         db.session.add(poet)
         db.session.commit()
         return poet.to_json(), 201
-
 
 class Poets(Resource):
 

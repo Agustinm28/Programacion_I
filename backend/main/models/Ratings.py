@@ -23,6 +23,15 @@ class Rating(db.Model):
             'rating': self.rating,
         }
         return rating_json
+    
+    def to_json_public(self):
+        poet = self.poet.to_json_short()
+        rating_json = {
+            'reviewer': poet,
+            'review_body': str(self.body),
+            'rating': self.rating,
+        }
+        return rating_json
 
     def to_json_short(self):
         poet = self.poet.to_json_short()
