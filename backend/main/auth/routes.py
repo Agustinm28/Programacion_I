@@ -27,23 +27,3 @@ def login():
         return data, 200
     else:
         return 'Incorrect password', 401
-
-# Método de registro
-@auth.route('/register', methods=['POST'])
-def register():
-    # Obtener poeta
-    poet = PoetModel.from_json(request.get_json())
-    # Verificar si el mail ya existe en la db
-    exists = db.session.query(PoetModel).filter(
-        PoetModel.email == poet.mail).scalar() is not None
-    if exists:
-        return 'Duplicated mail', 409
-    else:
-        try:
-            # Agregar professor a DB
-            db.session.add(poet)
-            db.session.commit()
-        except Exception as error:
-            db.session.rollback()
-            return str(error), 409
-        return poet.to_json(), 201

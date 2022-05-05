@@ -21,6 +21,20 @@ def admin_required(fn):
 
 # Define el atributo que se utilizará para identificar el usuario
 
+def user_required(fn):
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        # Verificar que el JWT es correcto
+        verify_jwt_in_request()
+        # Obtener claims de adentro del JWT
+        claims = get_jwt()
+        # Verificar que el rol sea admin
+        if claims['admin'] == True:
+            # Ejecutar función
+            return fn(*args, **kwargs)
+        else:
+            return 'You don\'t have permission to perform this action', 403
+    return wrapper
 
 @jwt.user_identity_loader
 def user_identity_lookup(poet):
