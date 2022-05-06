@@ -1,9 +1,10 @@
 from flask_restful import Resource
 from flask import jsonify, request
 from .. import db
-from main.models import RatingModel
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from main.models import RatingModel, PoemModel, PoetModel
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from main.auth.decorators import admin_required
+
 
 class Rating(Resource):
 
@@ -12,21 +13,28 @@ class Rating(Resource):
         rating = db.session.query(RatingModel).get_or_404(id)
         return rating.to_json_short()
 
-    @admin_required
+    @jwt_required
     def delete(self, id):
+        user_id = get_jwt_identity()
         rating = db.session.query(RatingModel).get_or_404(id)
-        db.session.delete(rating)
-        db.session.commit()
-        return '', 204
+        claims = get_jwt()
+        if rating.user_id == user_id or claims['admin']:
+            db.session.delete(rating)
+            db.session.commit()
+            return 'Rating deleted correctly', 204
+        else: 
+            return 'You don\'t have permission to perform this action.', 403
+
 
 class Ratings(Resource):
 
-    @jwt_required()
+    @jwt_required(optional = True)
     def get(self):
         # Pagina inicial por defecto
         page = 1
         # Cantidad de elementos a mostrar por página por defecto
         per_page = 5
+        user_id = get_jwt_identity()
         # Obtener valores del request
         filters = request.data
         ratings = db.session.query(RatingModel)
@@ -37,10 +45,12 @@ class Ratings(Resource):
                     page = int(value)
                 elif key == 'per_page':
                     per_page = int(value)
+                #if not user_id: 
 
         # Obtener valor paginado
         ratings = ratings.paginate(page, per_page, True, 20)
-        return jsonify({'rating': [rating.to_json() for rating in ratings.items],
+        ratingList = [rating.to_json() for rating in ratings.items] if user_id else [rating.to_json_public() for rating in ratings.items]
+        return jsonify({'rating': ratingList,
                         'total': ratings.total,
                         'pages': ratings.pages,
                         'page': page
@@ -49,6 +59,20 @@ class Ratings(Resource):
     @jwt_required()
     def post(self):
         rating = RatingModel.from_json(request.get_json())
-        db.session.add(rating)
-        db.session.commit()
+        poem = db.session.query(PoemModel).get(rating.poem_id)
+        ratings = db.session.query(RatingModel).filter(RatingModel.poem_id == rating.poem_id)
+        user_id = get_jwt_identity()
+        user_ratings = [
+            rat.to_json_rate() for rat in ratings if rat.poet_id == user_id
+            ]
+        rating.user_id = user_id
+        if poem.poet_id == user_id:
+            return 'You can\'t rate your own poems', 400
+        elif len(user_ratings) > 0:
+            return 'You have already rated this poem', 400
+        try:
+            db.session.add(rating)
+            db.session.commit()
+        except Exception as error:
+            return 'Incorrect format', 400
         return rating.to_json(), 201
