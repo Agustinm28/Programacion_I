@@ -58,14 +58,16 @@ class Ratings(Resource):
 
     @jwt_required()
     def post(self):
+        user_id = get_jwt_identity()
         rating = RatingModel.from_json(request.get_json())
+        rating.poet_id = user_id
+        print(rating.poet_id)
+        print(rating.poem_id)
         poem = db.session.query(PoemModel).get(rating.poem_id)
         ratings = db.session.query(RatingModel).filter(RatingModel.poem_id == rating.poem_id)
-        user_id = get_jwt_identity()
         user_ratings = [
             rat.to_json_rate() for rat in ratings if rat.poet_id == user_id
             ]
-        rating.user_id = user_id
         if poem.poet_id == user_id:
             return 'You can\'t rate your own poems', 400
         elif len(user_ratings) > 0:

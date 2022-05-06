@@ -14,7 +14,7 @@ class Poet(Resource):
         poetId = get_jwt_identity()
         claims = get_jwt()
         if claims != {}:
-            if poetId == id or claims['admin'] == True:
+            if poetId == int(id) or claims['admin'] == True:
                 return poet.to_json()
         return poet.to_json_public()
 

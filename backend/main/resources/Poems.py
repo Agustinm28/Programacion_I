@@ -109,8 +109,8 @@ class Poems(Resource):
         ratings = db.session.query(RatingModel)
         current_user = get_jwt_identity()
         poem_count = len([poem.to_json() for poem in poems.filter(PoemModel.poet_id == current_user)])
-        rating_count = len([rating.to_json() for rating in ratings.filter(RatingModel.poet == current_user)])
-        if poem_count > 3 and rating_count < (poem_count - 3) * 5:
+        rating_count = len([rating.to_json() for rating in ratings.filter(RatingModel.poet_id == current_user)])
+        if poem_count > 3 and rating_count <= (poem_count - 3) * 5:
             return 'You need to rate more poems before posting a new one.', 400
         poem.poet_id = current_user
         try:
