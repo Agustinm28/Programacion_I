@@ -1,9 +1,10 @@
+from collections import UserDict
 from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
 from main.models import PoemModel, RatingModel, PoetModel
 from sqlalchemy import func
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from main.auth.decorators import admin_required
 
 class Poem(Resource):
@@ -17,34 +18,42 @@ class Poem(Resource):
         else:
             return poem.to_json_public()
 
-    @admin_required # a cambiar
+    @jwt_required()
     def delete(self, id):
+        poetId = get_jwt_identity()
         poem = db.session.query(PoemModel).get_or_404(id)
-        db.session.delete(poem)
-        db.session.commit()
-        return '', 204
+        claims = get_jwt()
+        if poem.poet_id == poetId or claims['admin'] == True:        
+            db.session.delete(poem)
+            db.session.commit()
+            return 'Poem deleted.', 204
+        return 'You don\'t have permission to perform this action.', 403
 
     @jwt_required()
     def put(self, id):
+        poetId = get_jwt_identity()
         poem = db.session.query(PoemModel).get_or_404(id)
-        data = request.get_json().items()
-        for key, value in data:
-            setattr(poem, key, value)
-        db.session.add(poem)
-        db.session.commit()
-        return poem.to_json(), 201
-
+        claims = get_jwt()
+        if poem.poet_id == poetId or claims['admin'] == True:
+            data = request.get_json().items()
+            for key, value in data:
+                setattr(poem, key, value)
+            db.session.add(poem)
+            db.session.commit()
+            return poem.to_json(), 201
+        return 'You don\'t have permission to perform this action.', 403
 
 class Poems(Resource):
 
     @jwt_required(optional = True)
     def get(self):
+        userId = get_jwt_identity()
         # Pagina inicial por defecto
         page = 1
         # Cantidad de elementos a mostrar por página por defecto
         per_page = 5
         # Obtener valores del request
-        filters = request.data
+        filters = request.get_json().items() if not userId else {'order_by': 'date[desc]', 'order_by': 'ratings_count'}
         poems = db.session.query(PoemModel)
         # Verificar si hay filtros
         if filters:
@@ -56,17 +65,21 @@ class Poems(Resource):
                 'title': 'poems.filter(PoemModel.title.like("%"+value+"%"))',
                 'av_rating[gte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) >= value)',
                 'av_rating[lte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) <= value)',
+                'ratings_count[gte]': 'poems.outerjoin(PoemModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) >= value)',
+                'ratings_count[lte]': 'poems.outerjoin(PoemModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) <= value)',
                 'order_by': {
                     'date': 'poems.order_by(PoemModel.date)',
                     'date[desc]': 'poems.order_by(PoemModel.date.desc())',
                     'av_rating': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).order_by(func.avg(RatingModel.rating))',
                     'av_rating[desc]': 'poems.order_by(func.avg(RatingModel.rating).desc())',
                     'title': 'poems.order_by(PoemModel.title)',
-                    'title[desc]': 'poems.order_by(PoemModel.title.desc())'
+                    'title[desc]': 'poems.order_by(PoemModel.title.desc())',
+                    'ratings_count': 'poems.outerjoin(PoemModel.rating).group_by(PoetModel.id).order_by(func.count(PoemModel.rating))',
+                    'ratings_count[desc]': 'poets.order_by(func.count(PoemModel.rating).desc())'
                 }
             }
 
-            for key, value in request.get_json().items():
+            for key, value in filters:
                 if key == 'page':
                     page = int(value)
                 elif key == 'per_page':
@@ -78,7 +91,7 @@ class Poems(Resource):
                     poems = eval(actions[key]) if key != 'order_by' else eval(
                         actions[key][value])
 
-        # Obtener valor paginado
+       # Obtener valor paginado
         poems = poems.paginate(page, per_page, True, 20)
         return jsonify({'poem': [poem.to_json() for poem in poems.items],
                         'total': poems.total,
@@ -86,13 +99,17 @@ class Poems(Resource):
                         'page': page
                         })
 
-    @valid_user_required()
+    @jwt_required()
     def post(self):
         poem = PoemModel.from_json(request.get_json())
+        poems = db.session.query(PoemModel)
+        ratings = db.session.query(RatingModel)
         current_user = get_jwt_identity()
+        poem_count = len([poem.to_json() for poem in poems.filter(PoemModel.poet_id == current_user)])
+        rating_count = len([rating.to_json() for rating in ratings.filter(RatingModel.poet == current_user)])
+        if poem_count > 3 and rating_count < (poem_count - 3) * 5:
+            return 'You need to rate more poems before posting a new one.', 400
         poem.poet_id = current_user
-        poem_count = db.session.query(PoetModel).get(current_user)
-        print(poem_count)
         try:
             db.session.add(poem)
             db.session.commit()

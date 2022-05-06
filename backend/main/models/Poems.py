@@ -19,6 +19,7 @@ class Poem(db.Model):
     def to_json(self):
         poet = self.poet.to_json_short()
         rating = [rating.to_json_rate()['rating'] for rating in self.rating]
+        ratings_count = len(rating)
         av_rating = sum(rating)/len(rating) if len(rating) > 0 else None
         comments = [rating.to_json_public() for rating in self.rating]
         poem_json = {
@@ -27,6 +28,7 @@ class Poem(db.Model):
             'body': str(self.body),
             'date': str(self.date),
             'poet': poet,
+            'rating_count': ratings_count,
             'av_rating': av_rating,
             'comments': comments
         }

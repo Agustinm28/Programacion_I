@@ -49,6 +49,19 @@ class Poet(db.Model):
         }
         return poet_json
 
+    def to_json_public(self):
+        poems = [poem.to_json_short()['title'] for poem in self.poems]
+        rating = [rating.to_json_short() for rating in self.rating]
+        poet_json = {
+            'id': self.id,
+            'name': str(self.name) + ' ' + str(self.lname),
+            'admin': bool(self.admin),
+            'poems': poems,
+            'poems_count': len(poems),
+            'ratings_count': len(rating)
+        }
+        return poet_json
+    
     def to_json_short(self):
         poet_json = {
             'name': str(self.name) + ' ' + str(self.lname),

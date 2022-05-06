@@ -20,7 +20,6 @@ class Rating(Resource):
         db.session.commit()
         return '', 204
 
-
 class Ratings(Resource):
 
     @jwt_required()

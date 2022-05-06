@@ -3,15 +3,20 @@ from flask import request, jsonify
 from .. import db
 from main.models import PoetModel, PoemModel, RatingModel
 from sqlalchemy import func
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from main.auth.decorators import admin_required
 
 class Poet(Resource):
 
-    @jwt_required()
+    @jwt_required(optional = True)
     def get(self, id):
         poet = db.session.query(PoetModel).get_or_404(id)
-        return poet.to_json()
+        poetId = get_jwt_identity()
+        claims = get_jwt()
+        if claims != {}:
+            if poetId == id or claims['admin'] == True:
+                return poet.to_json()
+        return poet.to_json_public()
 
     @admin_required
     def delete(self, id):
