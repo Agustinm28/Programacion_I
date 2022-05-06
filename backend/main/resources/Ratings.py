@@ -5,7 +5,6 @@ from main.models import RatingModel
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from main.auth.decorators import admin_required
 
-
 class Rating(Resource):
 
     @jwt_required(optional = True)

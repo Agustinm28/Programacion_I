@@ -48,12 +48,14 @@ class Poems(Resource):
     @jwt_required(optional = True)
     def get(self):
         userId = get_jwt_identity()
+        if not userId:
+            userId = -1
         # Pagina inicial por defecto
         page = 1
         # Cantidad de elementos a mostrar por página por defecto
         per_page = 5
         # Obtener valores del request
-        filters = request.get_json().items() if not userId else {'order_by': 'date[desc]', 'order_by': 'ratings_count'}
+        filters = request.get_json().items() if userId == -1 else {'order_by': 'date[desc]', 'order_by': 'ratings_count'}
         poems = db.session.query(PoemModel)
         # Verificar si hay filtros
         if filters:
@@ -93,7 +95,8 @@ class Poems(Resource):
 
        # Obtener valor paginado
         poems = poems.paginate(page, per_page, True, 20)
-        return jsonify({'poem': [poem.to_json() for poem in poems.items],
+        poemList = [poem.to_json() for poem in poems.items if poem.poet_id != userId] if userId else [poem.to_json_public() for poem in poems.items if poem.poet_id != userId]
+        return jsonify({'poem': poemList,
                         'total': poems.total,
                         'pages': poems.pages,
                         'page': page

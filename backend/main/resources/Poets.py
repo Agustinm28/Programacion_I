@@ -23,22 +23,28 @@ class Poet(Resource):
         poet = db.session.query(PoetModel).get_or_404(id)
         db.session.delete(poet)
         db.session.commit()
-        return '', 204
+        return 'Poet deleted', 204
 
-    @admin_required  # a cambiar
+    @jwt_required()
     def put(self, id):
         poet = db.session.query(PoetModel).get_or_404(id)
         data = request.get_json().items()
-        for key, value in data:
-            setattr(poet, key, value)
-        db.session.add(poet)
-        db.session.commit()
-        return poet.to_json(), 201
+        poetId = get_jwt_identity()
+        claims = get_jwt()
+        if poet.id == poetId or claims['admin'] == True:
+            data = request.get_json().items()
+            for key, value in data:
+                setattr(poet, key, value)
+            db.session.add(poet)
+            db.session.commit()
+            return poet.to_json(), 201
+        return 'You don\'t have permission to perform this action.', 403
 
 class Poets(Resource):
 
-    @jwt_required()
+    @jwt_required(optional = True)
     def get(self):
+        userId = get_jwt_identity()
         # Pagina inicial por defecto
         page = 1
         # Cantidad de elementos a mostrar por página por defecto
@@ -79,8 +85,10 @@ class Poets(Resource):
                         actions[key][value])
 
         # Obtener valor paginado
+       
         poets = poets.paginate(page, per_page, True, 20)
-        return jsonify({'poet': [poet.to_json() for poet in poets.items],
+        poetList = [poet.to_json() for poet in poets.items] if userId else [poet.to_json_public() for poet in poets.items]
+        return jsonify({'poet': poetList,
                         'total': poets.total,
                         'pages': poets.pages,
                         'page': page
