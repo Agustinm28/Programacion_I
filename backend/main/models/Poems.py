@@ -1,12 +1,11 @@
 from .. import db
-import datetime
-
 
 class Poem(db.Model):
+      
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     body = db.Column(db.String(1000), nullable=False)
-    date = db.Column(db.DateTime(), default=datetime.datetime.now())
+    date = db.Column(db.DateTime())
     poet_id = db.Column(db.Integer, db.ForeignKey(
         'poet.id'), nullable=False)                            # Clave foranea
     poet = db.relationship('Poet', back_populates="poems", uselist=False)

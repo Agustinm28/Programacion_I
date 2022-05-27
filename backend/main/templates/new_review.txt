@@ -1,5 +1,5 @@
-Hola {{rating.poem.poet.poet}}!
-Tu poema {{rating.poem.tittle}} recibio una calificacion!
+Hola {{review.poem.poet.name}} {{review.poem.poet.lname}}!
+Tu poema "{{review.poem.title}}" recibio una calificacion!
 
-Calificacion: {{rating.rating}}
-Opinion: {{rating.rating}}
+Calificación: {{review.rating}}
+Opinión: '{{review.body}}'

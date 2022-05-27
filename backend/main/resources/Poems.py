@@ -1,4 +1,5 @@
 from collections import UserDict
+from datetime import datetime
 from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
@@ -110,9 +111,10 @@ class Poems(Resource):
         current_user = get_jwt_identity()
         poem_count = len([poem.to_json() for poem in poems.filter(PoemModel.poet_id == current_user)])
         rating_count = len([rating.to_json() for rating in ratings.filter(RatingModel.poet_id == current_user)])
-        if poem_count > 3 and rating_count <= (poem_count - 3) * 5:
+        if poem_count >= 3 and rating_count <= (poem_count - 3) * 5:
             return 'You need to rate more poems before posting a new one.', 400
         poem.poet_id = current_user
+        poem.date = datetime.now()
         try:
             db.session.add(poem)
             db.session.commit()

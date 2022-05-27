@@ -1,10 +1,11 @@
+from smtplib import SMTPException
 from flask_restful import Resource
 from flask import jsonify, request
 from .. import db
 from main.models import RatingModel, PoemModel, PoetModel
 from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from main.auth.decorators import admin_required
-from main.mail.functions import sendmail
+from main.mail.functions import sendMail
 
 
 class Rating(Resource):
@@ -74,7 +75,7 @@ class Ratings(Resource):
         ratings = db.session.query(RatingModel).filter(
             RatingModel.poem_id == rating.poem_id)
         user_ratings = [
-            rat.to_json_rate() for rat in ratings if rat.poet_id == user_id
+            rating.to_json_rate() for rating in ratings if rating.poet_id == user_id
         ]
         if poem.poet_id == user_id:
             return 'You can\'t rate your own poems.', 400
@@ -83,8 +84,9 @@ class Ratings(Resource):
         try:
             db.session.add(rating)
             db.session.commit()
-            result = sendmail([rating.poem.poet.mail],
-                              'New Review', 'new_review', review=rating)
+            result = sendMail([rating.poem.poet.mail],
+                              'New Review', 'new_review', review = rating)
         except Exception as error:
+            print(error)
             return 'Incorrect format.', 400
         return rating.to_json(), 201
