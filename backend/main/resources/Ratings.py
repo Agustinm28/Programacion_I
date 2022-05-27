@@ -4,11 +4,12 @@ from .. import db
 from main.models import RatingModel, PoemModel, PoetModel
 from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from main.auth.decorators import admin_required
+from main.mail.functions import sendmail
 
 
 class Rating(Resource):
 
-    @jwt_required(optional = True)
+    @jwt_required(optional=True)
     def get(self, id):
         rating = db.session.query(RatingModel).get_or_404(id)
         current_identity = get_jwt_identity()
@@ -27,13 +28,13 @@ class Rating(Resource):
             db.session.delete(rating)
             db.session.commit()
             return 'Rating deleted correctly', 204
-        else: 
+        else:
             return 'You don\'t have permission to perform this action.', 403
 
 
 class Ratings(Resource):
 
-    @jwt_required(optional = True)
+    @jwt_required(optional=True)
     def get(self):
         # Pagina inicial por defecto
         page = 1
@@ -50,11 +51,12 @@ class Ratings(Resource):
                     page = int(value)
                 elif key == 'per_page':
                     per_page = int(value)
-                #if not user_id: 
+                # if not user_id:
 
         # Obtener valor paginado
         ratings = ratings.paginate(page, per_page, True, 20)
-        ratingList = [rating.to_json() for rating in ratings.items] if user_id is not None else [rating.to_json_public() for rating in ratings.items]
+        ratingList = [rating.to_json() for rating in ratings.items] if user_id is not None else [
+            rating.to_json_public() for rating in ratings.items]
         return jsonify({'rating': ratingList,
                         'total': ratings.total,
                         'pages': ratings.pages,
@@ -69,10 +71,11 @@ class Ratings(Resource):
         print(rating.poet_id)
         print(rating.poem_id)
         poem = db.session.query(PoemModel).get(rating.poem_id)
-        ratings = db.session.query(RatingModel).filter(RatingModel.poem_id == rating.poem_id)
+        ratings = db.session.query(RatingModel).filter(
+            RatingModel.poem_id == rating.poem_id)
         user_ratings = [
             rat.to_json_rate() for rat in ratings if rat.poet_id == user_id
-            ]
+        ]
         if poem.poet_id == user_id:
             return 'You can\'t rate your own poems.', 400
         elif len(user_ratings) > 0:
@@ -80,6 +83,8 @@ class Ratings(Resource):
         try:
             db.session.add(rating)
             db.session.commit()
+            result = sendmail([rating.poem.poet.mail],
+                              'New Review', 'new_review', review=rating)
         except Exception as error:
             return 'Incorrect format.', 400
         return rating.to_json(), 201
