@@ -45,6 +45,7 @@ class Poets(Resource):
     @jwt_required(optional = True)
     def get(self):
         userId = get_jwt_identity()
+        claims = get_jwt()
         # Pagina inicial por defecto
         page = 1
         # Cantidad de elementos a mostrar por página por defecto
@@ -65,9 +66,9 @@ class Poets(Resource):
                     'name': 'poets.order_by(PoetModel.name)',
                     'name[desc]': 'poets.order_by(PoetModel.name.desc())',
                     'poems_count': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).order_by(func.count(PoetModel.poems))',
-                    'poems_count[desc]': 'poets.order_by(func.count(PoetModel.poems).desc())',
+                    'poems_count[desc]': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).order_by(func.count(PoetModel.poems).desc())',
                     'ratings_count': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).order_by(func.count(PoetModel.rating))',
-                    'ratings_count[desc]': 'poets.order_by(func.count(PoetModel.rating).desc())'
+                    'ratings_count[desc]': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).order_by(func.count(PoetModel.rating).desc())'
                 }
             }
 
@@ -87,7 +88,8 @@ class Poets(Resource):
         # Obtener valor paginado
        
         poets = poets.paginate(page, per_page, True, 20)
-        poetList = [poet.to_json() for poet in poets.items] if userId else [poet.to_json_public() for poet in poets.items]
+        if claims != {}:
+            poetList = [poet.to_json() for poet in poets.items] if userId is not None and claims['admin'] == True else [poet.to_json_public() for poet in poets.items]
         return jsonify({'poet': poetList,
                         'total': poets.total,
                         'pages': poets.pages,

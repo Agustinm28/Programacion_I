@@ -47,15 +47,15 @@ class Poems(Resource):
 
     @jwt_required(optional = True)
     def get(self):
-        userId = get_jwt_identity()
-        if not userId:
-            userId = -1
+        poetId = get_jwt_identity()
+        if poetId is None:
+            poetId = -1
         # Pagina inicial por defecto
         page = 1
         # Cantidad de elementos a mostrar por página por defecto
         per_page = 5
         # Obtener valores del request
-        filters = request.get_json().items() if userId == -1 else {'order_by': 'date[desc]', 'order_by': 'ratings_count'}
+        filters = request.get_json().items() if poetId == -1 else {'order_by':'ratings_count', 'order_by': 'date[desc]'}.items()
         poems = db.session.query(PoemModel)
         # Verificar si hay filtros
         if filters:
@@ -67,17 +67,17 @@ class Poems(Resource):
                 'title': 'poems.filter(PoemModel.title.like("%"+value+"%"))',
                 'av_rating[gte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) >= value)',
                 'av_rating[lte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.avg(RatingModel.rating) <= value)',
-                'ratings_count[gte]': 'poems.outerjoin(PoemModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) >= value)',
-                'ratings_count[lte]': 'poems.outerjoin(PoemModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) <= value)',
+                'ratings_count[gte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.count(RatingModel.id) >= value)',
+                'ratings_count[lte]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).having(func.count(RatingModel.id) <= value)',
                 'order_by': {
                     'date': 'poems.order_by(PoemModel.date)',
                     'date[desc]': 'poems.order_by(PoemModel.date.desc())',
                     'av_rating': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).order_by(func.avg(RatingModel.rating))',
-                    'av_rating[desc]': 'poems.order_by(func.avg(RatingModel.rating).desc())',
+                    'av_rating[desc]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).order_by(func.avg(RatingModel.rating).desc())',
                     'title': 'poems.order_by(PoemModel.title)',
                     'title[desc]': 'poems.order_by(PoemModel.title.desc())',
-                    'ratings_count': 'poems.outerjoin(PoemModel.rating).group_by(PoetModel.id).order_by(func.count(PoemModel.rating))',
-                    'ratings_count[desc]': 'poets.order_by(func.count(PoemModel.rating).desc())'
+                    'ratings_count': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).order_by(func.count(RatingModel.id))',
+                    'ratings_count[desc]': 'poems.outerjoin(PoemModel.rating).group_by(PoemModel.id).order_by(func.count(RatingModel.id).desc())'
                 }
             }
 
@@ -95,7 +95,7 @@ class Poems(Resource):
 
        # Obtener valor paginado
         poems = poems.paginate(page, per_page, True, 20)
-        poemList = [poem.to_json() for poem in poems.items if poem.poet_id != userId] if userId else [poem.to_json_public() for poem in poems.items if poem.poet_id != userId]
+        poemList = [poem.to_json() for poem in poems.items if poem.poet_id != poetId] if poetId is not None else [poem.to_json_public() for poem in poems.items if poem.poet_id != poetId]
         return jsonify({'poem': poemList,
                         'total': poems.total,
                         'pages': poems.pages,

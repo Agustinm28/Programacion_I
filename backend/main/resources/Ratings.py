@@ -11,14 +11,19 @@ class Rating(Resource):
     @jwt_required(optional = True)
     def get(self, id):
         rating = db.session.query(RatingModel).get_or_404(id)
-        return rating.to_json_short()
+        current_identity = get_jwt_identity()
+        print(current_identity)
+        if current_identity != None:
+            return rating.to_json()
+        else:
+            return rating.to_json_public()
 
-    @jwt_required
+    @jwt_required()
     def delete(self, id):
         user_id = get_jwt_identity()
         rating = db.session.query(RatingModel).get_or_404(id)
         claims = get_jwt()
-        if rating.user_id == user_id or claims['admin']:
+        if rating.poet_id == user_id or claims['admin']:
             db.session.delete(rating)
             db.session.commit()
             return 'Rating deleted correctly', 204
@@ -49,7 +54,7 @@ class Ratings(Resource):
 
         # Obtener valor paginado
         ratings = ratings.paginate(page, per_page, True, 20)
-        ratingList = [rating.to_json() for rating in ratings.items] if user_id else [rating.to_json_public() for rating in ratings.items]
+        ratingList = [rating.to_json() for rating in ratings.items] if user_id is not None else [rating.to_json_public() for rating in ratings.items]
         return jsonify({'rating': ratingList,
                         'total': ratings.total,
                         'pages': ratings.pages,
@@ -69,12 +74,12 @@ class Ratings(Resource):
             rat.to_json_rate() for rat in ratings if rat.poet_id == user_id
             ]
         if poem.poet_id == user_id:
-            return 'You can\'t rate your own poems', 400
+            return 'You can\'t rate your own poems.', 400
         elif len(user_ratings) > 0:
-            return 'You have already rated this poem', 400
+            return 'You have already rated this poem.', 400
         try:
             db.session.add(rating)
             db.session.commit()
         except Exception as error:
-            return 'Incorrect format', 400
+            return 'Incorrect format.', 400
         return rating.to_json(), 201

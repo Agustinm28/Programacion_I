@@ -28,7 +28,6 @@ class Rating(db.Model):
         poet = self.poet.to_json_short()
         rating_json = {
             'reviewer': poet,
-            'review_body': str(self.body),
             'rating': self.rating,
         }
         return rating_json
