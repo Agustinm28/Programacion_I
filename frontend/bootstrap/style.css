@@ -2,6 +2,26 @@
 	background-color: #330c0c !important;
 }
 
+#acceptNewUser:hover {
+	background-color: #247c50 !important;
+}
+
+#modifyUser:hover {
+	background-color: #7c6292 !important;
+}
+
+#deleteUser:hover {
+	background-color: #290d41 !important;
+}
+
+#rejectNewUser:hover {
+	background-color: #5f172d !important;
+}
+
+#displayMore:hover {
+	background-color: #22457a !important;
+}
+
 #configButton:hover {
 	background-color: #160d08 !important;
 }
