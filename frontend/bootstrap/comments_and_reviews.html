@@ -7,80 +7,97 @@
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="http://fonts.cdnfonts.com/css/sf-cartoonist-hand" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
       @import url('http://fonts.cdnfonts.com/css/sf-cartoonist-hand');
     </style>
+    <script>
+      export default {
+       data() {
+        return {
+          value: 3
+          }
+        }
+      }
+    </script>
 </head>
 <body style="background-color: #e6ccb2;">
-    <nav class="navbar navbar-dark navbar-fixed-top navbar-expand-xxl" style="background-color: #3e5c76">
-        <div class="container-fluid">
-          <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" href="#">
-            Botellas en el mar
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex col-md-4 col-xl-8 mx-2">
-                <button class="btn btn-secondary ms-3" type="submit" style="border-radius: 30px; background-color: #b7c9da; border-color: black; border-width: 2px">
-                    <i class="bi bi-search" style="font-size: 1.35rem; color: black;"></i>
-                </button>
-                <input class="form-control ms-4 me-5" type="search" style="background-color: #b7c9da; border-color: rgb(255, 255, 255); border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
-            </form> 
-            <ul ul class="navbar-nav ms-1">
-              <li class="nav-item me-3">
-                <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: #c397e7; border-color: black; border-width: 2px" aria-expanded="false">
-                    <i class="bi bi-people-fill" style="font-size: 1.35rem; color: rgb(0, 0, 0);"></i>
-                </button>
-              </li>
-              <li class="nav-item me-3">
-                <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: #ffb703; border-color: black; border-width: 2px" aria-expanded="false">
-                    <i class="bi bi-vector-pen" style="font-size: 1.35rem; color: rgb(0, 0, 0);"></i>
-                </button>
-              </li>
-              <li class="nav-item">
-                <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: #fb8500; border-color: black; border-width: 2px" aria-expanded="false">
-                    <i class="bi bi-gear-fill" style="font-size: 1.35rem; color: rgb(0, 0, 0);"></i>
-                </button>
-              </li>
-            </ul>
-            <div class="container ms-5 me-1" style="color: white;">
-                <div class="row">
-                    <div class="col-12 ms-4 justify-content-center">
-                      <h3><b>Hola, Lilita!</b></h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 ms-4">
-                      <a class="link" href="#" style="color: white;">Login</a>
-                    </div>
-                </div>  
-            </div>
-            <div class="me-3">
-              <img src="assets/lilita_profile.png" class="img-fluid" alt="profile">
+  <nav class="navbar navbar-dark sticky-top navbar-expand-xxl pt-4 pb-4" style="background-color: rgb(124, 102, 70);">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" href="login_registered_admin.html">
+        Botellas en el mar
+      </a>
+      <form class="d-flex col-xl-6 col-lg-5 col-md-4 mx-2">
+        <button class="btn btn-secondary ms-3" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
+          <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
+        </button>
+        <input class="form-control ms-4 me-5" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
+      </form> 
+      <div class="text-end">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="color: whitesmoke;"></span>
+        </button>
+      </div>
+      <div class="d-none d-xxl-block">
+        <ul ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item me-3">
+            <button class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="ABM" id="adminButton" style="border-radius: 30px; background-color: #bb9457; border-color: white; border-width: 2px" aria-expanded="false">
+              <i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="Editor de poemas" id="pEditorButton" style="border-radius: 30px; background-color: #99582a; border-color: white; border-width: 2px" aria-expanded="false" href="poem_editor.html">
+              <i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="d-sm-block d-xxl-none">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item me-3"><a href="index.html" class="text-white">Home</a></li>
+            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-plus me-2" style="color: white;"></i> <a href="poema_add.html" class="text-white"> Nuevo poema</a></li>
+            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-user me-2" style="color: white;"></i><a href="usuarios.html" class="text-white"> Usuarios</a></li>
+            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-right-to-bracket me-2" style="color: white;"></i><a href="login.html" class="text-white"> Login</a></li>
+          </ul>
+        </div>
+        <div class="container-fluid ms-4" style="color: white;">
+          <div class="row me-auto">
+            <div class="text-end">
+              <h3 class="mx-auto"><b>Hola, Lilita!</b></h3>
             </div>
           </div>
         </div>
-      </nav>
+        <div class="col-2 me-auto">
+          <div class="ms-auto">
+            <a id=profPicture href="profile.html">
+              <img class="rounded float-end" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
     <div class="container shadow-lg p-3 mb-5 justify-content-center" style="background-color: #f9dcc4">
       <div class="row justify-content-center">
         <div class="col-11 mb-4">
-          <div class="card">
+          <div class="card" style="background-color: #e6ccb2">
             <div class="card-body">
-              <div class="row m-2">
-                <div class="col-md-1 p-1 mt-3 mb-3">
-                  <img src="assets/lilita_profile.png" class="img-fluid" alt="profile">
+              <div class="row mt-2 mx-2 mb-4" style="background-color: white; border-radius: 30px">
+                <div class="col-1 p-1 mt-3 mb-3 ms-3">
+                  <img src="assets/henry_profile.png" class="img-fluid" alt="profile">
                 </div>
-                <div class="col-4 mt-5 justify-content-center">
-                  <h3>LilCarrey</h3>
+                <div class="col-4 my-auto justify-content-center">
+                  <h3>HenryC</h3>
                 </div>
               </div>
-              <div class="row pt-1 pb-5 m-2 border rounded">
-                <div class="col-6">
-                  <i class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+              <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
+                <div class="col-md-5 col-sm-6 ms-3 align-items-start">
+                  <p style="font-size: 25px; color: rgb(22, 20, 20); font-weight: bold;">Lorem ipsum</p>
                 </div>
-                <div class="col-6 text-end">
-                  <p style="font-size: 15px; color: lightslategray;">17/09/2022</p>
+                <div class="col-lg-6 col-md-5 col-sm-auto text-end ms-xxl-5 ms-lg-3 ms-md-5 ms-sm-auto">
+                  <p style="font-size: 15px; color: lightslategray;">20/01/2020</p>
                 </div>
                 <div class="col-12 p-3">
                   <p class="card-text" style="text-align:left; font-size: 25px;">
@@ -88,135 +105,139 @@
                   </p>
                 </div>
               </div>
-              <div class="row m-2">
-                  <div class="row-2 mt-4">
-                    <div class="col-2">
-                      <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
-                    </div>
+              <div class="row mt-4 mb-2 mx-1" style="background-color: white; border-radius: 30px;">
+                <div class="d-flex d-block justify-content-center" id="footerTopTextRow">
+                  <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-start">
+                    <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
                   </div>
-                  <div class="col-md-2 col-sm-3 px-3 pb-3 justify-content-center">
-                    <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star-half" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
+                  <div class="col-xl-6 col-lg-4 col-md-2 col-sm-0">
                   </div>
-                  <div class="col-md-2 col-sm-3 px-1">
-                    <p style="font-size: 1.6rem; color: black; font-weight: 800;">3.5</p>
+                  <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-end">
+                    <p style="background-color: rgb(238, 174, 144); outline-color: rgb(238, 174, 144); color: black; border-radius: 30px; text-align: center;">Calificaciones</p>
+                  </div>
+                </div>
+                <div class="row" id="footerBottomTextRow">
+                  <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3">
+                    <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger;"></i>
+                    <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                    <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                    <i class="fa-solid fa-star-half-stroke" style="color: #ffb703; font-size: larger"></i>
+                    <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                    <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">3.5</label>
+                  </div>
+                  <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 text-end">
+                    <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">2</label>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
           <div class="col-11 mb-4">
-            <div class="card">
+            <div class="card" style="background-color: rgb(216, 216, 216); border-radius: 40px;">
               <div class="card-body">
-                <div class="row m-2">
-                  <div class="col-4 mt-3 justify-content-center">
-                    <h3>Deja tu calificación</h3>
+                <div class="row m-2" style="background-color: whitesmoke; border-radius: 20px">
+                  <div class="col-xl-4 col-md-6 col-sm-8 mt-3 justify-content-center">
+                    <h3>Dejá tu calificación</h3>
                   </div>
                 </div>
-                <div class="row m-2">
-                    <div class="row-2 mt-4">
-                      <div class="col-2">
+                <div class="row mx-2 my-4" style="background-color: white; border-radius: 20px">
+                  <form class="d-flex" method="submit" action="comments_and_reviews.html">
+                    <div class="col-xl-auto p-3 pb-3 my-auto">
+                      <div class="col-12">
                         <p style="background-color: rgb(238, 216, 144); outline-color: rgb(238, 216, 144); color: black; border-radius: 30px; text-align: center;">Calificación</p>
                       </div>
+                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px;"></i>
+                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
+                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
+                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
+                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
                     </div>
-                    <div class="col-md-2 col-sm-3 p-3 pb-3 justify-content-center">
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    </div>
-                    <div class="col-md-1 col-sm-3 p-3">
+                    <div class="col-md-1 col-sm-3 p-3 my-auto me-xl-5 me-md-2">
                       <p style="font-size: 1.6rem; color: black; font-weight: 800;">0</p>
                     </div>
-                    <div class="col-md-8 col-sm-3 p-3 justify-content-center border rounded">
-                      <form class="d-flex">
-                        <input class="form-control" type="review" style="background-color: white; border-color: rgb(255, 255, 255); border-width: 10px;" placeholder="Deja tu comentario..." aria-label="Calificar">
-                      </form>
+                    <div class="col-md-7 col-sm-3 p-3 my-auto justify-content-center border rounded">
+                      <input class="form-control" required type="review" style="background-color: white; border-color: rgb(255, 255, 255); border-width: 10px;" placeholder="Escribe tu comentario..." aria-label="Calificar">
                     </div>
-                    <div class="col-md-1 p-4">
-                      <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: rgb(238, 216, 144); border-color: black; border-width: 2px" aria-expanded="false">
+                    <div class="col-md-1 my-auto ms-xl-4 ms-md-2">
+                      <button class="btn btn-dark" type="submit" data-toggle="tooltips" data-placement="bottom" title="Publicar calificación" style="border-radius: 30px; background-color: rgb(238, 216, 144); border-color: black; border-width: 2px" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-send-fill" viewBox="0 0 16 16">
                           <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
                         </svg>
                       </button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div> 
-          <div class="col-11 mb-4">
-            <div class="card">
+          <div class="col-12 mt-5 mb-3 mx-auto">
+            <div class="card" style="background-color: rgb(219, 206, 199); border-radius: 40px;">
               <div class="card-body">
-                <div class="row m-2">
-                  <div class="col-md-1 p-1 mt-3 mb-3">
+                <div class="row m-2" style="background-color: whitesmoke; border-radius: 30px">
+                  <div class="col-md-1 p-1 my-auto ms-4">
                     <img src="assets/chano_profile.png" class="img-fluid" alt="profile">
                   </div>
-                  <div class="col-4 mt-5 justify-content-center">
+                  <div class="col-4 my-auto py-4 justify-content-center">
                     <h3>ChanoC</h3>
                   </div>
                 </div>
-                <div class="row m-2">
-                    <div class="row-2 mt-4">
-                      <div class="col-2">
-                        <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación</p>
-                      </div>
+                <div class="row mx-2 my-4" style="background-color: white; border-radius: 20px">
+                  <div class="col-xl-auto col-sm-3 p-3 pb-3 my-auto">
+                    <div class="col-12">
+                      <p style="background-color: rgb(238, 216, 144); outline-color: rgb(238, 216, 144); color: black; border-radius: 30px; text-align: center;">Calificación</p>
                     </div>
-                    <div class="col-md-2 col-sm-3 p-3 pb-3 justify-content-center">
-                      <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    </div>
-                    <div class="col-md-1 col-sm-3 p-3">
+                      <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px;"></i>
+                      <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px"></i>
+                      <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px"></i>
+                      <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
+                      <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
+                  </div>
+                    <div class="col-md-1 col-sm-3 p-3 my-auto me-xxl-5 me-xl-">
                       <p style="font-size: 1.6rem; color: black; font-weight: 800;">3</p>
                     </div>
-                    <div class="col-md-8 col-sm-3 p-3 justify-content-center border rounded">
-                      <p class="card-text p-2" style="text-align:center; font-size: 1.6rem; color: black; font-weight: 400;">Your Poem is Crashing!!!!</p>
+                    <div class="col-md-8 col-sm-3 py-4 px-5 my-auto justify-content-center border rounded" style="background-color: rgba(241, 241, 241, 0.623); border-radius: 10px;">
+                      <p class="card-text p-2" style="text-align:center; font-size: 1.6rem; color: black; font-weight: 400;">Your Poem is Crashing!!!</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-11 mb-4">
-              <div class="card">
+            <div class="col-12 mb-3 mx-auto">
+              <div class="card" style="background-color: rgb(219, 206, 199); border-radius: 40px;">
                 <div class="card-body">
-                  <div class="row m-2">
-                    <div class="col-md-1 p-1 mt-3 mb-3">
+                  <div class="row m-2" style="background-color: whitesmoke; border-radius: 30px">
+                    <div class="col-md-1 p-1 my-3 ms-4">
                       <img src="assets/luis_profile.png" class="img-fluid" alt="profile">
                     </div>
                     <div class="col-4 mt-5 justify-content-center">
                       <h3>LuisMi</h3>
                     </div>
                   </div>
-                  <div class="row m-2">
-                      <div class="row-2 mt-4">
-                        <div class="col-2">
-                          <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación</p>
-                        </div>
+                  <div class="row mx-2 my-4" style="background-color: white; border-radius: 20px">
+                    <div class="col-md-2 col-sm-3 p-3 pb-3 my-auto">
+                      <div class="col-8">
+                        <p style="background-color: rgb(238, 216, 144); outline-color: rgb(238, 216, 144); color: black; border-radius: 30px; text-align: center;">Calificación</p>
                       </div>
-                      <div class="col-md-2 col-sm-3 p-3 pb-3 justify-content-center">
-                        <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                        <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                        <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
+                        <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px;"></i>
+                        <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px"></i>
+                        <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px"></i>
+                        <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px"></i>
+                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
                       </div>
-                      <div class="col-md-1 col-sm-3 p-3">
+                      <div class="col-md-1 col-sm-3 p-3 my-auto me-5">
                         <p style="font-size: 1.6rem; color: black; font-weight: 800;">4</p>
                       </div>
-                      <div class="col-md-8 col-sm-3 p-3 justify-content-center border rounded">
+                      <div class="col-md-8 col-sm-3 py-4 px-5 my-auto justify-content-center border rounded" style="background-color: rgba(241, 241, 241, 0.623); border-radius: 10px;">
                         <p class="card-text p-2" style="text-align:center; font-size: 1.6rem; color: black; font-weight: 400;">Very Good!!!! The Sun Heats</p>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>  
+              </div>
+            </div>
+          </div>
+        </div> 
       </div>
     </div>
-</body>
+  </body>
 </html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="http://fonts.cdnfonts.com/css/sf-cartoonist-hand" rel="stylesheet">
+</head>
+<body style="background-color: #e6ccb2;">
+    <div class="container-sm shadow-lg pt-3 px-3 pb-3 mb-5 mt-5" style="background-color: #ad9781;"> 
+        <div class="row py-auto">
+            <a href="login.html" style="text-decoration: none;">
+                <i class="bi bi-arrow-left" style="color: whitesmoke; font-weight: bold; font-size: 50px;"></i>
+            </a>
+        </div>
+        <div class="col-lg-10 mt-2 mb-5 px-5 mx-auto shadow-lg" style="background-color: rgba(236, 200, 145, 0.24); border-radius: 50px;">
+            <div class="d-flex justify-content-start my-auto">
+                <div class="col-2">
+                    <img src="assets/botella_login.jpg" class="rounded-circle pb-4 mx-auto pt-3" alt="Botellas en el mar" style="width: 12rem; box-shadow: inset;">
+                </div>
+                <div class="col-xl-9 col-lg-10 col-md-12 my-auto justify-content-end">
+                    <div class="d-none d-md-block">
+                        <h1 class="text-center" style="color: white; font-weight: bolder; font-size: 60px;">Registrarse</h1>
+                    </div>
+                    <div class="d-md-none">
+                        <div class="text-end ps-5">
+                            <h1 class="ms-5 ps-5" style="color: white; font-weight: bolder; font-size: 40px;">Registrarse</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="form-inline" method=post id="registro"
+                oninput='p2.setCustomValidity(p2.value != p.vsalue ? "Las contraseñas no coinciden." : "")'>
+                <div class="col-12 mx-auto px-3">
+                    <div class="form-outline mb-4 mt-3">
+                        <input type="text" required class="form-control" placeholder="Nombre" aria-label="Nombre" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    </div>
+                    <div class="form-outline mb-4>
+                        <input type="text" required class="form-control" placeholder="Apellido" aria-label="Apellido" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    </div> 
+                    <div class="form-outline mb-4">
+                        <input type="text" required class="form-control" placeholder="Nombre de usuario" aria-label="Nombre de usuario" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="email" required class="form-control" placeholder="Dirección de correo" aria-label="Dirección de correo" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="password" required name="p" class="form-control" placeholder="Contraseña" aria-label="Contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="password" required name="p2" class="form-control" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    </div>              
+                    <div class="text-center pb-5">
+                        <button class="btn btn-primary" type="submit" data-togle="modal" data-target="#confirmationPopUp">Enviar solicitud de registro</button>
+                    </div>
+                </div>
+                <div class="modal fade" id="confirmationPopUp" tabindex="-1" role="dialog" aria-labelledby="confirmationPopUpLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmationLabel">Solicitud de registro exitosa</h5>
+                            </div>
+                            <div class="modal-body">
+                                Cuando tu solicitud sea aprobada, se te enviará un mail de notificación y podrás loggearte.
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" href="login.html">Salir del registro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+       </div>
+    </div>
+</body>
+

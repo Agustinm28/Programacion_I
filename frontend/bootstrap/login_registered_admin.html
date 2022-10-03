@@ -7,65 +7,74 @@
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="http://fonts.cdnfonts.com/css/sf-cartoonist-hand" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
       @import url('http://fonts.cdnfonts.com/css/sf-cartoonist-hand');
     </style>
 </head>
 <body style="background-color: #e6ccb2;">
-    <nav class="navbar navbar-dark sticky-top navbar-expand-xxl pt-4 pb-4" style="background-color: #946d4d;">
+    <nav class="navbar navbar-dark sticky-top navbar-expand-xxl pt-4 pb-4" style="background-color: rgb(124, 102, 70);">
         <div class="container-fluid">
           <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" href="#">
             Botellas en el mar
           </a>
-          <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-            <form class="d-flex col-xl-7 col-lg-6 col-md-4 mx-2">
-                <button class="btn btn-secondary ms-3" type="submit" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
-                    <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
+          <form class="d-flex col-xl-6 col-lg-5 col-md-4 mx-2">
+            <button class="btn btn-secondary ms-3" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
+              <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
+            </button>
+            <input class="form-control ms-4 me-5" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
+          </form> 
+          <div class="text-end">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon" style="color: whitesmoke;"></span>
+            </button>
+          </div>
+          <div class="d-none d-xxl-block">
+            <ul ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item me-3">
+                <button class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="ABM" id="adminButton" style="border-radius: 30px; background-color: #bb9457; border-color: white; border-width: 2px" aria-expanded="false">
+                  <i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>
                 </button>
-                <input class="form-control ms-4 me-5" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
-            </form> 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul ul class="navbar-nav">
-                <li class="nav-item me-3">
-                  <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: #bb9457; border-color: white; border-width: 2px" aria-expanded="false">
-                      <i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>
-                  </button>
-                </li>
-                <li class="nav-item me-3">
-                  <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: #99582a; border-color: white; border-width: 2px" aria-expanded="false">
-                      <i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: #432818; border-color: white; border-width: 2px" aria-expanded="false">
-                      <i class="bi bi-gear-fill" style="font-size: 1.35rem; color: white;"></i>
-                  </button>
-                </li>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="Editor de poemas" id="pEditorButton" style="border-radius: 30px; background-color: #99582a; border-color: white; border-width: 2px" aria-expanded="false" href="poem_editor.html">
+                  <i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-sm-block d-xxl-none">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item me-3"><a href="index.html" class="text-white">Home</a></li>
+                <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-plus me-2" style="color: white;"></i> <a href="poema_add.html" class="text-white"> Nuevo poema</a></li>
+                <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-user me-2" style="color: white;"></i><a href="usuarios.html" class="text-white"> Usuarios</a></li>
+                <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-right-to-bracket me-2" style="color: white;"></i><a href="login.html" class="text-white"> Login</a></li>
               </ul>
-              <div class="container ms-4 me-auto" style="color: white;">
-                  <div class="row">
-                      <h3><b>Hola, Lilita!</b></h3>
-                  </div>
-                  <div class="row">
-                      <a class="link" href="login.html" style="color: white;">Login</a>
-                  </div>  
-              </div>
-              <div class="col-2">
-                <div class="me-3">
-                  <img src="assets/lilita_profile.png" class="img-fluid" alt="profile">
+            </div>
+            <div class="container-fluid ms-4" style="color: white;">
+              <div class="row me-auto">
+                <div class="text-end">
+                  <h3 class="mx-auto"><b>Hola, Lilita!</b></h3>
                 </div>
               </div>
-              
+            </div>
+            <div class="col-2 me-auto">
+              <div class="ms-auto">
+                <a id=profPicture href="profile.html">
+                  <img class="rounded float-end" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
-    <div class="container shadow-lg p-3 mb-5 justify-content-center" style="background-color: #f9dcc4">
+    <div class="container shadow-lg p-3 mb-4 justify-content-center" style="background-color: #f9dcc4">
       <div class="row justify-content-center">
         <div class="col-11 mb-4">
-          <div class="card">
-            <div class="card-body" style="background-color: #e6ccb2">
+          <div class="card" id="poemPreview" style="background-color: #e6ccb2">
+            <div class="card-body">
               <div class="row mb-4 ms-2 me-2 pe-5 mt-2" style="background-color: white; border-radius: 30px">
                 <div class="col-lg-1 col-md-2 col-sm-3 mt-3 mb-3 p-1">
                   <img src="assets/luis_profile.png" class="img-fluid ms-3" alt="profile">
@@ -75,7 +84,10 @@
                 </div>
               </div>
               <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
-                <div class="col-12 text-end">
+                <div class="col-6">
+                  <p style="font-size: 25px; color: rgb(22, 20, 20); font-weight: bold;">Lorem ipsum</p>
+                </div>
+                <div class="col-6 text-end">
                   <p style="font-size: 15px; color: lightslategray;">17/09/2022</p>
                 </div>
                 <div class="col-12 p-3">
@@ -84,27 +96,37 @@
                   </p>
                 </div>
               </div>
-              <div class="row mt-4 mx-2 mb-2" style="background-color: white; border-radius: 30px;">
-                  <div class="row-2">
-                    <div class="col-xl-2 col-lg-3 col-md-5 col-sm-6">
+              <div class="row mt-4 mb-2 mx-1" style="background-color: white; border-radius: 30px;">
+                  <div class="d-flex d-block justify-content-center" id="footerTopTextRow">
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-start">
                       <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
                     </div>
+                    <div class="col-xl-6 col-lg-4 col-md-2 col-sm-0">
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-end">
+                      <p style="background-color: rgb(238, 174, 144); outline-color: rgb(238, 174, 144); color: black; border-radius: 30px; text-align: center;">Calificaciones</p>
+                    </div>
                   </div>
-                  <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-7 pb-3">
-                    <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star-half" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">2.2</label>
+                  <div class="row" id="footerBottomTextRow">
+                    <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3">
+                      <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger;"></i>
+                      <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                      <i class="fa-solid fa-star-half-stroke" style="color: #ffb703; font-size: larger"></i>
+                      <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                      <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                      <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">2.4</label>
+                    </div>
+                    <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 text-end">
+                      <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">6</label>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         <div class="col-11 mb-4">
-          <div class="card">
-            <div class="card-body" style="background-color: #e6ccb2">
+          <div class="card" id="poemPreview" style="background-color: #e6ccb2">
+            <div class="card-body">
               <div class="row mb-4 ms-2 me-2 pe-5 mt-2" style="background-color: white; border-radius: 30px">
                 <div class="col-lg-1 col-md-2 col-sm-3 mt-3 mb-3 p-1">
                   <img src="assets/chano_profile.png" class="img-fluid ms-3" alt="profile">
@@ -114,7 +136,10 @@
                 </div>
               </div>
               <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
-                <div class="col-12 text-end">
+                <div class="col-6">
+                  <p style="font-size: 25px; color: rgb(22, 20, 20); font-weight: bold;">Lorem ipsum</p>
+                </div>
+                <div class="col-6 text-end">
                   <p style="font-size: 15px; color: lightslategray;">17/09/2022</p>
                 </div>
                 <div class="col-12 p-3">
@@ -123,27 +148,37 @@
                   </p>
                 </div>
               </div>
-              <div class="row mt-4 mx-2 mb-2" style="background-color: white; border-radius: 30px;">
-                  <div class="row-2">
-                    <div class="col-xl-2 col-lg-3 col-md-5 col-sm-6">
-                      <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
-                    </div>
+              <div class="row mt-4 mb-2 mx-1" style="background-color: white; border-radius: 30px;">
+                <div class="d-flex d-block justify-content-center" id="footerTopTextRow">
+                  <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-start">
+                    <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
                   </div>
-                  <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-7 pb-3">
-                    <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                    <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
+                  <div class="col-xl-6 col-lg-4 col-md-2 col-sm-0">
+                  </div>
+                  <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-end">
+                    <p style="background-color: rgb(238, 174, 144); outline-color: rgb(238, 174, 144); color: black; border-radius: 30px; text-align: center;">Calificaciones</p>
+                  </div>
+                </div>
+                <div class="row" id="footerBottomTextRow">
+                  <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3">
+                    <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger;"></i>
+                    <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                    <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                    <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                    <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
                     <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">3</label>
+                  </div>
+                  <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 text-end">
+                    <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">4</label>
                   </div>
                 </div>
               </div>
             </div>
+            </div>
           </div>
-          <div class="col-11 mb-4">
-            <div class="card">
-              <div class="card-body" style="background-color: #e6ccb2">
+          <div class="col-11">
+            <div class="card" id="poemPreview" style="background-color: #e6ccb2">
+              <div class="card-body">
                 <div class="row mb-4 ms-2 me-2 pe-5 mt-2" style="background-color: white; border-radius: 30px">
                   <div class="col-lg-1 col-md-2 col-sm-3 mt-3 mb-3 p-1">
                     <img src="assets/henry_profile.png" class="img-fluid ms-3" alt="profile">
@@ -153,7 +188,10 @@
                   </div>
                 </div>
                 <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
-                  <div class="col-12 text-end">
+                  <div class="col-6">
+                    <p style="font-size: 25px; color: rgb(22, 20, 20); font-weight: bold;">Lorem ipsum</p>
+                  </div>
+                  <div class="col-6 text-end">
                     <p style="font-size: 15px; color: lightslategray;">17/09/2022</p>
                   </div>
                   <div class="col-12 p-3">
@@ -162,19 +200,28 @@
                     </p>
                   </div>
                 </div>
-                <div class="row mt-4 mx-2 mb-2" style="background-color: white; border-radius: 30px;">
-                    <div class="row-2">
-                      <div class="col-xl-2 col-lg-3 col-md-5 col-sm-6">
-                        <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
-                      </div>
+                <div class="row mt-4 mb-2 mx-1" style="background-color: white; border-radius: 30px;">
+                  <div class="d-flex d-block justify-content-center" id="footerTopTextRow">
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-start">
+                      <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
                     </div>
-                    <div class="col-xxl-3 col-xl-4 col-md-6 col-sm-7 pb-3">
-                      <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                      <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
+                    <div class="col-xl-6 col-lg-4 col-md-2 col-sm-0">
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-end">
+                      <p style="background-color: rgb(238, 174, 144); outline-color: rgb(238, 174, 144); color: black; border-radius: 30px; text-align: center;">Calificaciones</p>
+                    </div>
+                  </div>
+                  <div class="row" id="footerBottomTextRow">
+                    <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3">
+                      <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger;"></i>
+                      <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                      <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                      <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                      <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
                       <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">2</label>
+                    </div>
+                    <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 text-end">
+                      <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">8</label>
                     </div>
                   </div>
                 </div>
@@ -184,5 +231,22 @@
         </div>
       </div>
     </div>
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous" style="color: #432818">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#" style="color: #432818">1</a></li>
+        <li class="page-item"><a class="page-link" href="#" style="color: #432818">2</a></li>
+        <li class="page-item"><a class="page-link" href="#" style="color: #432818">3</a></li>
+        <li class="page-item" style="color: #432818">
+            <a class="page-link" href="#" aria-label="Next" style="color: #432818">
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>

@@ -7,97 +7,110 @@
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link href="http://fonts.cdnfonts.com/css/sf-cartoonist-hand" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
       @import url('http://fonts.cdnfonts.com/css/sf-cartoonist-hand');
     </style>
 </head>
 <body style="background-color: #e6ccb2;">
-    <nav class="navbar navbar-dark navbar-fixed-top navbar-expand-xxl" style="background-color: #3e5c76">
-        <div class="container-fluid">
-          <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" href="#">
-            Botellas en el mar
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex col-md-4 col-xl-8 mx-2">
-                <button class="btn btn-secondary ms-3" type="submit" style="border-radius: 30px; background-color: #b7c9da; border-color: black; border-width: 2px">
-                    <i class="bi bi-search" style="font-size: 1.35rem; color: black;"></i>
-                </button>
-                <input class="form-control ms-4 me-5" type="search" style="background-color: #b7c9da; border-color: rgb(255, 255, 255); border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
-            </form> 
-            <ul ul class="navbar-nav ms-1">
-              <li class="nav-item me-3">
-                <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: #c397e7; border-color: black; border-width: 2px" aria-expanded="false">
-                    <i class="bi bi-people-fill" style="font-size: 1.35rem; color: rgb(0, 0, 0);"></i>
-                </button>
-              </li>
-              <li class="nav-item me-3">
-                <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: #ffb703; border-color: black; border-width: 2px" aria-expanded="false">
-                    <i class="bi bi-vector-pen" style="font-size: 1.35rem; color: rgb(0, 0, 0);"></i>
-                </button>
-              </li>
-              <li class="nav-item">
-                <button class="btn btn-dark" type="submit" style="border-radius: 30px; background-color: #fb8500; border-color: black; border-width: 2px" aria-expanded="false">
-                    <i class="bi bi-gear-fill" style="font-size: 1.35rem; color: rgb(0, 0, 0);"></i>
-                </button>
-              </li>
-            </ul>
-            <div class="container ms-5 me-1" style="color: white;">
-                <div class="row">
-                    <div class="col-12 ms-4 justify-content-center">
-                      <h3><b>Hola, Lilita!</b></h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 ms-4">
-                      <a class="link" href="#" style="color: white;">Login</a>
-                    </div>
-                </div>  
-            </div>
-            <div class="me-3">
-              <img src="assets/lilita_profile.png" class="img-fluid" alt="profile">
+  <nav class="navbar navbar-dark sticky-top navbar-expand-xxl pt-4 pb-4" style="background-color: rgb(124, 102, 70);">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" href="login_registered_admin.html">
+        Botellas en el mar
+      </a>
+      <form class="d-flex col-xl-6 col-lg-5 col-md-4 mx-2">
+        <button class="btn btn-secondary ms-3" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
+          <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
+        </button>
+        <input class="form-control ms-4 me-5" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
+      </form> 
+      <div class="text-end">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="color: whitesmoke;"></span>
+        </button>
+      </div>
+      <div class="d-none d-xxl-block">
+        <ul ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item me-3">
+            <button class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="ABM" id="adminButton" style="border-radius: 30px; background-color: #bb9457; border-color: white; border-width: 2px" aria-expanded="false">
+              <i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="Editor de poemas" id="pEditorButton" style="border-radius: 30px; background-color: #99582a; border-color: white; border-width: 2px" aria-expanded="false" href="poem_editor.html">
+              <i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="d-sm-block d-xxl-none">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item me-3"><a href="index.html" class="text-white">Home</a></li>
+            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-plus me-2" style="color: white;"></i> <a href="poema_add.html" class="text-white"> Nuevo poema</a></li>
+            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-user me-2" style="color: white;"></i><a href="usuarios.html" class="text-white"> Usuarios</a></li>
+            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-right-to-bracket me-2" style="color: white;"></i><a href="login.html" class="text-white"> Login</a></li>
+          </ul>
+        </div>
+        <div class="container-fluid ms-4" style="color: white;">
+          <div class="row me-auto">
+            <div class="text-end">
+              <h3 class="mx-auto"><b>Hola, Lilita!</b></h3>
             </div>
           </div>
         </div>
-      </nav>
-    <div class="container shadow-lg p-3 mb-5 justify-content-center" style="background-color: #f9dcc4">
-      <div class="row justify-content-start">
-        <div class="col-md-1 p-1 mt-3 mb-3 ms-5">
-          <img src="assets/lilita_profile.png" class="img-fluid" alt="profile" width="256px">
+        <div class="col-2 me-auto">
+          <div class="ms-auto">
+            <a id=profPicture href="profile.html">
+              <img class="rounded float-end" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
+            </a>
+          </div>
         </div>
-        <div class="col-3 mt-4 pt-2 justify-content-center">
-          <h3 class="display-4 mb-5 ms-3">Lilita Carrió</h3>
+      </div>
+    </div>
+  </nav>
+    <div class="container-md shadow-lg p-3 mb-5 justify-content-center" style="background-color: #f9dcc4">
+      <div class="row mb-3 justify-content-start">
+        <div class="col-1 p-1 my-auto ms-5 me-xxl-2 me-xl-2 me-lg-2 me-md-5 me-sm-5">
+          <img src="assets/lilita_profile.png" class="rounded-circle shadow-lg" style="border-radius: 110px;" alt="profile" width="100px">
         </div>
-        <div class="col-2 mt-5">
-          <button type="button" class="btn btn-outline-primary btn-lg ms-5 me-2">Editar perfil</button>
+        <div class="col-auto my-auto ms-4 justify-content-center" style="background-color: white; border-radius: 50px">
+          <h3 class="display-4 py-3 px-3">Lilita Carrió</h3>
         </div>
-        <div class="col-3 mt-5">
-          <button type="button" class="btn btn-outline-danger btn-lg">Cerrar sesion</button>
+        <div class="col-xxl-5 col-xl-4 col-lg-3 col-md-6 col-sm-8 my-auto pt-md-4 pt-sm-3 text-end">
+          <button type="button" class="btn btn-primary btn-lg ms-5 me-2">Editar perfil</button>
+        </div>
+        <div class="col-auto my-auto pt-md-4 pt-sm-3 text-end">
+          <a type="button text-decoration-none" class="btn btn-danger btn-lg" href="login.html">Cerrar sesion</a>
         </div>
       </div>
       <div class="row rounded ms-3 me-3" style="background-color: pink;">
         <div class="col-12">
-          <p class="mt-3 ms-3" style="text-align: center; font-size:25px;">Poemas subidos: 3 | Poemas calificados: 10 | Activo desde: 28/03/2019 | Ultima vez: 30/09/22</p>
+          <p class="mt-3 ms-3" style="text-align: center; font-size:25px;">Poemas subidos: <b>3</b> | Poemas calificados: <b>10</b> | Activo desde: <b>28/03/2019</b> | Última vez: <b>30/09/2022</b></p>
         </div>
       </div>
       <div class="row ms-3 mt-3 me-3 mb-3">
-        <div class="card">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2">
           <div class="card-body">
-            <div class="row m-2">
-              <div class="col-md-1 p-1 mt-3 mb-3">
+            <div class="row mt-2 mx-2 mb-4" style="background-color: white; border-radius: 30px">
+              <div class="col-1 p-1 mt-3 mb-3 ms-3">
                 <img src="assets/lilita_profile.png" class="img-fluid" alt="profile">
               </div>
-              <div class="col-4 mt-5 justify-content-center">
+              <div class="col-4 my-auto justify-content-center">
                 <h3>LilCarrey</h3>
               </div>
             </div>
-            <div class="row pt-1 pb-5 m-2 border rounded">
-              <div class="col-6">
-                <i class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+            <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
+              <div class="col-sm-auto">
+                <a class="text-decoration-none" href="poem_editor.html" data-toggle="tooltips" data-placement="bottom" title="Editar poema">
+                  <i id="icon" class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+                </a>
               </div>
-              <div class="col-6 text-end">
+              <div class="col-md-5 col-sm-6 align-items-start">
+                <p style="font-size: 25px; color: rgb(22, 20, 20); font-weight: bold;">Lorem ipsum</p>
+              </div>
+              <div class="col-lg-6 col-md-5 col-sm-auto text-end ms-xxl-5 ms-lg-3 ms-md-5 ms-sm-auto">
                 <p style="font-size: 15px; color: lightslategray;">17/09/2022</p>
               </div>
               <div class="col-12 p-3">
@@ -106,42 +119,55 @@
                 </p>
               </div>
             </div>
-            <div class="row m-2">
-                <div class="row-2 mt-4">
-                  <div class="col-2">
-                    <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
-                  </div>
+            <div class="row mt-4 mb-2 mx-1" style="background-color: white; border-radius: 30px;">
+              <div class="d-flex d-block justify-content-center" id="footerTopTextRow">
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-start">
+                  <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
                 </div>
-                <div class="col-md-2 col-sm-3 px-3 pb-3 justify-content-center">
-                  <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star-half" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
+                <div class="col-xl-6 col-lg-4 col-md-2 col-sm-0">
                 </div>
-                <div class="col-md-2 col-sm-3 px-1">
-                  <p style="font-size: 1.6rem; color: black; font-weight: 800;">3.5</p>
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-end">
+                  <p style="background-color: rgb(238, 174, 144); outline-color: rgb(238, 174, 144); color: black; border-radius: 30px; text-align: center;">Calificaciones</p>
+                </div>
+              </div>
+              <div class="row" id="footerBottomTextRow">
+                <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3">
+                  <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger;"></i>
+                  <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <i class="fa-solid fa-star-half-stroke" style="color: #ffb703; font-size: larger"></i>
+                  <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">3.5</label>
+                </div>
+                <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 text-end">
+                  <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">6</label>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
       <div class="row ms-3 mt-3 me-3 mb-3">
-        <div class="card">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2">
           <div class="card-body">
-            <div class="row m-2">
-              <div class="col-md-1 p-1 mt-3 mb-3">
+            <div class="row mt-2 mx-2 mb-4" style="background-color: white; border-radius: 30px">
+              <div class="col-1 p-1 mt-3 mb-3 ms-3">
                 <img src="assets/lilita_profile.png" class="img-fluid" alt="profile">
               </div>
-              <div class="col-4 mt-5 justify-content-center">
+              <div class="col-4 my-auto justify-content-center">
                 <h3>LilCarrey</h3>
               </div>
             </div>
-            <div class="row pt-1 pb-5 m-2 border rounded">
-              <div class="col-6">
-                <i class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+            <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
+              <div class="col-sm-auto">
+                <a class="text-decoration-none" href="poem_editor.html" data-toggle="tooltips" data-placement="bottom" title="Editar poema">
+                  <i id="icon" class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+                </a>
               </div>
-              <div class="col-6 text-end">
+              <div class="col-md-5 col-sm-6 align-items-start">
+                <p style="font-size: 25px; color: rgb(22, 20, 20); font-weight: bold;">Lorem ipsum</p>
+              </div>
+              <div class="col-lg-6 col-md-5 col-sm-auto text-end ms-xxl-5 ms-lg-3 ms-md-5 ms-sm-auto">
                 <p style="font-size: 15px; color: lightslategray;">22/06/2021</p>
               </div>
               <div class="col-12 p-3">
@@ -150,43 +176,56 @@
                 </p>
               </div>
             </div>
-            <div class="row m-2">
-                <div class="row-2 mt-4">
-                  <div class="col-2">
-                    <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
-                  </div>
+            <div class="row mt-4 mb-2 mx-1" style="background-color: white; border-radius: 30px;">
+              <div class="d-flex d-block justify-content-center" id="footerTopTextRow">
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-start">
+                  <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
                 </div>
-                <div class="col-md-2 col-sm-3 px-3 pb-3 justify-content-center">
-                  <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
+                <div class="col-xl-6 col-lg-4 col-md-2 col-sm-0">
                 </div>
-                <div class="col-md-2 col-sm-3 px-1">
-                  <p style="font-size: 1.6rem; color: black; font-weight: 800;">4</p>
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-end">
+                  <p style="background-color: rgb(238, 174, 144); outline-color: rgb(238, 174, 144); color: black; border-radius: 30px; text-align: center;">Calificaciones</p>
+                </div>
+              </div>
+              <div class="row" id="footerBottomTextRow">
+                <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3">
+                  <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger;"></i>
+                  <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">4</label>
+                </div>
+                <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 text-end">
+                  <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">3</label>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
       <div class="row ms-3 mt-3 me-3 mb-3">
-        <div class="card">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2">
           <div class="card-body">
-            <div class="row m-2">
-              <div class="col-md-1 p-1 mt-3 mb-3">
+            <div class="row mt-2 mx-2 mb-4" style="background-color: white; border-radius: 30px">
+              <div class="col-1 p-1 mt-3 mb-3 ms-3">
                 <img src="assets/lilita_profile.png" class="img-fluid" alt="profile">
               </div>
-              <div class="col-4 mt-5 justify-content-center">
+              <div class="col-4 my-auto justify-content-center">
                 <h3>LilCarrey</h3>
               </div>
             </div>
-            <div class="row pt-1 pb-5 m-2 border rounded">
-              <div class="col-6">
-                <i class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+            <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
+              <div class="col-sm-auto">
+                <a class="text-decoration-none" href="poem_editor.html" data-toggle="tooltips" data-placement="bottom" title="Editar poema">
+                  <i id="icon" class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+                </a>
               </div>
-              <div class="col-6 text-end">
-                <p style="font-size: 15px; color: lightslategray;">03/11/2020</p>
+              <div class="col-md-5 col-sm-6 align-items-start">
+                <p style="font-size: 25px; color: rgb(22, 20, 20); font-weight: bold;">Lorem ipsum</p>
+              </div>
+              <div class="col-lg-6 col-md-5 col-sm-auto text-end ms-xxl-5 ms-lg-3 ms-md-5 ms-sm-auto">
+                <p style="font-size: 15px; color: lightslategray;">20/01/2020</p>
               </div>
               <div class="col-12 p-3">
                 <p class="card-text" style="text-align:left; font-size: 25px;">
@@ -194,26 +233,51 @@
                 </p>
               </div>
             </div>
-            <div class="row m-2">
-                <div class="row-2 mt-4">
-                  <div class="col-2">
-                    <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
-                  </div>
+            <div class="row mt-4 mb-2 mx-1" style="background-color: white; border-radius: 30px;">
+              <div class="d-flex d-block justify-content-center" id="footerTopTextRow">
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-start">
+                  <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
                 </div>
-                <div class="col-md-2 col-sm-3 px-3 pb-3 justify-content-center">
-                  <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star-fill" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star-half" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
-                  <i class="bi bi-star" style="font-size: 1.6rem; outline-color: black; color: #ffb703;"></i>
+                <div class="col-xl-6 col-lg-4 col-md-2 col-sm-0">
                 </div>
-                <div class="col-md-2 col-sm-3 px-1">
-                  <p style="font-size: 1.6rem; color: black; font-weight: 800;">2.3</p>
+                <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-end">
+                  <p style="background-color: rgb(238, 174, 144); outline-color: rgb(238, 174, 144); color: black; border-radius: 30px; text-align: center;">Calificaciones</p>
+                </div>
+              </div>
+              <div class="row" id="footerBottomTextRow">
+                <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3">
+                  <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger;"></i>
+                  <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <i class="fa-solid fa-star-half-stroke" style="color: #ffb703; font-size: larger"></i>
+                  <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <i class="fa-regular fa-star" style="color: #ffb703; font-size: larger"></i>
+                  <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">2.3</label>
+                </div>
+                <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 text-end">
+                  <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">5</label>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
-</body>
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous" style="color: #432818">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#" style="color: #432818">1</a></li>
+        <li class="page-item"><a class="page-link" href="#" style="color: #432818">2</a></li>
+        <li class="page-item"><a class="page-link" href="#" style="color: #432818">3</a></li>
+        <li class="page-item" style="color: #432818">
+            <a class="page-link" href="#" aria-label="Next" style="color: #432818">
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+      </ul>
+    </nav>
+  </body>
 </html>

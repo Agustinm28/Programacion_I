@@ -1,8 +1,43 @@
-@media all and (min-width: 992px) {
-	.navbar .dropdown-menu-end{ right:0; left: auto;  }
-	.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.3s; margin-top:0;  }
-	.navbar .nav-item:hover .nav-link{ color: #fff;  }
-	.navbar .dropdown-menu.fade-down{ top:80%; transform: rotateX(-75deg); transform-origin: 0% 0%; }
-	.navbar .dropdown-menu.fade-up{ top:180%;  }
-	.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); }
-}	
+#searchButton:hover {
+	background-color: #330c0c !important;
+}
+
+#configButton:hover {
+	background-color: #160d08 !important;
+}
+
+#pEditorButton:hover {
+	background-color: #5a3419 !important;
+}
+
+#adminButton:hover {
+	background-color: #584629 !important;
+}
+
+#poemPreview:hover {
+	background-color: #c0a58a !important;
+	transition: 0.2s ease-out !important;
+}
+
+#poemPreview:hover .row:not(#footerTopTextRow, #footerBottomTextRow){
+	background-color: beige !important;
+	transition: 0.2s ease-out !important;
+}
+
+#icon:hover {
+	color: rgb(156, 156, 156) !important;
+	transition: 0.1s ease-out !important;
+}
+
+#icon:active::after {
+	color: rgb(63, 63, 63) !important;
+}
+
+#profPicture:hover {
+	border-color: rgb(0, 0, 0) !important;
+	transition: 0.2s ease-out !important;
+}
+
+.modal {
+	z-index: 4 !important;
+}
