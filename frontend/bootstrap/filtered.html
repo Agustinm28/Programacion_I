@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Botellas en el mar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="http://fonts.cdnfonts.com/css/sf-cartoonist-hand" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      @import url('http://fonts.cdnfonts.com/css/sf-cartoonist-hand');
+    </style>
+</head>
+<body style="background-color: #e6ccb2;">
+  <nav class="navbar navbar-dark sticky-top navbar-expand-xxl pt-4 pb-4" style="background-color: rgb(124, 102, 70);">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" href="login_registered_admin.html">
+        Botellas en el mar
+      </a>
+      <form class="d-flex col-xl-6 col-lg-5 col-md-4 mx-2">
+        <button class="btn btn-secondary ms-3" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
+          <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
+        </button>
+        <input class="form-control ms-4 me-5" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
+      </form> 
+      <div class="text-end">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="color: whitesmoke;"></span>
+        </button>
+      </div>
+      <div class="d-none d-xxl-block">
+        <ul ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item me-3">
+            <a class="btn btn-dark" href="login_registered_admin_pending_request.html" type="submit" data-toggle="tooltip" data-placement="bottom" title="ABM" id="adminButton" style="border-radius: 30px; background-color: #bb9457; border-color: white; border-width: 2px" aria-expanded="false">
+              <i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="Editor de poemas" id="pEditorButton" style="border-radius: 30px; background-color: #99582a; border-color: white; border-width: 2px" aria-expanded="false" href="poem_editor.html">
+              <i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="d-sm-block d-xxl-none">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item me-3"><a href="index.html" class="text-white">Home</a></li>
+            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-plus me-2" style="color: white;"></i> <a href="poema_add.html" class="text-white"> Nuevo poema</a></li>
+            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-user me-2" style="color: white;"></i><a href="usuarios.html" class="text-white"> Usuarios</a></li>
+            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-right-to-bracket me-2" style="color: white;"></i><a href="login.html" class="text-white"> Login</a></li>
+          </ul>
+        </div>
+        <div class="container-fluid ms-4" style="color: white;">
+          <div class="row me-auto">
+            <div class="text-end">
+              <h3 class="mx-auto"><b>Hola, Lilita!</b></h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-2 me-auto">
+          <div class="ms-auto">
+            <a id=profPicture href="profile.html">
+              <img class="rounded float-end" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+
+    <div class="container-md shadow-lg p-3 mb-5 justify-content-center" style="background-color: #f9dcc4">
+      
+      <div class="row mb-3 justify-content-start">
+        <div class="container-fluid align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm" style="background-color: #311e184b;">
+          <div class="row">
+            <div class="col"></div>
+            <div class="col text-center"><div class="dropdown">
+              <button class="btn btn-primary btn-lg dropdown-toggle" id="pEditorButton"  style="border-radius: 20px; background-color: #bb9557d3; border-color: white; border-width: 2px" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Filtrar por
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Título</a></li>
+              <li><a class="dropdown-item" href="#">Fecha</a></li>
+              <li><a class="dropdown-item" href="#">Calificación</a></li>
+            </ul>
+          </div></div>
+            <div class="col"><div class="dropdown">
+              <button class="btn btn-primary btn-lg dropdown-toggle" id="pEditorButton" style="border-radius: 20px; background-color: #bb9557d3; border-color: white; border-width: 2px" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Ordenar por
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Calificación</a></li>
+              <li><a class="dropdown-item" href="#">Alfabeto</a></li>
+              <li><a class="dropdown-item" href="#">Ascendente</a></li>
+            </ul>
+          </div></div>
+            <div class="col"></div>
+          </div>
+
+    
+          
+          
+
+        </div>
+      
+      </div>
+      
+      <div class="row ms-3 mt-3 me-3 mb-3">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
+          <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h2>Lorem ipsum</h2></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h3 style="font-weight: 300;">27-03-2022</h3></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h4><b>LilCarrey</b></h4></div>
+            <div class="col-1 py-2 justify-content-center">
+              <img src="assets/lilita_profile.png" width="80" height="80" alt="profile">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ms-3 mt-3 me-3 mb-3">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
+          <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h2>Lorem ipsum</h2></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h3 style="font-weight: 300;">01-04-2022</h3></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h4><b>LuisMi</b></h4></div>
+            <div class="col-1 py-2 justify-content-center">
+              <img src="assets/luis_profile.png" width="80" height="80" alt="profile">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ms-3 mt-3 me-3 mb-3">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
+          <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h2>Lorem ipsum</h2></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h3 style="font-weight: 300;">02-04-2022</h3></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h4><b>LuisMi</b></h4></div>
+            <div class="col-1 py-2 justify-content-center">
+              <img src="assets/luis_profile.png" width="80" height="80" alt="profile">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ms-3 mt-3 me-3 mb-3">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
+          <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h2>Lorem ipsum</h2></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h3 style="font-weight: 300;">28-04-2022</h3></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h4><b>HenryC</b></h4></div>
+            <div class="col-1 py-2 justify-content-center">
+              <img src="assets/henry_profile.png" width="80" height="80" alt="profile">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ms-3 mt-3 me-3 mb-3">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
+          <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h2>Lorem ipsum</h2></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h3 style="font-weight: 300;">15-05-2022</h3></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h4><b>ChanoC</b></h4></div>
+            <div class="col-1 py-2 justify-content-center">
+              <img src="assets/chano_profile.png" width="80" height="80" alt="profile">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ms-3 mt-3 me-3 mb-3">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
+          <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h2>Lorem ipsum</h2></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h3 style="font-weight: 300;">19-05-2022</h3></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h4><b>Brunengo</b></h4></div>
+            <div class="col-1 py-2 justify-content-center">
+              <img src="assets/brunengo_profile.png" width="80" height="80" alt="profile">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ms-3 mt-3 me-3 mb-3">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
+          <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h2>Lorem ipsum</h2></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h3 style="font-weight: 300;">02-06-2022</h3></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h4><b>Monti28</b></h4></div>
+            <div class="col-1 py-2 justify-content-center">
+              <img src="assets/monti_profile.png" width="80" height="80" alt="profile">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ms-3 mt-3 me-3 mb-3">
+        <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
+          <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h2>Lorem ipsum</h2></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h3 style="font-weight: 300;">09-06-2022</h3></div>
+            <div class="col-auto my-auto"><h1>|</h1></div>
+            <div class="col-3 ms-4 me-1 my-auto text-center"><h4><b>Monti28</b></h4></div>
+            <div class="col-1 py-2 justify-content-center">
+              <img src="assets/monti_profile.png" width="80" height="80" alt="profile">
+            </div>
+          </div>
+        </div>
+      </div>
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous" style="color: #432818">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#" style="color: #432818">1</a></li>
+        <li class="page-item"><a class="page-link" href="#" style="color: #432818">2</a></li>
+        <li class="page-item"><a class="page-link" href="#" style="color: #432818">3</a></li>
+        <li class="page-item" style="color: #432818">
+          <a class="page-link" href="#" aria-label="Next" style="color: #432818">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
