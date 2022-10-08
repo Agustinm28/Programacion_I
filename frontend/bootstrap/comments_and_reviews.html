@@ -20,11 +20,11 @@
         Botellas en el mar
       </a>
       <form class="d-flex col-xl-6 col-lg-5 col-md-4 mx-2">
-        <button class="btn btn-secondary ms-3" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
+        <a href="filtered.html" class="btn btn-secondary ms-xl-3 ms-md-1 ms-sm-0" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
           <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
-        </button>
-        <input class="form-control ms-4 me-5" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
-      </form> 
+        </a>
+        <input class="form-control ms-xl-4 ms-md-2 ms-sm-3 me-xl-5 me-md-1 me-sm-3" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
+      </form>
       <div class="text-end">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon" style="color: whitesmoke;"></span>
@@ -45,27 +45,36 @@
         </ul>
       </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="d-sm-block d-xxl-none">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item me-3"><a href="index.html" class="text-white">Home</a></li>
-            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-plus me-2" style="color: white;"></i> <a href="poema_add.html" class="text-white"> Nuevo poema</a></li>
-            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-user me-2" style="color: white;"></i><a href="usuarios.html" class="text-white"> Usuarios</a></li>
-            <li class="nav-item me-3"><i class="fa-sharp fa-solid fa-right-to-bracket me-2" style="color: white;"></i><a href="login.html" class="text-white"> Login</a></li>
-          </ul>
-        </div>
         <div class="container-fluid ms-4" style="color: white;">
           <div class="row me-auto">
-            <div class="text-end">
-              <h3 class="mx-auto"><b>Hola, Lilita!</b></h3>
+            <div class="d-none d-xxl-block">
+              <div class="text-end">
+                <h3 class="mx-auto"><b>Hola, Lilita!</b></h3>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-2 me-auto">
           <div class="ms-auto">
             <a id=profPicture href="profile.html">
-              <img class="rounded float-end" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
+              <div class="d-xxl-none">
+                <div class="text-start ms-3 mt-md-0 mt-sm-4">
+                  <img class="rounded" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
+                </div>
+              </div>
+              <div class="d-none d-xxl-block">
+                <div class="text-end">
+                  <img class="rounded float-end" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
+                </div>
+              </div>
             </a>
           </div>
+        </div>
+        <div class="d-xxl-none">
+          <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0">
+            <li class="nav-item me-3"><i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>  <a href="login_registered_admin_pending_request.html" class="text-white">ABM</a></li>
+            <li class="nav-item me-3"><i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>  <a href="poem_editor.html" class="text-white">Editor de poemas</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -229,5 +238,6 @@
         </div> 
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
 </html>

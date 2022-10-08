@@ -32,15 +32,26 @@
               <div class="container me-auto" style="color: white;">
                   <div class="text-end">
                     <div class="row">
-                      <h3><b>Hola, usuario!</b></h3>
-                      <div class="row">
-                        <a class="link" href="login.html" style="color: white;">Login</a>
-                      </div>  
+                      <div class="d-none d-xxl-block">
+                        <h3><b>Hola, usuario!</b></h3>
+                      </div>
+                      <div class="d-xxl-none">
+                        <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0">
+                          <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" href="login.html">Login</a></li>
+                        </ul>
+                      </div>
+                      <div class="d-none d-xxl-block">
+                        <div class="row">
+                          <a class="link" href="login.html" style="color: white;">Login</a>
+                        </div>  
+                      </div>
                   </div>
                 </div>
               </div>
-              <div class="col">
+              <div class="d-none d-xxl-block">
+                <div class="col">
                   <i class="bi bi-person-circle ms-auto" style="font-size: 4rem; color: white;"></i>
+                </div>
               </div>
           </div>
         </div>
@@ -194,5 +205,6 @@
         </ul>
       </nav>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
 </html>

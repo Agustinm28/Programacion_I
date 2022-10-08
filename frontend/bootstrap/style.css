@@ -1,3 +1,11 @@
+.modal.show {
+	z-index: 100001 !important;
+  }
+  
+.modal-backdrop.show {
+	z-index: 100000 !important;
+  }
+
 #searchButton:hover {
 	background-color: #330c0c !important;
 }
