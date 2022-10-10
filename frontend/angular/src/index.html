@@ -13,6 +13,12 @@
   <style>
     @import url('http://fonts.cdnfonts.com/css/sf-cartoonist-hand');
   </style>
+  <script>
+    function updateStarCount(starId) {  
+          var starCount = document.getElementById(starId).value;  
+          document.getElementById('starCount').textContent = starCount;  
+      }
+  </script>
 </head>
 <body>
   <app-root></app-root>
