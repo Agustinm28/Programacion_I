@@ -1,0 +1,106 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd;
+  float: right; 
+}
+
+.rating > input:checked ~ label, 
+.rating:not(:checked) > label:hover, 
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } 
+
+.rating > input:checked + label:hover, 
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, 
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+.modal.show {
+	z-index: 100001 !important;
+  }
+  
+.modal-backdrop.show {
+	z-index: 100000 !important;
+  }
+
+#searchButton:hover {
+	background-color: #330c0c !important;
+}
+
+#acceptNewUser:hover {
+	background-color: #247c50 !important;
+}
+
+#modifyUser:hover {
+	background-color: #7c6292 !important;
+}
+
+#deleteUser:hover {
+	background-color: #290d41 !important;
+}
+
+#rejectNewUser:hover {
+	background-color: #5f172d !important;
+}
+
+#displayMore:hover {
+	background-color: #22457a !important;
+}
+
+#configButton:hover {
+	background-color: #160d08 !important;
+}
+
+#pEditorButton:hover {
+	background-color: #5a3419 !important;
+}
+
+#adminButton:hover {
+	background-color: #584629 !important;
+}
+
+#poemPreview:hover {
+	background-color: #c0a58a !important;
+	transition: 0.2s ease-out !important;
+}
+
+#poemPreview:hover .row:not(#footerTopTextRow, #footerBottomTextRow){
+	background-color: beige !important;
+	transition: 0.2s ease-out !important;
+}
+
+#icon:hover {
+	color: rgb(156, 156, 156) !important;
+	transition: 0.1s ease-out !important;
+}
+
+#icon:active::after {
+	color: rgb(63, 63, 63) !important;
+}
+
+#profPicture:hover {
+	border-color: rgb(0, 0, 0) !important;
+	transition: 0.2s ease-out !important;
+}
+
+.modal {
+	z-index: 4 !important;
+}
