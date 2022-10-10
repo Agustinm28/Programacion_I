@@ -1,20 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeAdminComponent } from './home-admin.component';
+import { DelModLuismiComponent } from './del-mod-luismi.component';
 
-describe('HomeAdminComponent', () => {
-  let component: HomeAdminComponent;
-  let fixture: ComponentFixture<HomeAdminComponent>;
+describe('DelModLuismiComponent', () => {
+  let component: DelModLuismiComponent;
+  let fixture: ComponentFixture<DelModLuismiComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ 
-        HomeAdminComponent
-      ]
+      declarations: [ DelModLuismiComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeAdminComponent);
+    fixture = TestBed.createComponent(DelModLuismiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
