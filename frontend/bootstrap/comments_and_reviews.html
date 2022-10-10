@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script>
+      function updateStarCount(starId) {  
+            var starCount = document.getElementById(starId).value;  
+            document.getElementById('starCount').textContent = starCount;  
+        }
+    </script>
     <style>
       @import url('http://fonts.cdnfonts.com/css/sf-cartoonist-hand');
     </style>
@@ -147,14 +153,16 @@
                       <div class="col-12">
                         <p style="background-color: rgb(238, 216, 144); outline-color: rgb(238, 216, 144); color: black; border-radius: 30px; text-align: center;">Calificación</p>
                       </div>
-                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px;"></i>
-                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
-                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
-                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
-                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
+                      <fieldset class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" onclick="updateStarCount('star5')"/><label class = "full" for="star5" title="Excelente"></label>
+                        <input type="radio" id="star4" name="rating" value="4" onclick="updateStarCount('star4')"/><label class = "full" for="star4" title="Muy bueno"></label>
+                        <input type="radio" id="star3" name="rating" value="3" onclick="updateStarCount('star3')"/><label class = "full" for="star3" title="Bueno"></label>
+                        <input type="radio" id="star2" name="rating" value="2" onclick="updateStarCount('star2')"/><label class = "full" for="star2" title="Regular"></label>
+                        <input type="radio" id="star1" name="rating" value="1" onclick="updateStarCount('star1')"/><label class = "full" for="star1" title="Malo"></label>
+                      </fieldset>
                     </div>
                     <div class="col-md-1 col-sm-3 p-3 my-auto me-xl-5 me-md-2">
-                      <p style="font-size: 1.6rem; color: black; font-weight: 800;">0</p>
+                      <p style="font-size: 1.6rem; color: black; font-weight: 800;" id="starCount">0</p>
                     </div>
                     <div class="col-md-7 col-sm-3 p-3 my-auto justify-content-center border rounded">
                       <input class="form-control" required type="review" style="background-color: white; border-color: rgb(255, 255, 255); border-width: 10px;" placeholder="Escribe tu comentario..." aria-label="Calificar">
@@ -221,11 +229,11 @@
                         <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px;"></i>
                         <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px"></i>
                         <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px"></i>
-                        <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
+                        <i class="fa-solid fa-star" style="color: #ffb703; font-size: 22px"></i>
                         <i class="fa-regular fa-star" style="color: #ffb703; font-size: 22px"></i>
                     </div>
                       <div class="col-sm-1 col-sm-1 p-3 my-auto me-xxl-5 me-sm-2">
-                        <p style="font-size: 1.6rem; color: black; font-weight: 800;">3</p>
+                        <p style="font-size: 1.6rem; color: black; font-weight: 800;">4</p>
                       </div>
                       <div class="col-xl-8 col-lg-7 col-sm-7 py-4 px-md-5 my-auto justify-content-center border rounded" style="background-color: rgba(241, 241, 241, 0.623); border-radius: 10px;">
                         <p class="card-text p-2" style="text-align:center; font-size: 1.6rem; color: black; font-weight: 400;">Great Poem!! The Sun Heats!!</p>
