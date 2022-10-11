@@ -1,1 +1,42 @@
-<p>navbar-unregistered works!</p>
+<nav class="navbar navbar-dark sticky-top navbar-expand-xxl" style="background-color: rgb(124, 102, 70);">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" href="#">
+        Botellas en el mar
+      </a>
+        <form class="d-flex col-xl-7 col-lg-6 col-md-4 mx-2">
+          <a href="filtered.html" class="btn btn-secondary ms-3" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
+            <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
+          </a>
+          <input class="form-control ms-4 me-5" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
+        </form> 
+        <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="container me-auto" style="color: white;">
+              <div class="text-end">
+                <div class="row">
+                  <div class="d-none d-xxl-block">
+                    <h3><b>Hola, usuario!</b></h3>
+                  </div>
+                  <div class="d-xxl-none">
+                    <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0">
+                      <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" href="login.html">Login</a></li>
+                    </ul>
+                  </div>
+                  <div class="d-none d-xxl-block">
+                    <div class="row">
+                      <a class="link" routerLink="/login" style="color: white;">Login</a>
+                    </div>  
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-none d-xxl-block">
+            <div class="col">
+              <i class="bi bi-person-circle ms-auto" style="font-size: 4rem; color: white;"></i>
+            </div>
+          </div>
+      </div>
+    </div>
+  </nav>

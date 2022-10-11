@@ -17,7 +17,7 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
 import { PaginationBarComponent } from './components/pagination-bar/pagination-bar.component';
 import { ProfileTopComponent } from './components/profile-top/profile-top.component';
 import { ProfileDataComponent } from './components/profile-data/profile-data.component';
-import { MainPoemCardOwnComponent } from './main-poem-card-own/main-poem-card-own.component';
+import { MainPoemCardOwnComponent } from './components/main-poem-card-own/main-poem-card-own.component';
 import { LoginCardComponent } from './components/login-card/login-card.component';
 import { RegistrationCardComponent } from './components/registration-card/registration-card.component';
 import { NotAdminNavbarComponent } from './components/not-admin-navbar/not-admin-navbar.component';
@@ -33,6 +33,11 @@ import { DelModHenryComponent } from './components/del-mod-henry/del-mod-henry.c
 import { DelModPeterComponent } from './components/del-mod-peter/del-mod-peter.component';
 import { DelModMontiComponent } from './components/del-mod-monti/del-mod-monti.component';
 import { DelModBrunengoComponent } from './components/del-mod-brunengo/del-mod-brunengo.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
+import { HomeUnregisteredComponent } from './pages/home-unregistered/home-unregistered.component';
+import { HomeRegUserComponent } from './pages/home-reg-user/home-reg-user.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +71,11 @@ import { DelModBrunengoComponent } from './components/del-mod-brunengo/del-mod-b
     DelModPeterComponent,
     DelModMontiComponent,
     DelModBrunengoComponent,
+    LoginComponent,
+    RegistrationComponent,
+    HomeUnregisteredComponent,
+    HomeRegUserComponent,
+    Error404Component,
   ],
   imports: [
     ApplicationModule,
