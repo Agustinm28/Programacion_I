@@ -15,11 +15,12 @@ body,
 
 .rating > input { display: none; } 
 .rating > label:before { 
-  margin: 5px;
-  font-size: 1.25em;
+  margin: 0;
+  font-size: 25px;
   font-family: FontAwesome;
   display: inline-block;
   content: "\f005";
+  cursor: pointer;
 }
 
 .rating > .half:before { 
@@ -34,7 +35,7 @@ body,
 
 .rating > input:checked ~ label, 
 .rating:not(:checked) > label:hover, 
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } 
+.rating:not(:checked) > label:hover ~ label { color: #ffb703;  } 
 
 .rating > input:checked + label:hover, 
 .rating > input:checked ~ label:hover,
@@ -86,6 +87,7 @@ body,
 }
 
 #poemPreview:hover {
+	cursor: pointer;
 	background-color: #c0a58a !important;
 	transition: 0.2s ease-out !important;
 }
