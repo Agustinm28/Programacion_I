@@ -41,6 +41,19 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { CommentsComponent } from './pages/comments/comments.component';
 import { PoemEditorComponent } from './pages/poem-editor/poem-editor.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { PendingRequestComponent } from './pages/pending-request/pending-request.component';
+import { DeleteOrModifyComponent } from './pages/delete-or-modify/delete-or-modify.component';
+import { FilteredComponent } from './pages/filtered/filtered.component';
+import { FilteredPoemsLilComponent } from './components/filtered-poems-lil/filtered-poems-lil.component';
+import { PoemOneComponent } from './components/filtered_poems_luismi/poem-one/poem-one.component';
+import { PoemTwoComponent } from './components/filtered_poems_luismi/poem-two/poem-two.component';
+import { MontiPoemOneComponent } from './components/filtered_poems_monti28/monti-poem-one/monti-poem-one.component';
+import { MontiPoemTwoComponent } from './components/filtered_poems_monti28/monti-poem-two/monti-poem-two.component';
+import { FilteredPoemsHenryCComponent } from './components/filtered-poems-henry-c/filtered-poems-henry-c.component';
+import { FilteredDropdownsComponent } from './components/filtered-dropdowns/filtered-dropdowns.component';
+import { FilteredPoemsChanoComponent } from './components/filtered-poems-chano/filtered-poems-chano.component';
+import { FilteredPoemsBrunengoComponent } from './components/filtered-poems-brunengo/filtered-poems-brunengo.component';
+
 
 @NgModule({
   declarations: [
@@ -83,6 +96,18 @@ import { EditorComponent } from './components/editor/editor.component';
     CommentsComponent,
     PoemEditorComponent,
     EditorComponent,
+    PendingRequestComponent,
+    DeleteOrModifyComponent,
+    FilteredComponent,
+    FilteredPoemsLilComponent,
+    PoemOneComponent,
+    PoemTwoComponent,
+    MontiPoemOneComponent,
+    MontiPoemTwoComponent,
+    FilteredPoemsHenryCComponent,
+    FilteredDropdownsComponent,
+    FilteredPoemsChanoComponent,
+    FilteredPoemsBrunengoComponent,
   ],
   imports: [
     ApplicationModule,

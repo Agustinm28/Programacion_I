@@ -10,6 +10,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { PoemEditorComponent } from './pages/poem-editor/poem-editor.component';
 import { CommentsComponent } from './pages/comments/comments.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { DeleteOrModifyComponent } from './pages/delete-or-modify/delete-or-modify.component';
+import { PendingRequestComponent } from './pages/pending-request/pending-request.component';
+import { FilteredComponent } from './pages/filtered/filtered.component';
 
 const routes: Routes = [
   { path: '', component: HomeUnregisteredComponent },
@@ -20,6 +23,9 @@ const routes: Routes = [
   { path: 'login/admin/profile', component: ProfileComponent },
   { path: 'login/admin/editor', component: PoemEditorComponent },
   { path: 'login/admin/comments', component: CommentsComponent },
+  { path: 'login/admin/delete_or_modify', component: DeleteOrModifyComponent},
+  { path: 'login/admin/pending_request', component: PendingRequestComponent},
+  { path: 'logged/filtered', component: FilteredComponent },
   { path: '**', component: Error404Component },
 ];
 
