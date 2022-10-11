@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<body style="background-color: #e6ccb2;">
+  <div class="container-lg shadow-lg p-3 mt-5 mb-5 justify-content-center" id=pEditor style="background-color: #f9dcc4">
+    <div class="row justify-content-center">
+      <div class="col-11 mb-4">
+        <app-editor></app-editor>
+      </div>
+    </div>
+    </div>
+</body>
+  <div class="modal fade" id="discardConf" role="alertdialog" tabindex="-1" aria-labelledby="discardConf" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="discardConfLabel">Descartar cambios</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Seguro que deseas descartar tu trabajo?
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-danger" routerLink="/login/admin">Aceptar</a>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -21,7 +21,6 @@ import { MainPoemCardOwnComponent } from './components/main-poem-card-own/main-p
 import { LoginCardComponent } from './components/login-card/login-card.component';
 import { RegistrationCardComponent } from './components/registration-card/registration-card.component';
 import { NotAdminNavbarComponent } from './components/not-admin-navbar/not-admin-navbar.component';
-import { PoemEditorComponent } from './components/poem-editor/poem-editor.component';
 import { ApprovalReqContainerComponent } from './components/approval-req-container/approval-req-container.component';
 import { ApprovalReqHenryComponent } from './components/approval-req-henry/approval-req-henry.component';
 import { ApprovalReqPeterComponent } from './components/approval-req-peter/approval-req-peter.component';
@@ -38,6 +37,10 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { HomeUnregisteredComponent } from './pages/home-unregistered/home-unregistered.component';
 import { HomeRegUserComponent } from './pages/home-reg-user/home-reg-user.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { CommentsComponent } from './pages/comments/comments.component';
+import { PoemEditorComponent } from './pages/poem-editor/poem-editor.component';
+import { EditorComponent } from './components/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +79,10 @@ import { Error404Component } from './pages/error404/error404.component';
     HomeUnregisteredComponent,
     HomeRegUserComponent,
     Error404Component,
+    ProfileComponent,
+    CommentsComponent,
+    PoemEditorComponent,
+    EditorComponent,
   ],
   imports: [
     ApplicationModule,
