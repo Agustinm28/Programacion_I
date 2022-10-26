@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.modules';
 import { ApplicationModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
@@ -54,6 +55,9 @@ import { FilteredDropdownsComponent } from './components/filtered/filtered-dropd
 import { FilteredPoemsChanoComponent } from './components/filtered/filtered-poems-chano/filtered-poems-chano.component';
 import { FilteredPoemsBrunengoComponent } from './components/filtered/filtered-poems-brunengo/filtered-poems-brunengo.component';
 
+import { PoemService } from './services/poem.service';
+import { PoetService } from './services/poet.service';
+import { RatingService } from './services/rating.service';
 
 @NgModule({
   declarations: [
@@ -112,9 +116,14 @@ import { FilteredPoemsBrunengoComponent } from './components/filtered/filtered-p
   imports: [
     ApplicationModule,
     AppRoutingModule,
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    PoemService,
+    PoetService,
+    RatingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

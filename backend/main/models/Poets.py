@@ -1,3 +1,4 @@
+from email.policy import default
 from .. import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -10,6 +11,7 @@ class Poet(db.Model):
     mail = db.Column(db.String(100), nullable=False)
     passw = db.Column(db.String(30), nullable=False)
     admin = db.Column(db.Boolean(), nullable=False, default=False)
+    activated = db.Column(db.Boolean(), nullable=False, default=False)
     poems = db.relationship('Poem', back_populates='poet',
                             cascade='all, delete-orphan')
     rating = db.relationship('Rating', back_populates='poet',
@@ -30,7 +32,7 @@ class Poet(db.Model):
     
     def validate_pass(self, password):
         return check_password_hash(self.passw, password)
-
+    
     def __repr__(self):
         return '<Poet: %r %r >' % (self.id, self.name + '' + self.lname)
 
@@ -43,6 +45,7 @@ class Poet(db.Model):
             'lname': str(self.lname),
             'mail': str(self.mail),
             'admin': bool(self.admin),
+            'activated': bool(self.activated),
             'poems': poems,
             'poems_count': len(poems),
             'ratings_count': len(rating)
@@ -55,7 +58,6 @@ class Poet(db.Model):
         poet_json = {
             'id': self.id,
             'name': str(self.name) + ' ' + str(self.lname),
-            'admin': bool(self.admin),
             'poems': poems,
             'poems_count': len(poems),
             'ratings_count': len(rating)
@@ -77,10 +79,12 @@ class Poet(db.Model):
         mail = poet_json.get('mail')
         passw = poet_json.get('passw')
         admin = poet_json.get('admin')
+        activated = poet_json.get('activated')
         return Poet(id=id,
                     name=name,
                     lname=lname,
                     mail=mail,
                     plain_password=passw,
-                    admin=admin
+                    admin=admin,
+                    activated=activated
                     )

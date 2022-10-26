@@ -18,14 +18,14 @@ const routes: Routes = [
   { path: '', component: HomeUnregisteredComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: 'logged/username', component: HomeRegUserComponent },
+  { path: 'logged/:username', component: HomeRegUserComponent },
   { path: 'login/admin', component: HomeAdminComponent },
   { path: 'login/admin/profile', component: ProfileComponent },
   { path: 'login/admin/editor', component: PoemEditorComponent },
   { path: 'login/admin/comments', component: CommentsComponent },
   { path: 'login/admin/delete_or_modify', component: DeleteOrModifyComponent},
   { path: 'login/admin/pending_request', component: PendingRequestComponent},
-  { path: 'logged/filtered', component: FilteredComponent },
+  { path: 'logged/:username/filtered', component: FilteredComponent },
   { path: '**', component: Error404Component },
 ];
 

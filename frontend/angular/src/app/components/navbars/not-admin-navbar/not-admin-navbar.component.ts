@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotAdminNavbarComponent implements OnInit {
 
+  username!: string
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.username = "pepito"
   }
 
 }

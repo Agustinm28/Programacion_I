@@ -56,7 +56,30 @@ class Poems(Resource):
         # Cantidad de elementos a mostrar por página por defecto
         per_page = 5
         # Obtener valores del request
-        filters = request.get_json().items() if poetId == -1 else {'order_by':'ratings_count', 'order_by': 'date[desc]'}.items()
+        keys = [
+            'page',
+            'per_page',
+            'poet_id',
+            'date[gte]',
+            'date[lte]',
+            'title',
+            'av_rating[gte]',
+            'av_rating[lte]',
+            'ratings_count[gte]',
+            'ratings_count[lte]',
+            'order_by'
+        ]
+        
+        #Obtiene los filtros especificados de la URL
+        if poetId == -1:
+            filters = {}
+            for key in keys:
+                arg = request.args.get(key)
+                if arg != None:
+                    filters.update({key: int(arg) if arg.isnumeric() else arg})
+        else:
+            filters = {'order_by':'ratings_count', 'order_by': 'date[desc]'}
+        
         poems = db.session.query(PoemModel)
         # Verificar si hay filtros
         if filters:
@@ -82,7 +105,7 @@ class Poems(Resource):
                 }
             }
 
-            for key, value in filters:
+            for key, value in filters.items():
                 if key == 'page':
                     page = int(value)
                 elif key == 'per_page':

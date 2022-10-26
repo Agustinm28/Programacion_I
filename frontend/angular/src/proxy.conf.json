@@ -1,0 +1,26 @@
+{
+    "/poets": {
+        "target": "http://127.0.0.1:7000",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/poets": "/poet"
+        }
+    },
+    "/poems": {
+        "target": "http://127.0.0.1:7000",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/poems": "/poem"
+        }
+    },
+    "/ratings": {
+        "target": "http://127.0.0.1:7000",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/ratings": "/rating"
+        }
+    }
+}

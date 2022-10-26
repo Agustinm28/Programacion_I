@@ -43,16 +43,26 @@ class Ratings(Resource):
         per_page = 5
         user_id = get_jwt_identity()
         # Obtener valores del request
-        filters = request.data
+        keys = [
+            'page',
+            'per_page'
+        ]
+        
+        #Obtiene los filtros especificados de la URL
+        filters = {}
+        for key in keys:
+            arg = request.args.get(key)
+            if arg != None:
+                filters.update({key: int(arg) if arg.isnumeric() else arg})
+
         ratings = db.session.query(RatingModel)
         # Verificar si hay filtros
         if filters:
-            for key, value in request.get_json().items():
+            for key, value in filters.items():
                 if key == 'page':
                     page = int(value)
                 elif key == 'per_page':
                     per_page = int(value)
-                # if not user_id:
 
         # Obtener valor paginado
         ratings = ratings.paginate(page, per_page, True, 20)

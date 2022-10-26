@@ -34,6 +34,8 @@ class Poet(Resource):
         if poet.id == poetId or claims['admin'] == True:
             data = request.get_json().items()
             for key, value in data:
+                if claims['activated'] == False or (key in ('admin','activated') and claims['admin'] == False):
+                    return 'You don\'t have permission to perform this action.', 403
                 setattr(poet, key, value)
             db.session.add(poet)
             db.session.commit()
@@ -51,7 +53,25 @@ class Poets(Resource):
         # Cantidad de elementos a mostrar por página por defecto
         per_page = 5
         # Obtener valores del request
-        filters = request.get_json().items()
+        keys = [
+            'page',
+            'per_page',
+            'name',
+            'poems_count[gte]',
+            'poems_count[lte]',
+            'ratings_count[gte]',
+            'ratings_count[lte]',
+            'is_activated',
+            'order_by'
+        ]
+        
+        #Obtiene los filtros especificados de la URL
+        filters = {}
+        for key in keys:
+            arg = request.args.get(key)
+            if arg != None:
+                filters.update({key: int(arg) if arg.isnumeric() else arg})
+
         poets = db.session.query(PoetModel)
         # Verificar si hay filtros
         if filters:
@@ -62,6 +82,7 @@ class Poets(Resource):
                 'poems_count[lte]': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).having(func.count(PoemModel.id) <= value)',
                 'ratings_count[gte]': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) >= value)',
                 'ratings_count[lte]': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) <= value)',
+                'is_activated': 'poets.filter(PoetModel.activated == value)',
                 'order_by': {
                     'name': 'poets.order_by(PoetModel.name)',
                     'name[desc]': 'poets.order_by(PoetModel.name.desc())',
@@ -73,7 +94,7 @@ class Poets(Resource):
             }
 
             # Paginacion
-            for key, value in filters:
+            for key, value in filters.items():
                 if key == 'page':
                     page = int(value)
                 elif key == 'per_page':
@@ -96,13 +117,14 @@ class Poets(Resource):
                         'page': page
                         })
 
-    @admin_required
+    @jwt_required(optional = True)
     def post(self):
         poet = PoetModel.from_json(request.get_json())
         poets = db.session.query(PoetModel)
         poets = poets.filter(PoetModel.mail.like(poet.mail))
         if len([poet.to_json() for poet in poets]) > 0:
             return 'Mail already taken', 400
+        poet.admin, poet.activated = False, False
         db.session.add(poet)
         db.session.commit()
         return poet.to_json(), 201

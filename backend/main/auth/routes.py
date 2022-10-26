@@ -9,14 +9,19 @@ auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 # Método de logueo
 
-
 @auth.route('/login', methods=['POST'])
 def login():
     # Busca al poet en la db por mail
     poet = db.session.query(PoetModel).filter(
         PoetModel.mail == request.get_json().get("mail")).first_or_404()
     # Valida la contraseña
-    if poet.validate_pass(request.get_json().get("passw")):
+    if poet.activated == False:
+        return 'Unactivated Account. Admin user has to approve your registration request.', 401
+    
+    elif not poet.validate_pass(request.get_json().get("passw")):
+        return 'Incorrect password', 401
+    
+    else:
         # Genera un nuevo token
         # Pasa el objeto professor como identidad
         access_token = create_access_token(identity=poet)
@@ -29,10 +34,7 @@ def login():
         }
 
         return data, 200
-    else:
-        return 'Incorrect password', 401
-
-
+        
 @auth.route('/register', methods=['POST'])
 def register():
     poet = PoetModel.from_json(request.get_json())

@@ -46,6 +46,7 @@ def add_claims_to_access_token(poet):
     claims = {
         'admin': poet.admin,
         'id': poet.id,
-        'mail': poet.mail
+        'mail': poet.mail,
+        'activated': poet.activated
     }
     return claims

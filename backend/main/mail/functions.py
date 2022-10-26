@@ -3,7 +3,6 @@ from flask import current_app, render_template
 from flask_mail import Message
 from smtplib import SMTPException
 
-
 def sendMail(to, subject, template, **kwargs):
     # Configuracion del mail
     msg = Message(
