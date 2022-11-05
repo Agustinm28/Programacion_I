@@ -3,12 +3,7 @@
 <div class="container shadow-lg p-3 mb-5 justify-content-center" style="background-color: #f9dcc4">
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <h6 class="border-bottom pb-2 mb-0">Usuarios</h6>
-        <app-del-mod-chano></app-del-mod-chano>
-        <app-del-mod-brunengo></app-del-mod-brunengo>
-        <app-del-mod-henry></app-del-mod-henry>
-        <app-del-mod-monti></app-del-mod-monti>
-        <app-del-mod-peter></app-del-mod-peter>
-        <app-del-mod-luismi></app-del-mod-luismi>
+        <app-del-mod-prueba [poet]="poet" *ngFor="let poet of activatedPoets"></app-del-mod-prueba> 
     </div>
     <div class="text-center">
         <a class="btn btn-dark mb-3" href="/login/admin/pending_request" role="button">Ir a altas</a>

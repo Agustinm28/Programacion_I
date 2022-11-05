@@ -26,6 +26,7 @@ import { ApprovalReqContainerComponent } from './components/approval/approval-re
 import { ApprovalReqHenryComponent } from './components/approval/approval-req-henry/approval-req-henry.component';
 import { ApprovalReqPeterComponent } from './components/approval/approval-req-peter/approval-req-peter.component';
 import { ApprovalReqMontiComponent } from './components/approval/approval-req-monti/approval-req-monti.component';
+import { ApprovalReqComponent } from './components/approval/approval-req/approval-req.component';
 import { DelModContainerComponent } from './components/del-mod/del-mod-container/del-mod-container.component';
 import { DelModLuismiComponent } from './components/del-mod/del-mod-luismi/del-mod-luismi.component';
 import { DelModChanoComponent } from './components/del-mod/del-mod-chano/del-mod-chano.component';
@@ -33,6 +34,7 @@ import { DelModHenryComponent } from './components/del-mod/del-mod-henry/del-mod
 import { DelModPeterComponent } from './components/del-mod/del-mod-peter/del-mod-peter.component';
 import { DelModMontiComponent } from './components/del-mod/del-mod-monti/del-mod-monti.component';
 import { DelModBrunengoComponent } from './components/del-mod/del-mod-brunengo/del-mod-brunengo.component';
+import { DelModPruebaComponent } from './components/del-mod/del-mod-prueba/del-mod-prueba.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { HomeUnregisteredComponent } from './pages/home-unregistered/home-unregistered.component';
@@ -84,6 +86,7 @@ import { RatingService } from './services/rating.service';
     ApprovalReqHenryComponent,
     ApprovalReqPeterComponent,
     ApprovalReqMontiComponent,
+    ApprovalReqComponent,
     DelModContainerComponent,
     DelModLuismiComponent,
     DelModChanoComponent,
@@ -91,6 +94,7 @@ import { RatingService } from './services/rating.service';
     DelModPeterComponent,
     DelModMontiComponent,
     DelModBrunengoComponent,
+    DelModPruebaComponent,
     LoginComponent,
     RegistrationComponent,
     HomeUnregisteredComponent,
@@ -111,7 +115,7 @@ import { RatingService } from './services/rating.service';
     FilteredPoemsHenryCComponent,
     FilteredDropdownsComponent,
     FilteredPoemsChanoComponent,
-    FilteredPoemsBrunengoComponent,
+    FilteredPoemsBrunengoComponent
   ],
   imports: [
     ApplicationModule,

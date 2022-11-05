@@ -5,9 +5,7 @@
             <div class="col-11 mb-4">
                 <div class="my-3 p-3 bg-body rounded shadow-sm">
                     <h6 class="border-bottom pb-2 mb-0">Peticiones</h6>
-                    <app-approval-req-henry></app-approval-req-henry>
-                    <app-approval-req-monti></app-approval-req-monti>
-                    <app-approval-req-peter></app-approval-req-peter>
+                    <app-approval-req [poet]="poet" *ngFor="let poet of unactivatedPoets"></app-approval-req>
                 </div>
             </div>
         </div>
