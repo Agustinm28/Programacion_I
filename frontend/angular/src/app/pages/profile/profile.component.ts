@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PoemService } from 'src/app/services/poem.service';
+import { PoetService } from 'src/app/services/poet.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,15 +10,18 @@ import { PoemService } from 'src/app/services/poem.service';
 export class ProfileComponent implements OnInit {
 
   ownPoems: any = []
-  token = undefined
-  ownId: any = 2
+  token: any = localStorage.getItem("token")
+  poet: any
   
   constructor(
-    private poemService: PoemService
+    private poemService: PoemService,
+    private poetService: PoetService
   ) { }
 
   ngOnInit(): void {
-    this.poemService.getPoems(this.token, {"poet_id": this.ownId}).subscribe((data: any) => this.ownPoems = data.poem)
+    let id = JSON.parse(window.atob(this.token.split('.')[1])).id;
+    this.poetService.getPoet(id, this.token).subscribe((data: any) => this.poet = data)
+    this.poemService.getPoems(this.token, {"poet_id": id}).subscribe((data: any) => this.ownPoems = data.poem)
   }
 
 }

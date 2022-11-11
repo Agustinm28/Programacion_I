@@ -1,7 +1,7 @@
 Flask
 python-dotenv
 flask-restful
-flask_sqlalchemy
+flask_sqlalchemy==2.5.1
 flask-jwt-extended
 werkzeug
 flask-mail
