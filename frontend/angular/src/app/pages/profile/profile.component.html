@@ -5,15 +5,7 @@
       <div class="row rounded ms-3 me-3" style="background-color: pink;">
         <app-profile-data></app-profile-data>
       </div>
-      <div class="row ms-3 mt-3 me-3 mb-3">
-        <app-main-poem-card-own></app-main-poem-card-own>
-      </div>
-      <div class="row ms-3 mt-3 me-3 mb-3">
-        <app-main-poem-card-own></app-main-poem-card-own>
-      </div>
-      <div class="row ms-3 mt-3 me-3 mb-3">
-        <app-main-poem-card-own></app-main-poem-card-own>
-      </div>
+      <app-main-poem-card-own [poem]="poem" *ngFor="let poem of ownPoems"></app-main-poem-card-own>
     </div>
     <app-pagination-bar></app-pagination-bar>
   </body>

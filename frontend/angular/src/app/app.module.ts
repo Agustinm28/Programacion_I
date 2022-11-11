@@ -60,6 +60,7 @@ import { FilteredPoemsBrunengoComponent } from './components/filtered/filtered-p
 import { PoemService } from './services/poem.service';
 import { PoetService } from './services/poet.service';
 import { RatingService } from './services/rating.service';
+import { MainCardGenericComponent } from './components/main-card-poem/main-card-generic/main-card-generic.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +116,8 @@ import { RatingService } from './services/rating.service';
     FilteredPoemsHenryCComponent,
     FilteredDropdownsComponent,
     FilteredPoemsChanoComponent,
-    FilteredPoemsBrunengoComponent
+    FilteredPoemsBrunengoComponent,
+    MainCardGenericComponent
   ],
   imports: [
     ApplicationModule,

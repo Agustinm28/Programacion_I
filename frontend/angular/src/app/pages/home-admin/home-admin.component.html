@@ -3,15 +3,9 @@
   <div class="container shadow-lg p-3 mb-4 justify-content-center" style="background-color: #f9dcc4">
       <div class="row justify-content-center">
         <div class="col-11 mb-4">
-          <app-main-poem-card-henry></app-main-poem-card-henry>
-        </div>
-        <div class="col-11 mb-4">
-          <app-main-poem-card-luismi></app-main-poem-card-luismi>
-        </div>
-        <div class="col-11 mb-4">
-          <app-main-poem-card-chano></app-main-poem-card-chano>
+          <app-main-card-generic [poem]="poem" *ngFor="let poem of poems"></app-main-card-generic>
         </div>
       </div>
   </div>
-  <app-pagination-bar></app-pagination-bar> 
+  <app-pagination-bar [pData]="pData"></app-pagination-bar> 
 </body>

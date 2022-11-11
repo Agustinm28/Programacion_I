@@ -5,9 +5,7 @@
           <span aria-hidden="true">&laquo;</span>
           </a>
       </li>
-      <li class="page-item"><a class="page-link" href="#" style="color: #432818">1</a></li>
-      <li class="page-item"><a class="page-link" href="#" style="color: #432818">2</a></li>
-      <li class="page-item"><a class="page-link" href="#" style="color: #432818">3</a></li>
+      <li *ngFor="let page of pageAmount" class="page-item"><a class="page-link" href="#" style="color: #432818">{{ page }}</a></li>
       <li class="page-item" style="color: #432818">
           <a class="page-link" href="#" aria-label="Next" style="color: #432818">
           <span aria-hidden="true">&raquo;</span>

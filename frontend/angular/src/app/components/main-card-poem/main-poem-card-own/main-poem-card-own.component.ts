@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main-poem-card-own',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPoemCardOwnComponent implements OnInit {
 
+  @Input('poem') poem: any
+  
   constructor() { }
 
   ngOnInit(): void {
