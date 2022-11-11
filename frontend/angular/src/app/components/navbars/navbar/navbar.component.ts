@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PoetService } from 'src/app/services/poet.service';
 import { AuthService } from '../../../services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-navbar',
@@ -11,14 +9,11 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  @Input('loggedPoet') poet: any
+  
   constructor(
-    private authService: AuthService,
-    private formBuilder: FormBuilder,
-    private router: Router
-
+    private authService: AuthService
   ) { }
-
-
 
   ngOnInit(): void {
   }
@@ -39,5 +34,6 @@ export class NavbarComponent implements OnInit {
 
   cerrarSesion() {
     this.authService.logout();
+    window.location.reload()
   }
 }

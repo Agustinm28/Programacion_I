@@ -52,9 +52,9 @@
                     </a>
                 </div>
             </div>
-            <form>
+            <form [formGroup]="loginForm">
                 <div class="form-outline mb-4 mx-5">
-                    <input required type="email" class="form-control" formControlName="email" placeholder="Dirección email" aria-label="Email" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    <input required type="email" class="form-control" formControlName="mail" placeholder="Dirección email" aria-label="Email" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
                 </div>
             
                 <div class="form-outline mb-4 mx-5">

@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'logged/:username', component: HomeRegUserComponent, canActivate:[AuthsessionGuard] },
-  { path: 'login/admin/profile', component: ProfileComponent },
+  { path: 'login/admin/profile', component: ProfileComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/editor', component: PoemEditorComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/:poemId/comments', component: CommentsComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/delete_or_modify', component: DeleteOrModifyComponent, canActivate:[AuthsessionGuard] },

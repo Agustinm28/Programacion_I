@@ -33,16 +33,11 @@
         <div class="row me-auto">
           <div class="d-none d-xxl-block">
             <div class="text-end">
-              <h3 class="mx-auto"><b>Hola, Lilita!</b></h3>
-            </div>
-            <div class="d-xxl-none" *ngIf="!isLogged">
-              <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0">
-                <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" routerLink="/login">Login</a></li>
-              </ul>
+              <h3 class="mx-auto"><b>Hola, {{ poet.name }}!</b></h3>
             </div>
             <div class="d-none d-xxl-block">
               <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0" *ngIf="isLogged">
-                <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" routerLink="/login">Unlogin</a></li>
+                <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" (click)="cerrarSesion()">Unlogin</a></li>
               </ul>
             </div>
           </div>
@@ -64,8 +59,13 @@
           </a>
           <div class="d-none d-xxl-block">
             <div class="col">
-              <i class="bi bi-person-circle ms-auto" style="font-size: 4rem; color: white;"></i>
+              <i class="bi bi-person-circle ms-auto" *ngIf="!isLogged" style="font-size: 4rem; color: white;"></i>
             </div>
+          </div>
+          <div class="d-none d-xxl-block">
+            <div class="row float-end">
+              <a class="link" *ngIf="!isLogged" routerLink="/login" style="color: white;">Login</a>
+            </div>  
           </div>
         </div>
       </div>

@@ -11,18 +11,26 @@ export class HomeAdminComponent implements OnInit {
 
   poems: any = []
   pData: any 
-  token: any = undefined
+  token: any = localStorage.getItem("token")
+  loggedPoet: any
   
   constructor(
-    private poemService: PoemService
+    private poemService: PoemService,
+    private poetService: PoetService
   ) { }
 
   ngOnInit(): void {
     this.poemService.getPoems(this.token).subscribe((data: any) => {
-      console.log(this.token)
       this.pData = data.pages;
       this.poems = data.poem;
      })
+    if (this.token) {
+      let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));
+      this.poetService.getPoet(decodedJWT.id).subscribe((data: any) => this.loggedPoet = data)
+    }
+    else {
+      this.loggedPoet = {name: "usuario"}
+    }
   }
 
 }

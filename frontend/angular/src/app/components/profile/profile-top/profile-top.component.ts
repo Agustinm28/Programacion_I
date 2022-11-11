@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { PoetService } from 'src/app/services/poet.service';
 
 @Component({
   selector: 'app-profile-top',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileTopComponent implements OnInit {
 
-  constructor() { }
+  token: any = localStorage.getItem("token")
+  poet: any
+  
+  constructor(
+    private poetService: PoetService
+  ) { }
 
   ngOnInit(): void {
+    let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));
+    this.poetService.getPoet(decodedJWT.id).subscribe((data: any) => this.poet = data)
   }
-
 }

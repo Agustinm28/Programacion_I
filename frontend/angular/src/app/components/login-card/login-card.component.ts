@@ -20,8 +20,8 @@ export class LoginCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required], // Aca van todos los mails validos
-      passw: ['', Validators.required]  // Aca van todos los passwords validos
+      mail: ['', Validators.required], 
+      passw: ['', Validators.required]  
     });
   }
 
@@ -44,10 +44,10 @@ export class LoginCardComponent implements OnInit {
   submit() {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
-      let email = this.loginForm.value.email;
+      let mail = this.loginForm.value.mail;
       let passw = this.loginForm.value.passw;
-      console.log('Credenciales: ', {email,passw});
-      this.login({email, passw});
+      console.log('Credenciales: ', {mail,passw});
+      this.login({mail, passw});
     }
     else{
       alert("Formulario invalido")
