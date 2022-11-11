@@ -13,21 +13,23 @@ import { Error404Component } from './pages/error404/error404.component';
 import { DeleteOrModifyComponent } from './pages/delete-or-modify/delete-or-modify.component';
 import { PendingRequestComponent } from './pages/pending-request/pending-request.component';
 import { FilteredComponent } from './pages/filtered/filtered.component';
+import { AuthsessionGuard } from './guards/authsession.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeUnregisteredComponent },
+  { path: '', component: HomeAdminComponent},
+  { path: 'home', component: HomeAdminComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: 'logged/:username', component: HomeRegUserComponent },
-  { path: 'login/admin', component: HomeAdminComponent },
+  { path: 'logged/:username', component: HomeRegUserComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/profile', component: ProfileComponent },
-  { path: 'login/admin/editor', component: PoemEditorComponent },
-  { path: 'login/admin/comments', component: CommentsComponent },
-  { path: 'login/admin/delete_or_modify', component: DeleteOrModifyComponent},
-  { path: 'login/admin/pending_request', component: PendingRequestComponent},
-  { path: 'logged/:username/filtered', component: FilteredComponent },
+  { path: 'login/admin/editor', component: PoemEditorComponent, canActivate:[AuthsessionGuard] },
+  { path: 'login/admin/:poemId/comments', component: CommentsComponent, canActivate:[AuthsessionGuard] },
+  { path: 'login/admin/delete_or_modify', component: DeleteOrModifyComponent, canActivate:[AuthsessionGuard] },
+  { path: 'login/admin/pending_request', component: PendingRequestComponent, canActivate:[AuthsessionGuard] },
+  { path: 'logged/:username/filtered', component: FilteredComponent, canActivate:[AuthsessionGuard] },
   { path: '**', component: Error404Component },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

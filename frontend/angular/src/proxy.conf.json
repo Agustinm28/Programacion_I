@@ -22,5 +22,13 @@
         "pathRewrite": {
             "^/ratings": "/rating"
         }
+    },
+    "/login": {
+        "target": "http://127.0.0.1:7000",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/login": "/auth/login"
+        }
     }
 }

@@ -52,13 +52,13 @@
                     </a>
                 </div>
             </div>
-            <form method=post action="login_registered_admin.html">
+            <form>
                 <div class="form-outline mb-4 mx-5">
-                    <input required type="email" class="form-control" placeholder="Dirección email" aria-label="Email" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    <input required type="email" class="form-control" formControlName="email" placeholder="Dirección email" aria-label="Email" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
                 </div>
             
                 <div class="form-outline mb-4 mx-5">
-                    <input required type="password" class="form-control" placeholder="Contraseña" aria-label="Contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    <input required type="password" class="form-control" formControlName="passw" placeholder="Contraseña" aria-label="Contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
                 </div>
 
                 <div class="col d-flex justify-content-center">
@@ -67,9 +67,8 @@
                         <label class="form-check-label" style="color: white;">Recuérdame</label>
                     </div>
                 </div>
-                
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary" role="button" style="text-decoration: none" routerLink="admin">Iniciar sesión</button>
+                    <button (click)="submit()" class="btn btn-primary" role="button" style="text-decoration: none">Iniciar sesión</button>
                 </div>
 
                 <div class="row mb-4 mt-4 mx-auto ps-5">

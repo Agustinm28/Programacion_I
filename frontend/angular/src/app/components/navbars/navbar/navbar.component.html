@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark sticky-top navbar-expand-xxl pt-4 pb-4" style="background-color: rgb(124, 102, 70);">
   <div class="container-fluid">
-    <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" routerLink="/login/admin">
+    <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" routerLink="/home">
       Botellas en el mar
     </a>
     <form class="d-flex col-xl-6 col-lg-5 col-md-4 mx-2">
@@ -17,12 +17,12 @@
     <div class="d-none d-xxl-block">
       <ul ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item me-3">
-          <a class="btn btn-dark" routerLink="/login/admin/delete_or_modify" type="submit" data-toggle="tooltip" data-placement="bottom" title="ABM" id="adminButton" style="border-radius: 30px; background-color: #bb9457; border-color: white; border-width: 2px" aria-expanded="false">
+          <a class="btn btn-dark" routerLink="/login/admin/delete_or_modify" type="submit" data-toggle="tooltip" data-placement="bottom" title="ABM" id="adminButton" *ngIf="isAdmin" style="border-radius: 30px; background-color: #bb9457; border-color: white; border-width: 2px" aria-expanded="false">
             <i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>
           </a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="Editor de poemas" id="pEditorButton" style="border-radius: 30px; background-color: #99582a; border-color: white; border-width: 2px" aria-expanded="false" routerLink="/login/admin/editor">
+          <a class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="Editor de poemas" id="pEditorButton" *ngIf="isLogged" style="border-radius: 30px; background-color: #99582a; border-color: white; border-width: 2px" aria-expanded="false" routerLink="/login/admin/editor">
             <i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>
           </a>
         </li>
@@ -35,6 +35,16 @@
             <div class="text-end">
               <h3 class="mx-auto"><b>Hola, Lilita!</b></h3>
             </div>
+            <div class="d-xxl-none" *ngIf="!isLogged">
+              <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0">
+                <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" routerLink="/login">Login</a></li>
+              </ul>
+            </div>
+            <div class="d-none d-xxl-block">
+              <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0" *ngIf="isLogged">
+                <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" routerLink="/login">Unlogin</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -42,24 +52,33 @@
         <div class="ms-auto">
           <a id=profPicture routerLink="/login/admin/profile">
             <div class="d-xxl-none">
-              <div class="text-start ms-3 mt-md-0 mt-sm-4">
+              <div class="text-start ms-3 mt-md-0 mt-sm-4" *ngIf="isLogged">
                 <img class="rounded" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
               </div>
             </div>
-            <div class="d-none d-xxl-block">
+            <div class="d-none d-xxl-block" *ngIf="isLogged">
               <div class="text-end">
                 <img class="rounded float-end" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
               </div>
             </div>
           </a>
+          <div class="d-none d-xxl-block">
+            <div class="col">
+              <i class="bi bi-person-circle ms-auto" style="font-size: 4rem; color: white;"></i>
+            </div>
+          </div>
         </div>
       </div>
       <div class="d-xxl-none">
         <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0">
-          <li class="nav-item me-3"><i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>  <a href="login_registered_admin_pending_request.html" class="text-white">ABM</a></li>
-          <li class="nav-item me-3"><i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login/admin/editor" class="text-white">Editor de poemas</a></li>
+          <li class="nav-item me-3" *ngIf="isAdmin"><i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login/admin/pending_request" class="text-white">ABM</a></li>
+          <li class="nav-item me-3" *ngIf="isLogged"><i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login/admin/editor" class="text-white">Editor de poemas</a></li>
+          <li class="nav-item me-3" *ngIf="!isLogged"><i class="bi bi-box-arrow-in-right" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login" class="text-white">Login</a></li>
         </ul>
       </div>
     </div>
   </div>
 </nav>
+
+
+

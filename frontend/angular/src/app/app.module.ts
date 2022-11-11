@@ -62,6 +62,8 @@ import { PoetService } from './services/poet.service';
 import { RatingService } from './services/rating.service';
 import { MainCardGenericComponent } from './components/main-card-poem/main-card-generic/main-card-generic.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,6 +126,7 @@ import { MainCardGenericComponent } from './components/main-card-poem/main-card-
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     PoemService,
