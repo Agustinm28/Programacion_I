@@ -1,0 +1,56 @@
+/* If the screen size is 1200px wide or more, set the font-size to 80px */
+@media (min-width: 1200px) {
+    .poem-title {
+      font-size: 25px;
+    }
+  }
+  /* If the screen size is smaller than 1200px, set the font-size to 80px */
+  @media (max-width: 600px) {
+    .poem-title {
+      font-size: 19px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .card-text {
+      font-size: 25px;
+    }
+  }
+  /* If the screen size is smaller than 1200px, set the font-size to 80px */
+  @media (max-width: 600px) {
+    .card-text {
+      font-size: 17px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .poet-name {
+      font-size: 25px;
+    }
+  }
+  /* If the screen size is smaller than 1200px, set the font-size to 80px */
+  @media (max-width: 600px) {
+    .poet-name {
+      font-size: 22px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .cal {
+      font-size: 20px;
+    }
+  }
+  /* If the screen size is smaller than 1200px, set the font-size to 80px */
+  @media (max-width: 600px) {
+    .cal {
+      font-size: 18px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .c-prom {
+      font-size: 20px;
+    }
+  }
+  /* If the screen size is smaller than 1200px, set the font-size to 80px */
+  @media (max-width: 600px) {
+    .c-prom {
+      font-size: 18px;
+    }
+  }

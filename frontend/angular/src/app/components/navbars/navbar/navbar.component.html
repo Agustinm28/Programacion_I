@@ -1,17 +1,16 @@
-<nav class="navbar navbar-dark sticky-top navbar-expand-xxl pt-4 pb-4" style="background-color: rgb(124, 102, 70);">
+<nav class="navbar navbar-dark sticky-top navbar-expand-xxl pt-1 pb-3 shadow-5-strong" style="background-color: rgb(124, 102, 70, 0.95);">
   <div class="container-fluid">
-    <a class="navbar-brand ms-2" style="font-size: 37px; font-family: SF Cartoonist Hand, sans-serif" routerLink="/home">
-      <img src="assets/logo_botellas_en_el_mar.png"
-        width="350"
-        height="50">
+    <a class="navbar-brand ps-5 pt-3 pb-2" routerLink="/home">
+      <img class="logo-bem" src="assets/logo_botellas_en_el_mar.png"
+        >
     </a>
-    <form class="d-flex col-xl-6 col-lg-5 col-md-4 mx-2">
+    <form class="d-flex col-xl-6 col-lg-5 col-md-4 mx-2 col-xs-2 pt-3 pb-2 ps-5">
       <a routerLink="/logged/filtered" class="btn btn-secondary ms-xl-3 ms-md-1 ms-sm-0" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
         <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
       </a>
       <input class="form-control ms-xl-4 ms-md-2 ms-sm-3 me-xl-5 me-md-1 me-sm-3" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
     </form>
-    <div class="text-end">
+    <div class="text-end pe-3">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon" style="color: whitesmoke;"></span>
       </button>
@@ -65,7 +64,7 @@
             </div>
           </div>
           <div class="d-none d-xxl-block">
-            <div class="row float-end">
+            <div class="row float-start">
               <a class="link" *ngIf="!isLogged" routerLink="/login" style="color: white;">Login</a>
             </div>  
           </div>

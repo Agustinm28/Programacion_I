@@ -83,7 +83,22 @@ export class LoginCardComponent implements OnInit {
       this.login({mail, passw});
     }
     else{
-      alert("Formulario invalido")
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast: any) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'error',
+        title: 'Formulario incorrecto'
+      })
     }
   }
 }

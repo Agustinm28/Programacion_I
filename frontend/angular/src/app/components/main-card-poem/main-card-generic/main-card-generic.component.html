@@ -1,38 +1,38 @@
 <div class="mb-4">
-    <div class="card" id="poemPreview" style="background-color: #e6ccb2">
+    <div class="card" id="poemPreview" style="background-color: rgb(230, 204, 178, 1)">
         <div class="card-body">
           <div class="row mb-4 ms-2 me-2 pe-5 mt-2" style="background-color: white; border-radius: 30px">
-            <div class="col-lg-1 col-md-2 col-sm-3 mt-3 mb-3 p-1">
-              <img src="assets/chano_profile.png" class="img-fluid ms-3" alt="profile">
+            <div class="col-lg-1 col-md-2 col-sm-3 mt-3 mb-3 p-1 col-4">
+              <img src="assets/chano_profile.png" class="img-fluid ms-3" alt="profile" width="100" height="100">
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-5 my-auto justify-content-center ms-2">
-              <h3>{{ poem.poet.name }}</h3>
+            <div class="col-lg-3 col-md-4 col-sm-2 col my-auto justify-content-center ms-3">
+              <h3 class="poet-name">{{ poem.poet.name }}</h3>
             </div>
           </div>
           <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
             <div class="col-6">
-              <p style="font-size: 25px; color: rgb(22, 20, 20); font-weight: bold;">{{ poem.title }}</p>
+              <p class="poem-title" style="color: rgb(22, 20, 20); font-weight: bold;">{{ poem.title }}</p>
             </div>
             <div class="col-6 text-end">
               <p style="font-size: 15px; color: lightslategray;">{{ poem.date }}</p>
             </div>
             <div class="col-12 p-3">
-              <p class="card-text" style="text-align:left; font-size: 25px;"> {{ poem.body }} </p>
+              <p class="card-text" style="text-align:left;"> {{ poem.body }} </p>
             </div>
           </div>
           <div class="row mt-4 mb-2 mx-1" style="background-color: white; border-radius: 30px;">
             <div class="d-flex d-block justify-content-center" id="footerTopTextRow">
-              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-start">
-                <p style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
+              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 pt-2 col-6 text-start">
+                <p class="c-prom" style="background-color: lightgreen; outline-color: lightgreen; color: black; border-radius: 30px; text-align: center;">Calificación promedio</p>
               </div>
               <div class="col-xl-6 col-lg-4 col-md-2 col-sm-0">
               </div>
-              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 text-end">
-                <p style="background-color: rgb(238, 174, 144); outline-color: rgb(238, 174, 144); color: black; border-radius: 30px; text-align: center;">Calificaciones</p>
+              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 pt-2 col-6 text-end">
+                <p class="cal" style="background-color: rgb(238, 174, 144); outline-color: rgb(238, 174, 144); color: black; border-radius: 30px; text-align: center;">Calificaciones</p>
               </div>
             </div>
             <div class="row" id="footerBottomTextRow">
-              <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3">
+              <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3 ps-4 col-8">
                 <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger;"></i>
                 <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
                 <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
@@ -41,7 +41,7 @@
                 <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">{{ poem.av_rating }}</label>
                 <label *ngIf="poem.av_rating==null" class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">0</label>
               </div>
-              <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 text-end">
+              <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 pe-5 col-4 text-end">
                 <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">{{ poem.rating_count }}</label>
               </div>
             </div>

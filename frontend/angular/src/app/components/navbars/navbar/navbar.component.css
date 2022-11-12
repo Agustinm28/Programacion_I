@@ -62,3 +62,17 @@
 .modal {
 	z-index: 4 !important;
 }
+@media (min-width: 1200px) {
+    .logo-bem {
+		width:360px;
+        height:50px;
+    }
+  }
+  /* If the screen size is smaller than 1200px, set the font-size to 80px */
+  @media (max-width: 1999.9px) {
+    .logo-bem {
+		width:360px;
+        height:50px;
+    }
+  }
+  
