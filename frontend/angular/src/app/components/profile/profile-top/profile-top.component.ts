@@ -10,11 +10,9 @@ import { PoetService } from 'src/app/services/poet.service';
 export class ProfileTopComponent implements OnInit {
 
   token: any = localStorage.getItem("token")
-  @Input("poet") poet: any
+  @Input("loggedPoet") poet: any
   
-  constructor(
-    private poetService: PoetService
-  ) { }
+  constructor( ) { }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-profile-data',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileDataComponent implements OnInit {
 
+  token: any = localStorage.getItem("token")
+  @Input("loggedPoet") poet: any
+  
   constructor() { }
 
   ngOnInit(): void {

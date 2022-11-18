@@ -27,7 +27,6 @@ export class LoginCardComponent implements OnInit {
 
   login(data: any) {
     
-    console.log('Comprobando credenciales...');
     this.authService.login(data).subscribe({
       next: (rta: any) => {
         const Toast = Swal.mixin({
@@ -46,7 +45,6 @@ export class LoginCardComponent implements OnInit {
           icon: 'success',
           title: 'Logueado exitosamente'
         })
-        console.log('Login exitoso!', rta.access_token);
         localStorage.setItem('token', rta.access_token);
         this.router.navigate(["/", "home"])
       }, error: (error) =>{
@@ -64,22 +62,18 @@ export class LoginCardComponent implements OnInit {
         
         Toast.fire({
           icon: 'error',
-          title: 'Usuario y/o contraseña incorrectos'
+          title: 'Usuario y/o contraseña incorrecto/s'
         })
-        console.log('Error: ', error);
         localStorage.removeItem('token');
       }, complete: () => {
-        console.log('Termino');
       }
     })
   }
 
   submit() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
       let mail = this.loginForm.value.mail;
       let passw = this.loginForm.value.passw;
-      console.log('Credenciales: ', {mail,passw});
       this.login({mail, passw});
     }
     else{
@@ -97,7 +91,7 @@ export class LoginCardComponent implements OnInit {
       
       Toast.fire({
         icon: 'error',
-        title: 'Formulario incorrecto'
+        title: 'Usuario y/o contraseña vacíos'
       })
     }
   }

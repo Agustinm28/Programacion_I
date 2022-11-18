@@ -11,7 +11,7 @@ export class ProfileComponent implements OnInit {
 
   ownPoems: any = []
   token: any = localStorage.getItem("token")
-  poet: any
+  loggedPoet: any
   
   constructor(
     private poemService: PoemService,
@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     let id = JSON.parse(window.atob(this.token.split('.')[1])).id;
-    this.poetService.getPoet(id, this.token).subscribe((data: any) => this.poet = data)
+    this.poetService.getPoet(id, this.token).subscribe((data: any) => this.loggedPoet = data)
     this.poemService.getPoems(this.token, {"poet_id": id}).subscribe((data: any) => this.ownPoems = data.poem)
   }
 

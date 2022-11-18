@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [loggedPoet]="loggedPoet"></app-navbar>
 <body>
 <div class="container shadow-lg p-3 mb-5 justify-content-center" style="background-color: #f9dcc4">
     <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -6,7 +6,7 @@
         <app-del-mod-prueba [poet]="poet" *ngFor="let poet of activatedPoets"></app-del-mod-prueba> 
     </div>
     <div class="text-center">
-        <a class="btn btn-dark mb-3" href="/login/admin/pending_request" role="button">Ir a altas</a>
+        <a class="btn btn-dark mb-3" routerLink="/login/admin/pending_request" role="button">Ir a altas</a>
     </div>
 </div>
 </body>

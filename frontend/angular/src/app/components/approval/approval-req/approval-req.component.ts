@@ -9,7 +9,7 @@ import { PoetService } from 'src/app/services/poet.service';
 export class ApprovalReqComponent implements OnInit {
 
   @Input('poet') poet: any
-  token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2Njk4MDQ5NCwianRpIjoiMDRlZDIxODAtMzk4YS00MjI4LWFkZDgtNjAyOGVhZWQ5YzVlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NiwibmJmIjoxNjY2OTgwNDk0LCJleHAiOjE2NjY5OTI0OTQsImFkbWluIjp0cnVlLCJpZCI6NiwibWFpbCI6InBlZHJvdkBnbWFpbC5jb20iLCJhY3RpdmF0ZWQiOnRydWV9.LfCBtjW9lsGHvosDIe7QGTCSR3cqvH-w-Fx0ZP0V_ME"
+  token: any = localStorage.getItem("token")
 
   constructor(
     private poService: PoetService

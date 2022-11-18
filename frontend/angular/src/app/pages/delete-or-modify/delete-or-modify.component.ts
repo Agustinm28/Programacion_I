@@ -9,8 +9,9 @@ import { PoetService } from 'src/app/services/poet.service';
 export class DeleteOrModifyComponent implements OnInit {
 
   activatedPoets: any = []
-  token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2Njk4MDQ5NCwianRpIjoiMDRlZDIxODAtMzk4YS00MjI4LWFkZDgtNjAyOGVhZWQ5YzVlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6NiwibmJmIjoxNjY2OTgwNDk0LCJleHAiOjE2NjY5OTI0OTQsImFkbWluIjp0cnVlLCJpZCI6NiwibWFpbCI6InBlZHJvdkBnbWFpbC5jb20iLCJhY3RpdmF0ZWQiOnRydWV9.LfCBtjW9lsGHvosDIe7QGTCSR3cqvH-w-Fx0ZP0V_ME'
-  
+  token: any = localStorage.getItem("token")
+  loggedPoet: any
+
   constructor(
 
     private pService: PoetService
@@ -18,11 +19,13 @@ export class DeleteOrModifyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));
+    this.pService.getPoet(decodedJWT.id).subscribe((data: any) => this.loggedPoet = data)
     this.getActivatedPoets()
   }
 
   getActivatedPoets(): void {
-    this.pService.getPoets(this.token, {is_activated: 1, page: 1}).subscribe((data: any) => this.activatedPoets = data.poet);
+    this.pService.getPoets(this.token, {is_activated: 1, page: 1}).subscribe(({next: (data: any) => this.activatedPoets = data.poet}));
   }
   
 }

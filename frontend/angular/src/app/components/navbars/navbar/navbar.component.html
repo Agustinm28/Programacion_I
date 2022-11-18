@@ -34,11 +34,11 @@
         <div class="row me-auto">
           <div class="d-none d-xxl-block">
             <div class="text-end">
-              <h3 class="mx-auto"><b>Hola, {{ poet.name }}!</b></h3>
+              <h3 class="mx-auto"><b>Hola, {{ poet.name.split(" ")[0] }}!</b></h3>
             </div>
             <div class="d-none d-xxl-block">
               <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0" *ngIf="isLogged">
-                <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" (click)="cerrarSesion()">Unlogin</a></li>
+                <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" (click)="cerrarSesion()">Logout</a></li>
               </ul>
             </div>
           </div>

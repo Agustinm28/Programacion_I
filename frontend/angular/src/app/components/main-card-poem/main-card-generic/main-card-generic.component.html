@@ -10,6 +10,11 @@
             </div>
           </div>
           <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
+            <div class="col-sm-auto" *ngIf="poem.poet.user_id==loggedId">
+              <a class="text-decoration-none" routerLink="/login/admin/editor" state="poem.id" data-toggle="tooltips" data-placement="bottom" title="Editar poema">
+                <i id="icon" class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+              </a>
+            </div>
             <div class="col-6">
               <p class="poem-title" style="color: rgb(22, 20, 20); font-weight: bold;">{{ poem.title }}</p>
             </div>

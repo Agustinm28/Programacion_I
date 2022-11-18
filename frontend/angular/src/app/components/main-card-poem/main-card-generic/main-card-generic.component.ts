@@ -9,9 +9,13 @@ import { PoetService } from 'src/app/services/poet.service';
 export class MainCardGenericComponent implements OnInit {
 
   @Input('poem') poem: any
+  token: any = localStorage.getItem("token")
+  loggedId: any
   
   constructor( ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.loggedId = JSON.parse(window.atob(this.token.split('.')[1])).id;
+  }
 
 }

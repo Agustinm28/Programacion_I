@@ -71,13 +71,13 @@ class Poems(Resource):
         ]
         
         #Obtiene los filtros especificados de la URL
-        if poetId == -1:
-            filters = {}
-            for key in keys:
-                arg = request.args.get(key)
-                if arg != None:
-                    filters.update({key: int(arg) if arg.isnumeric() else arg})
-        else:
+        filters = {}
+        for key in keys:
+            arg = request.args.get(key)
+            if arg != None:
+                filters.update({key: int(arg) if arg.isnumeric() else arg})
+        
+        if not filters:
             filters = {'order_by':'ratings_count', 'order_by': 'date[desc]'}
         
         poems = db.session.query(PoemModel)
@@ -119,7 +119,7 @@ class Poems(Resource):
 
        # Obtener valor paginado
         poems = poems.paginate(page, per_page, True, 20)
-        poemList = [poem.to_json() for poem in poems.items if poem.poet_id != poetId] if poetId is not None else [poem.to_json_public() for poem in poems.items if poem.poet_id != poetId]
+        poemList = [poem.to_json() for poem in poems.items] if poetId is not None else [poem.to_json_public() for poem in poems.items]
         return jsonify({'poem': poemList,
                         'total': poems.total,
                         'pages': poems.pages,
