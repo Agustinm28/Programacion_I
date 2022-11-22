@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { PoemService } from 'src/app/services/poem.service';
 import Swal from 'sweetalert2';
 
@@ -22,12 +23,24 @@ export class EditorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    let id: any = localStorage.getItem("editId")
+    if (id) {
+      id = parseInt(id)
+      this.poemService.getPoem(id, this.token).subscribe((data: any) => {
+        this.previousPoem = data
+        this.poemForm = this.formBuilder.group({
+          title: [this.previousPoem.title, Validators.required], 
+          body: [this.previousPoem.body, Validators.required]  
+       })
+      })
+    }
     this.poemForm = this.formBuilder.group({
       title: [this.previousPoem.title, Validators.required], 
       body: [this.previousPoem.body, Validators.required]  
-    });
+   })
+   localStorage.removeItem("editId")
   }
-
+  
   post(data: any) {
     this.poemService.postPoem(this.token, data).subscribe({
       next: (rta: any) => {
