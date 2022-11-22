@@ -20,44 +20,28 @@
                 </div>
             </div>
         </div>
-        <form class="form-inline" method=post id="registro"
-            oninput='p2.setCustomValidity(p2.value != p.value ? "Las contraseñas no coinciden." : "")'>
+        <form [formGroup]="registrationForm" id="registro">
             <div class="col-12 mx-auto px-3">
                 <div class="form-outline mb-4 mt-3">
-                    <input type="text" required class="form-control" placeholder="Nombre" aria-label="Nombre" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    <input type="text" required class="form-control" formControlName="name" placeholder="Nombre" aria-label="Nombre" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
                 </div>
                 <div class="form-outline mb-4">
-                    <input type="text" required class="form-control" placeholder="Apellido" aria-label="Apellido" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    <input type="text" required class="form-control" formControlName="lname" placeholder="Apellido" aria-label="Apellido" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
                 </div> 
                 <div class="form-outline mb-4">
-                    <input type="text" required class="form-control" placeholder="Nombre de usuario" aria-label="Nombre de usuario" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    <input type="text" required class="form-control" formControlName="uname" placeholder="Nombre de usuario" aria-label="Nombre de usuario" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
                 </div>
                 <div class="form-outline mb-4">
-                    <input type="email" required class="form-control" placeholder="Dirección de correo" aria-label="Dirección de correo" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    <input type="email" required class="form-control" formControlName="mail" ngModel email placeholder="Dirección de correo" aria-label="Dirección de correo" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
                 </div>
                 <div class="form-outline mb-4">
-                    <input type="password" required name="p" class="form-control" placeholder="Contraseña" aria-label="Contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    <input type="password" required formControlName="passw1" class="form-control" placeholder="Contraseña" aria-label="Contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
                 </div>
                 <div class="form-outline mb-4">
-                    <input type="password" required name="p2" class="form-control" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
+                    <input type="password" required formControlName="passw2" class="form-control" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
                 </div>              
                 <div class="text-center pb-5">
-                    <button class="btn btn-primary" type="submit" data-bs-togle="modal" data-bs-target="#confirmationPopUp">Enviar solicitud de registro</button>
-                </div>
-            </div>
-            <div class="modal fade" id="confirmationPopUp" tabindex="-1" role="dialog" aria-labelledby="confirmationPopUpLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="confirmationLabel">Solicitud de registro exitosa</h5>
-                        </div>
-                        <div class="modal-body">
-                            Cuando tu solicitud sea aprobada, se te enviará un mail de notificación y podrás loggearte.
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" routerLink="/login">Salir del registro</button>
-                        </div>
-                    </div>
+                    <button class="btn btn-primary" (click)="submit()">Enviar solicitud de registro</button>
                 </div>
             </div>
         </form>

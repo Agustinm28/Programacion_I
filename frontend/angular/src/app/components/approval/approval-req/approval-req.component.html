@@ -2,12 +2,12 @@
     <img src="assets/henry_profile.png" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="60" height="60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
     <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">
-            <h5 class="text-gray-dark"> {{ poet.name }} </h5>
+            <h5 class="text-gray-dark"> {{ poet.uname }} </h5>
             <div class="col-lg-2 col-md-3 col-sm-4">      
-                <button (click)="acceptRequest()" class="btn btn-dark" id="acceptNewUser" type="submit" data-toggle="tooltips" data-display="bottom" title="Aceptar" style="border-radius: 20px; background-color: #3ed68a; border-color: rgb(156, 153, 153); border-width: 2px" aria-expanded="false">
+                <button data-bs-toggle="modal" data-bs-target="#acceptUser" class="btn btn-dark" id="acceptNewUser" type="submit" data-toggle="tooltips" data-display="bottom" title="Aceptar" style="border-radius: 20px; background-color: #3ed68a; border-color: rgb(156, 153, 153); border-width: 2px" aria-expanded="false">
                     <i class="bi bi-hand-thumbs-up"></i>
                 </button>
-                <button (click)="rejectRequest()" class="btn btn-dark" id="rejectNewUser" type="submit" data-toggle="tooltips" data-display="bottom" title="Rechazar" style="border-radius: 20px; background-color: #c93461; border-color: rgb(156, 153, 153); border-width: 2px" aria-expanded="false">
+                <button data-bs-toggle="modal" data-bs-target="#rejectUser" class="btn btn-dark" id="rejectNewUser" type="submit" data-toggle="tooltips" data-display="bottom" title="Rechazar" style="border-radius: 20px; background-color: #c93461; border-color: rgb(156, 153, 153); border-width: 2px" aria-expanded="false">
                     <i class="bi bi-hand-thumbs-down"></i>
                 </button>
                 <button class="btn btn-primary mt-2" id="displayMore" type="button" style="border-radius: 20px; background-color: #3470c9; border-color: rgb(156, 153, 153); border-width: 2px" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">
@@ -20,10 +20,45 @@
                 <ul class="list-group">
                     <li class="list-group-item"><strong>Name: </strong> {{ poet.name }} </li>
                     <li class="list-group-item"><strong>Surname: </strong> {{ poet.lname }} </li>
+                    <li class="list-group-item"><strong>User: </strong> {{ poet.uname }} </li>
                     <li class="list-group-item"><strong>Mail: </strong> {{  poet.mail }} </li>
                 </ul>
             </div>
         </div>
+    </div>
+</div>
+<div class="modal fade" id="rejectUser" role="alertdialog" tabindex="-1" aria-labelledby="rejectUser" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rejectUserLabel">Rechazar solicitud</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Al confirmar esta acción, se eliminará permanentemente la solicitud del usuario y se le enviará un mail de notificación. <br> ¿Rechazar la solicitud de <b>{{ poet.uname }}</b>?
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-danger" (click)="rejectRequest()" data-bs-dismiss="modal">Rechazar</a>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal fade" id="acceptUser" role="alertdialog" tabindex="-1" aria-labelledby="acceptUser" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="acceptUserLabel">Aceptar solicitud</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         ¿Aceptar la solicitud de <b>{{ poet.uname }}</b>?
+        </div>
+        <div class="modal-footer">
+          <a type="button" class="btn btn-success" (click)="acceptRequest()" data-bs-dismiss="modal">Aceptar</a>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
     </div>
 </div>
 

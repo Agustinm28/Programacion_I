@@ -6,14 +6,19 @@
           <img src="assets/chano_profile.png" class="img-fluid ms-3" alt="profile">
         </div>
         <div class="col-lg-3 col-md-4 col-sm-5 my-auto justify-content-center ms-2">
-          <h3>{{ poem.poet.name }}</h3>
+          <h3>{{ poem.poet.uname }}</h3>
         </div>
       </div>
       <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
+        <div class="col-sm-auto" *ngIf="poem.poet.user_id==loggedId || isAdmin">
+          <a class="text-decoration-none" routerLink="/login/admin/editor" (click)="editPoem(poem.id)" data-toggle="tooltips" data-placement="bottom" title="Editar poema">
+            <i id="icon" class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+          </a>
+        </div>
         <div class="col-6">
           <p style="font-size: 25px; color: rgb(22, 20, 20); font-weight: bold;">{{ poem.title }}</p>
         </div>
-        <div class="col-6 text-end">
+        <div class="col-5 text-end">
           <p style="font-size: 15px; color: lightslategray;">{{ poem.date }}</p>
         </div>
         <div class="col-12 p-3">

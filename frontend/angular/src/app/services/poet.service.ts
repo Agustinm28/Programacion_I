@@ -32,8 +32,11 @@ export class PoetService {
     return this.httpClient.get(this.url + '/' + id.toString(), {headers: heads})
   }
 
-  postPoet(token: string, body: { [key: string]: any }) {
-    let heads = new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*').set('Authorization', 'Bearer ' + token)
+  postPoet(body: { [key: string]: any }, token?: string) {
+    let heads = new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*')
+    if (token != undefined) {
+      heads = heads.set('Authorization', 'Bearer ' + token)
+    }
     return this.httpClient.post(this.url, body, {headers: heads})
   }
   

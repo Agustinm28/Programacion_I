@@ -29,7 +29,7 @@ export class HomeAdminComponent implements OnInit {
       this.poetService.getPoet(decodedJWT.id).subscribe((data: any) => this.loggedPoet = data)
     }
     else {
-      this.loggedPoet = {name: "usuario"}
+      this.loggedPoet = {uname: "usuario"}
     }
   }
 

@@ -26,7 +26,6 @@ export class LoginCardComponent implements OnInit {
   }
 
   login(data: any) {
-    
     this.authService.login(data).subscribe({
       next: (rta: any) => {
         const Toast = Swal.mixin({

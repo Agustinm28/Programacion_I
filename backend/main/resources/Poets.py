@@ -56,7 +56,7 @@ class Poets(Resource):
         keys = [
             'page',
             'per_page',
-            'name',
+            'uname',
             'poems_count[gte]',
             'poems_count[lte]',
             'ratings_count[gte]',
@@ -77,15 +77,15 @@ class Poets(Resource):
         if filters:
             # Recorrer filtros
             actions = {
-                'name': 'poets.filter(PoetModel.name.like("%"+value+"%"))',
+                'uname': 'poets.filter(PoetModel.uname.like("%"+value+"%"))',
                 'poems_count[gte]': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).having(func.count(PoemModel.id) >= value)',
                 'poems_count[lte]': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).having(func.count(PoemModel.id) <= value)',
                 'ratings_count[gte]': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) >= value)',
                 'ratings_count[lte]': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) <= value)',
                 'is_activated': 'poets.filter(PoetModel.activated == value)',
                 'order_by': {
-                    'name': 'poets.order_by(PoetModel.name)',
-                    'name[desc]': 'poets.order_by(PoetModel.name.desc())',
+                    'uname': 'poets.order_by(PoetModel.uname)',
+                    'uname[desc]': 'poets.order_by(PoetModel.uname.desc())',
                     'poems_count': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).order_by(func.count(PoetModel.poems))',
                     'poems_count[desc]': 'poets.outerjoin(PoetModel.poems).group_by(PoetModel.id).order_by(func.count(PoetModel.poems).desc())',
                     'ratings_count': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).order_by(func.count(PoetModel.rating))',
@@ -121,9 +121,11 @@ class Poets(Resource):
     def post(self):
         poet = PoetModel.from_json(request.get_json())
         poets = db.session.query(PoetModel)
-        poets = poets.filter(PoetModel.mail.like(poet.mail))
-        if len([poet.to_json() for poet in poets]) > 0:
+        sameMail, sameUser = poets.filter(PoetModel.mail.like(poet.mail)), poets.filter(PoetModel.uname.like(poet.uname))
+        if len([poet.to_json() for poet in sameMail]) > 0:
             return 'Mail already taken', 400
+        if len([poet.to_json() for poet in sameUser]) > 0:
+            return 'Username already taken', 400
         poet.admin, poet.activated = False, False
         db.session.add(poet)
         db.session.commit()

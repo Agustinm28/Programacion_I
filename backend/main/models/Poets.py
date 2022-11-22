@@ -8,6 +8,7 @@ class Poet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     lname = db.Column(db.String(100), nullable=False)
+    uname = db.Column(db.String(100), nullable=False)
     mail = db.Column(db.String(100), nullable=False)
     passw = db.Column(db.String(30), nullable=False)
     admin = db.Column(db.Boolean(), nullable=False, default=False)
@@ -43,6 +44,7 @@ class Poet(db.Model):
             'id': self.id,
             'name': str(self.name),
             'lname': str(self.lname),
+            'uname': str(self.uname),
             'mail': str(self.mail),
             'admin': bool(self.admin),
             'activated': bool(self.activated),
@@ -57,7 +59,7 @@ class Poet(db.Model):
         rating = [rating.to_json_short() for rating in self.rating]
         poet_json = {
             'id': self.id,
-            'name': str(self.name) + ' ' + str(self.lname),
+            'uname': str(self.uname),
             'poems': poems,
             'poems_count': len(poems),
             'ratings_count': len(rating)
@@ -66,7 +68,7 @@ class Poet(db.Model):
     
     def to_json_short(self):
         poet_json = {
-            'name': str(self.name) + ' ' + str(self.lname),
+            'uname': str(self.uname),
             'user_id': str(self.id)
         }
         return poet_json
@@ -76,6 +78,7 @@ class Poet(db.Model):
         id = poet_json.get('id')
         name = poet_json.get('name')
         lname = poet_json.get('lname')
+        uname = poet_json.get('uname')
         mail = poet_json.get('mail')
         passw = poet_json.get('passw')
         admin = poet_json.get('admin')
@@ -83,6 +86,7 @@ class Poet(db.Model):
         return Poet(id=id,
                     name=name,
                     lname=lname,
+                    uname=uname,
                     mail=mail,
                     plain_password=passw,
                     admin=admin,
