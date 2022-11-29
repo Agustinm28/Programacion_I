@@ -12,8 +12,15 @@ export class ProfileTopComponent implements OnInit {
   token: any = localStorage.getItem("token")
   @Input("loggedPoet") poet: any
   
-  constructor( ) { }
+  constructor( 
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  cerrarSesion() {
+    this.authService.logout();
+    window.location.reload()
   }
 }

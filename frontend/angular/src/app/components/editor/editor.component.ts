@@ -66,7 +66,7 @@ export class EditorComponent implements OnInit {
           toast: true,
           position: 'bottom-end',
           showConfirmButton: false,
-          timer: 2000,
+          timer: 3100,
           timerProgressBar: true,
           didOpen: (toast: any) => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -76,7 +76,7 @@ export class EditorComponent implements OnInit {
         
         Toast.fire({
           icon: 'error',
-          title: 'Necesitas calificar más poemas antes de poder publicar.'
+          title: 'Necesitas calificar más poemas antes de poder publicar uno nuevo.'
         })
       }, complete: () => {
       }
@@ -100,7 +100,7 @@ export class EditorComponent implements OnInit {
         
         Toast.fire({
           icon: 'success',
-          title: 'Se ha actualizado tu poema "' + data.title + '".'
+          title: 'Se ha actualizado el poema "' + data.title + '".'
         })
         this.router.navigate(["/", "home"])
       }, error: (error) =>{

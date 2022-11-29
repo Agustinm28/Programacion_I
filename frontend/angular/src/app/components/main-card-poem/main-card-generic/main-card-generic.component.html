@@ -38,11 +38,11 @@
             </div>
             <div class="row" id="footerBottomTextRow">
               <div class="col-xxl-6 col-xl-4 col-md-6 col-sm-7 pb-3 ps-4 col-8">
-                <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger;"></i>
-                <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
-                <i class="fa-solid fa-star" style="color: #ffb703; font-size: larger"></i>
-                <i class="fa-solid fa-star" style="color: #ddd; font-size: 22px"></i>
-                <i class="fa-solid fa-star" style="color: #ddd; font-size: 22px"></i>
+                <i class="fa-solid" id="star1" [ngClass]="{'fa-star' : (fullStar(1) || !halfStar(1)), 'fa-star-half-stroke' : halfStar(1)}" [ngStyle]="{'color': (fullStar(1) || halfStar(1))  ? '#ffb703' : '#ddd'}"></i>
+                <i class="fa-solid" id="star2" [ngClass]="{'fa-star' : (fullStar(2) || !halfStar(2)), 'fa-star-half-stroke' : halfStar(2)}" [ngStyle]="{'color': (fullStar(2) || halfStar(2))  ? '#ffb703' : '#ddd'}"></i>
+                <i class="fa-solid" id="star3" [ngClass]="{'fa-star' : (fullStar(3) || !halfStar(3)), 'fa-star-half-stroke' : halfStar(3)}" [ngStyle]="{'color': (fullStar(3) || halfStar(3))  ? '#ffb703' : '#ddd'}"></i>
+                <i class="fa-solid" id="star4" [ngClass]="{'fa-star' : (fullStar(4) || !halfStar(4)), 'fa-star-half-stroke' : halfStar(4)}" [ngStyle]="{'color': (fullStar(4) || halfStar(4))  ? '#ffb703' : '#ddd'}"></i>
+                <i class="fa-solid" id="star5" [ngClass]="{'fa-star' : (fullStar(5) || !halfStar(5)), 'fa-star-half-stroke' : halfStar(5)}" [ngStyle]="{'color': (fullStar(5) || halfStar(5))  ? '#ffb703' : '#ddd'}"></i>
                 <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">{{ poem.av_rating }}</label>
                 <label *ngIf="poem.av_rating==null" class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">0</label>
               </div>

@@ -28,4 +28,25 @@ export class MainCardGenericComponent implements OnInit {
   editPoem(poemId: any): void {
     localStorage.setItem("editId", poemId)
   }
+
+  fullStar(starId: any): boolean {
+    let rating = this.poem.av_rating != null ? this.poem.av_rating : 0
+    if (parseInt(starId) <= rating) {
+      return true
+    }
+    return false
+  }
+
+  halfStar(starId: any): boolean {
+    let rating = this.poem.av_rating != null ? this.poem.av_rating : 0
+    console.log(rating)
+    console.log(parseInt(starId))
+    if (rating == 0) {
+      return false
+    }
+    if ((parseInt(starId) > rating) && (Math.round(rating) != Math.trunc(rating))) {
+      return true
+    }
+    return false
+  }
 }
