@@ -1,49 +1,33 @@
-<div class="container-sm shadow-lg pt-3 px-3 pb-3 my-auto" style="background-color: #ad9781;"> 
+<div class="container-sm shadow-lg pt-3 px-3 pb-3 my-auto" style="background-color: rgb(173, 151, 129, 0.4);border-radius: 6px;"> 
     <div class="row py-auto">
         <a routerLink="/login" style="text-decoration: none;">
-            <i class="bi bi-arrow-left" style="color: whitesmoke; font-weight: bold; font-size: 50px;"></i>
+            <i class="bi bi-arrow-left" style="color: whitesmoke; font-weight: bold; font-size: 40px;"></i>
         </a>
     </div>
-    <div class="col-lg-10 mt-2 mb-5 px-5 mx-auto shadow-lg" style="background-color: rgba(236, 200, 145, 0.24); border-radius: 50px;">
-        <div class="d-flex justify-content-start my-auto">
-            <div class="col-2">
-                <img src="assets/botella_login.jpg" class="rounded-circle pb-4 mx-auto pt-3" alt="Botellas en el mar" style="width: 12rem; box-shadow: inset;">
-            </div>
-            <div class="col-xl-9 col-lg-10 col-md-12 my-auto justify-content-end">
-                <div class="d-none d-md-block">
-                    <h1 class="text-center" style="color: white; font-weight: bolder; font-size: 60px;">Registrarse</h1>
-                </div>
-                <div class="d-md-none">
-                    <div class="text-end ps-5">
-                        <h1 class="ms-5 ps-5" style="color: white; font-weight: bolder; font-size: 40px;">Registrarse</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="login-form-wrap">
+        <img src="assets/logo_botellas_en_el_mar.png"
+                width="350"
+                height="50"
+                class="mt-3 mb-5">
         <form [formGroup]="registrationForm" id="registro">
-            <div class="col-12 mx-auto px-3">
-                <div class="form-outline mb-4 mt-3">
-                    <input type="text" required class="form-control" formControlName="name" placeholder="Nombre" aria-label="Nombre" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
-                </div>
-                <div class="form-outline mb-4">
-                    <input type="text" required class="form-control" formControlName="lname" placeholder="Apellido" aria-label="Apellido" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
-                </div> 
-                <div class="form-outline mb-4">
-                    <input type="text" required class="form-control" formControlName="uname" placeholder="Nombre de usuario" aria-label="Nombre de usuario" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
-                </div>
-                <div class="form-outline mb-4">
-                    <input type="email" required class="form-control" formControlName="mail" ngModel email placeholder="Dirección de correo" aria-label="Dirección de correo" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
-                </div>
-                <div class="form-outline mb-4">
-                    <input type="password" required formControlName="passw1" class="form-control" placeholder="Contraseña" aria-label="Contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
-                </div>
-                <div class="form-outline mb-4">
-                    <input type="password" required formControlName="passw2" class="form-control" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña" style="background-color: #e6ccb2; border-color: whitesmoke; border-width: 2px;" />
-                </div>              
-                <div class="text-center pb-5">
-                    <button class="btn btn-primary" (click)="submit()">Enviar solicitud de registro</button>
-                </div>
-            </div>
+            <p>
+            <input type="text" required class="form-control" formControlName="name" placeholder="Nombre" aria-label="Nombre" required><i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+            <input type="text" required class="form-control" formControlName="lname" placeholder="Apellido" aria-label="Apellido" required><i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+            <input type="text" required class="form-control" formControlName="uname" placeholder="Nombre de usuario" aria-label="Nombre de usuario" required><i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+            <input type="email" required class="form-control" formControlName="mail" ngModel email placeholder="Dirección de correo" aria-label="Dirección de correo" required><i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+            <input type="password" required formControlName="passw1" class="form-control" placeholder="Contraseña" aria-label="Contraseña" required><i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+            <input type="submit" (click)="submit()" id="register" value="Registrarme">
+            </p>
         </form>
     </div>
 </div>
