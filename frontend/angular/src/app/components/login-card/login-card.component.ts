@@ -36,6 +36,8 @@ export class LoginCardComponent implements OnInit {
 
   token:string;
 
+  
+
   login(data: any) {
     this.authService.login(data).subscribe({
       next: (rta: any) => {
