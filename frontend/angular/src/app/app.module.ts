@@ -63,6 +63,7 @@ import { RatingService } from './services/rating.service';
 import { MainCardGenericComponent } from './components/main-card-poem/main-card-generic/main-card-generic.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -132,7 +133,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
   providers: [
     PoemService,
     PoetService,
-    RatingService
+    RatingService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

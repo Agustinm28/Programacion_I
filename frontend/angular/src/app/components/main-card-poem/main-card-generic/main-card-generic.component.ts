@@ -39,8 +39,6 @@ export class MainCardGenericComponent implements OnInit {
 
   halfStar(starId: any): boolean {
     let rating = this.poem.av_rating != null ? this.poem.av_rating : 0
-    console.log(rating)
-    console.log(parseInt(starId))
     if (rating == 0) {
       return false
     }

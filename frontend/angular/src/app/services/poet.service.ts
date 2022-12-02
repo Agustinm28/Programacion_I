@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,12 @@ export class PoetService {
   url = 'poets'
   
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private authService:AuthService
   ) { }
 
-  getPoets(token?: string, params?: { [key: PropertyKey]: any }) {
+  getPoets(token?:string, params?: { [key: PropertyKey]: any }) {
+    token=this.authService.getIdToken();
     let heads = new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*').set('Authorization', 'Bearer ' + token)
     let httpP = new HttpParams()
     if (token != undefined) {
