@@ -31,8 +31,12 @@
                 <p>
                 <input type="password" id="password" class="form-control" formControlName="passw" placeholder="Contraseña" aria-label="Contraseña" required><i class="validation"><span></span><span></span></i>
                 </p>
+                <div class="checkbox">
+                    <input id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue" formControlName="recuerdame">
+                    <label for="checkbox-signup"> Recuerdame </label>
+                </div>
                 <p>
-                <input type="submit" id="login" value="Iniciar Sesion">
+                <input type="submit" (click)="submit()" id="login" value="Iniciar Sesion">
                 </p>
             </form>
             <div id="create-account-wrap">
