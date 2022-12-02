@@ -11,19 +11,22 @@
                 class="mt-3 mb-5">
         <form [formGroup]="registrationForm" id="registro">
             <p>
-            <input type="text" required class="form-control" formControlName="name" placeholder="Nombre" aria-label="Nombre" required><i class="validation"><span></span><span></span></i>
+            <input type="text" required class="form-control" formControlName="name" placeholder="Nombre" aria-label="Nombre"><i class="validation"><span></span><span></span></i>
             </p>
             <p>
-            <input type="text" required class="form-control" formControlName="lname" placeholder="Apellido" aria-label="Apellido" required><i class="validation"><span></span><span></span></i>
+            <input type="text" required class="form-control" formControlName="lname" placeholder="Apellido" aria-label="Apellido"><i class="validation"><span></span><span></span></i>
             </p>
             <p>
-            <input type="text" required class="form-control" formControlName="uname" placeholder="Nombre de usuario" aria-label="Nombre de usuario" required><i class="validation"><span></span><span></span></i>
+            <input type="text" required class="form-control" formControlName="uname" placeholder="Nombre de usuario" aria-label="Nombre de usuario"><i class="validation"><span></span><span></span></i>
             </p>
             <p>
-            <input type="email" required class="form-control" formControlName="mail" ngModel email placeholder="Dirección de correo" aria-label="Dirección de correo" required><i class="validation"><span></span><span></span></i>
+            <input type="email" required class="form-control" formControlName="mail" ngModel email placeholder="Dirección de correo" aria-label="Dirección de correo"><i class="validation"><span></span><span></span></i>
             </p>
             <p>
-            <input type="password" required formControlName="passw1" class="form-control" placeholder="Contraseña" aria-label="Contraseña" required><i class="validation"><span></span><span></span></i>
+            <input type="password" required formControlName="passw1" class="form-control" placeholder="Contraseña" aria-label="Contraseña"><i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+            <input type="password" required formControlName="passw2" class="form-control" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña"><i class="validation"><span></span><span></span></i>
             </p>
             <p>
             <input type="submit" (click)="submit()" id="register" value="Registrarme">
