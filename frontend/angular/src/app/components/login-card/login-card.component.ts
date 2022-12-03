@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import Swal from 'sweetalert2';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-card',
@@ -15,8 +16,11 @@ export class LoginCardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private cookie:CookieService
   ) { }
+
+    // MUESTRA UN POEMA AL AZAR EN EL INICIO DE SESION
 
   poemarray = [
     ['Como muchas cartas, como muchos relatos, también hay mensajes que son botellas al mar [...]. Es así, pienso, que se operan las comunicaciones profundas.','- Julio Cortázar.','assets/cortazar.png'],
@@ -27,19 +31,19 @@ export class LoginCardComponent implements OnInit {
               ];
   random = this.poemarray[Math.floor(Math.random() * this.poemarray.length)];
 
+  // SE AGRUPA MAIL Y PASSWORD EN EL FORMBUILDER
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       mail: ['', Validators.required], 
-      passw: ['', Validators.required]  
+      passw: ['', Validators.required]
     });
   }
 
-  token:string;
-
-  
+  rme:any
 
   login(data: any) {
-    this.authService.login(data).subscribe({
+    this.authService.login(data).subscribe({ // SE LLAMA A AUTHSERVICE PARA LOGEAR AL USUARIO
       next: (rta: any) => {
         const Toast = Swal.mixin({
           toast: true,
@@ -57,8 +61,8 @@ export class LoginCardComponent implements OnInit {
           icon: 'success',
           title: 'Logueado exitosamente'
         })
-        localStorage.setItem('token', rta.access_token);
-        this.router.navigate(["/", "home"])
+        localStorage.setItem('token', rta.access_token) // GUARDA EL TOKEN CON PERSISTENCIA
+        this.router.navigate(["/", "home"]) // TE DEVUELVE AL HOME SI EL LOGIN FUE EXITOSO
       }, error: (error) =>{
         const Toast = Swal.mixin({
           toast: true,
@@ -76,17 +80,20 @@ export class LoginCardComponent implements OnInit {
           icon: 'error',
           title: 'Usuario y/o contraseña incorrecto/s'
         })
-        localStorage.removeItem('token');
+        localStorage.removeItem('token'); // SE ELIMINA EL VALOR DEL TOKEN DEL ALMACENAMIENTO LOCAL EN CASO DE QUE EL USUARIO Y PASSWORD NO SEAN CORRECTOS
+        this.cookie.set('token', "");
       }, complete: () => {
       }
     })
   }
 
-  submit() {
+  submit() { // SE ENVIA MAIL Y PASSWORD A LA FUNCION LOGIN
     if (this.loginForm.valid) {
       let mail = this.loginForm.value.mail;
       let passw = this.loginForm.value.passw;
+      
       this.login({mail, passw});
+
     }
     else{
       const Toast = Swal.mixin({

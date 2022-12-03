@@ -14,11 +14,10 @@ export class PoetService {
   ) { }
 
   getPoets(token?:string, params?: { [key: PropertyKey]: any }) {
-    token=this.authService.getIdToken();
-    let heads = new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*').set('Authorization', 'Bearer ' + token)
+    let heads = new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*').set('Authorization', 'Bearer ' + token) //OBTIENE TOKEN DE USER
     let httpP = new HttpParams()
     if (token != undefined) {
-      heads = heads.set('Authorization', 'Bearer ' + token)
+      heads = heads.set('Authorization', 'Bearer ' + token) // TOKEN DE USUSARIO
     }
     for (let key in params) {
       let value = params[key];
