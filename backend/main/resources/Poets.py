@@ -9,24 +9,24 @@ from main.auth.decorators import admin_required
 class Poet(Resource):
 
     @jwt_required(optional = True)
-    def get(self, id):
+    def get(self, id): # Devuelve el JSON del poeta
         poet = db.session.query(PoetModel).get_or_404(id)
         poetId = get_jwt_identity()
         claims = get_jwt()
         if claims != {}:
             if poetId == int(id) or claims['admin'] == True:
-                return poet.to_json()
-        return poet.to_json_public()
+                return poet.to_json() # Devuelve JSON completo si el id que hace el request es del admin
+        return poet.to_json_public() # Devuelve el JSON publico si no es admin
 
     @admin_required
-    def delete(self, id):
+    def delete(self, id): # Eliminar poeta
         poet = db.session.query(PoetModel).get_or_404(id)
         db.session.delete(poet)
         db.session.commit()
         return 'Poet deleted', 204
 
     @jwt_required()
-    def put(self, id):
+    def put(self, id): # Se agrega un nuevo poeta
         poet = db.session.query(PoetModel).get_or_404(id)
         data = request.get_json().items()
         poetId = get_jwt_identity()
@@ -118,7 +118,7 @@ class Poets(Resource):
                         })
 
     @jwt_required(optional = True)
-    def post(self):
+    def post(self): # Registro de usuario
         poet = PoetModel.from_json(request.get_json())
         poets = db.session.query(PoetModel)
         sameMail, sameUser = poets.filter(PoetModel.mail.like(poet.mail)), poets.filter(PoetModel.uname.like(poet.uname))

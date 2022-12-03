@@ -69,10 +69,49 @@
     }
   }
   /* If the screen size is smaller than 1200px, set the font-size to 80px */
-  @media (max-width: 1999.9px) {
+@media (max-width: 1999.9px) {
     .logo-bem {
 		width:360px;
         height:50px;
     }
   }
+
+#nav-box {
+	background: linear-gradient(to right, rgb(100, 114, 118,0.95),rgb(157, 142, 142), rgb(207, 160, 136,0.95));
+}
+
+#container-box {
+	margin-right: 100px;
+	flex-shrink: 10;
+}
+
+#logout {
+	margin-left: 200px;
+	padding-bottom: 10px;
+}
+
+#prof-photo {
+	width: 100px;
+	height: 100px;
+}
+
+#hello {
+	padding-right: 30px;
+	margin-top: 30px;
+}
+
+#pluma {
+	margin-top: 10px;
+}
+
+#search {
+	margin-left: 50px;
+	margin-top: 10px;
+	width: 850px;
+}
+
+#searchbox {
+	margin-left: 30px;
+	text-decoration-color: black;
+}
   

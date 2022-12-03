@@ -1,14 +1,14 @@
-<nav class="navbar navbar-dark sticky-top navbar-expand-xxl pt-1 pb-3 shadow-5-strong" style="background-color: rgb(124, 102, 70, 0.95);">
-  <div class="container-fluid">
+<nav id="nav-box" class="navbar navbar-dark sticky-top navbar-expand-xxl pt-1 pb-3 shadow-5-strong">
+  <div id="container-box" class="container-fluid">
     <a class="navbar-brand ps-5 pt-3 pb-2" routerLink="/home">
       <img class="logo-bem" src="assets/logo_botellas_en_el_mar.png"
         >
     </a>
-    <form class="d-flex col-xl-6 col-lg-5 col-md-4 mx-2 col-xs-2 pt-3 pb-2 ps-5">
-      <a routerLink="/logged/filtered" class="btn btn-secondary ms-xl-3 ms-md-1 ms-sm-0" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #6f1d1b; border-color: white; border-width: 2px">
+    <form id="search" class="d-flex col-xl-6 col-lg-5 col-md-4 col-xs-2">
+      <a routerLink="/logged/filtered" class="btn btn-secondary" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #5a696d; border-color: white; border-width: 2px">
         <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
       </a>
-      <input class="form-control ms-xl-4 ms-md-2 ms-sm-3 me-xl-5 me-md-1 me-sm-3" type="search" style="background-color: #dabcb7; border-color: white; border-width: 2px;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
+      <input id="searchbox" class="form-control" type="search" style="background-color: whitebone;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
     </form>
     <div class="text-end pe-3">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,8 +22,8 @@
             <i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="Editor de poemas" id="pEditorButton" *ngIf="isLogged" style="border-radius: 30px; background-color: #99582a; border-color: white; border-width: 2px" aria-expanded="false" routerLink="/login/admin/editor">
+        <li id="pluma" class="nav-item">
+          <a class="btn btn-dark" type="submit" data-toggle="tooltip" data-placement="bottom" title="Editor de poemas" id="pEditorButton" *ngIf="isLogged" style="border-radius: 30px; background-color: #647276; border-color: white; border-width: 2px" aria-expanded="false" routerLink="/login/admin/editor">
             <i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>
           </a>
         </li>
@@ -34,11 +34,11 @@
         <div class="row me-auto">
           <div class="d-none d-xxl-block">
             <div class="text-end">
-              <h3 class="mx-auto"><b>Hola, {{ poet.uname }}!</b></h3>
+              <h3 id="hello" class="mx-auto"><b>Hola, {{ poet.uname }}!</b></h3>
             </div>
             <div class="d-none d-xxl-block">
               <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0" *ngIf="isLogged">
-                <li class="nav-item me-xxl-3 me-sm-0 mt-3"><a class="text-white" (click)="cerrarSesion()">Logout</a></li>
+                <li id="logout" class="nav-item me-xxl-3 me-sm-0 mt-3"><a active href="#" class="text-white" (click)="cerrarSesion()">Logout</a></li>
               </ul>
             </div>
           </div>
@@ -47,14 +47,9 @@
       <div class="col-2 me-auto">
         <div class="ms-auto">
           <a id=profPicture routerLink="/login/admin/profile">
-            <div class="d-xxl-none">
-              <div class="text-start ms-3 mt-md-0 mt-sm-4" *ngIf="isLogged">
-                <img class="rounded" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
-              </div>
-            </div>
             <div class="d-none d-xxl-block" *ngIf="isLogged">
               <div class="text-end">
-                <img class="rounded float-end" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
+                <img id="prof-photo" class="rounded float-end" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
               </div>
             </div>
           </a>

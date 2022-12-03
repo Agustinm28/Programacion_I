@@ -30,7 +30,7 @@ export class RegistrationCardComponent implements OnInit {
   }
 
   postRegistration(data: any) {
-    this.poetService.postPoet(data).subscribe({
+    this.poetService.postPoet(data).subscribe({ // SE LLAMA LA FUNCION QUE AGREGA AL POETA A LA DB
       next: (rta: any) => {
         const Toast = Swal.mixin({
           toast: true,
@@ -45,7 +45,7 @@ export class RegistrationCardComponent implements OnInit {
         Toast.fire({
           icon: 'success',
           title: 'Solicitud de registro exitosa',
-          text: 'Cuando tu solicitud sea aprobada, recibirás un correo y podrás acceder a tu cuenta.',
+          text: 'Se te informara a traves de correo electronico cuando se apruebe tu solicitud',
           showConfirmButton: true
         })
         this.router.navigate(["/", "login"])
@@ -64,7 +64,7 @@ export class RegistrationCardComponent implements OnInit {
         
         Toast.fire({
           icon: 'error',
-          title: 'El mail y/o el nombre de usuario ya han sido tomados.'
+          title: 'El mail y/o el nombre de usuario ya han sido tomados'
         })
       }, complete: () => {
       }
@@ -87,7 +87,7 @@ export class RegistrationCardComponent implements OnInit {
       
       Toast.fire({
         icon: 'error',
-        title: 'Se deben completar todos los campos correctamente.'
+        title: 'Faltan campos por completar'
       })
 
       return
@@ -107,7 +107,7 @@ export class RegistrationCardComponent implements OnInit {
       
       Toast.fire({
         icon: 'error',
-        title: 'Las contraseñas no coinciden.'
+        title: 'Las contraseñas no coinciden'
       })
 
       return
@@ -127,7 +127,7 @@ export class RegistrationCardComponent implements OnInit {
       
       Toast.fire({
         icon: 'error',
-        title: 'La contraseña debe tener una longitud menor a 30 caracteres.'
+        title: 'La contraseña debe tener una longitud menor a 30 caracteres'
       })
 
       return

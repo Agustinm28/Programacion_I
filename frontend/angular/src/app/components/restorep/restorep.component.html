@@ -1,0 +1,19 @@
+<div class="container-sm shadow-lg pt-3 px-3 pb-3 my-auto pb-5" style="background-color: rgb(173, 151, 129, 0.4);border-radius: 6px;"> 
+    <div class="row py-auto">
+        <a routerLink="/login" href="#" style="text-decoration: none;">
+            <i class="bi bi-arrow-left"  style="color: whitesmoke; font-weight: bold; font-size: 40px;"></i>
+        </a>
+    </div>
+    <div id="login-form-wrap">
+        <h2 id="title">Restablece tu contraseña</h2>
+        <p>Enviar codigo de recuperacion a:</p>
+        <form [formGroup]="restoreForm" id="restore">
+            <p>
+            <input type="email" required class="form-control" formControlName="mail" placeholder="Dirección mail" aria-label="Dirección mail"><i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+            <input type="submit" (click)="get_poet_id()" id="register" value="Continuar">
+            </p>
+        </form>
+    </div>
+</div>

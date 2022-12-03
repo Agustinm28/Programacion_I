@@ -64,6 +64,16 @@ import { MainCardGenericComponent } from './components/main-card-poem/main-card-
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CookieService } from 'ngx-cookie-service';
+import { RestorepassComponent } from './pages/restorepass/restorepass.component';
+import { RestorepComponent } from './components/restorep/restorep.component';
+import { ChangepComponent } from './components/changep/changep.component';
+import { ChangepassComponent } from './pages/changepass/changepass.component';
+
+import { RestorepasswordService } from './services/restorepassword.service';
+import { EditprofilepageComponent } from './pages/editprofilepage/editprofilepage.component';
+import { EditprofileComponent } from './components/editprofile/editprofile.component';
+
+
 
 @NgModule({
   declarations: [
@@ -120,7 +130,13 @@ import { CookieService } from 'ngx-cookie-service';
     FilteredDropdownsComponent,
     FilteredPoemsChanoComponent,
     FilteredPoemsBrunengoComponent,
-    MainCardGenericComponent
+    MainCardGenericComponent,
+    RestorepassComponent,
+    RestorepComponent,
+    ChangepComponent,
+    ChangepassComponent,
+    EditprofilepageComponent,
+    EditprofileComponent
   ],
   imports: [
     ApplicationModule,
@@ -134,7 +150,8 @@ import { CookieService } from 'ngx-cookie-service';
     PoemService,
     PoetService,
     RatingService,
-    CookieService
+    CookieService,
+    RestorepasswordService
   ],
   bootstrap: [AppComponent]
 })

@@ -14,14 +14,20 @@ import { DeleteOrModifyComponent } from './pages/delete-or-modify/delete-or-modi
 import { PendingRequestComponent } from './pages/pending-request/pending-request.component';
 import { FilteredComponent } from './pages/filtered/filtered.component';
 import { AuthsessionGuard } from './guards/authsession.guard';
+import { RestorepassComponent } from './pages/restorepass/restorepass.component'
+import { ChangepassComponent } from './pages/changepass/changepass.component'
+import { EditprofilepageComponent } from './pages/editprofilepage/editprofilepage.component'
 
 const routes: Routes = [
   { path: '', component: HomeAdminComponent},
   { path: 'home', component: HomeAdminComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
+  { path: 'restore', component: RestorepassComponent },
+  { path: 'change_password', component: ChangepassComponent },
   { path: 'logged/:username', component: HomeRegUserComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/profile', component: ProfileComponent, canActivate:[AuthsessionGuard] },
+  { path: 'login/admin/profile/edit', component: EditprofilepageComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/editor', component: PoemEditorComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/:poemId/comments', component: CommentsComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/delete_or_modify', component: DeleteOrModifyComponent, canActivate:[AuthsessionGuard] },

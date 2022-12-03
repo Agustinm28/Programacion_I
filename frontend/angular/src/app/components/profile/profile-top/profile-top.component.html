@@ -1,4 +1,4 @@
-<div class="row mb-3 justify-content-start">   
+<div id="boxer" class="row mb-3 justify-content-start">   
     <div class="col-1 p-1 my-auto ms-5 me-xxl-2 me-xl-2 me-lg-2 me-md-5 me-sm-5">
         <img src="assets/lilita_profile.png" class="rounded-circle shadow-lg" style="border-radius: 110px;" alt="profile" width="100px">
     </div>
@@ -6,7 +6,7 @@
         <h3 class="display-4 py-3 px-3">{{ poet.uname }}</h3>
     </div>
     <div class="col-xxl-5 col-xl-4 col-lg-3 col-md-6 col-sm-8 my-auto pt-md-4 pt-sm-3 text-end">
-        <button type="button" class="btn btn-primary btn-lg ms-5 me-2">Editar perfil</button>
+        <button type="button" routerLink="/login/admin/profile/edit" class="btn btn-primary btn-lg ms-5 me-2">Editar perfil</button>
     </div>
     <div class="col-auto my-auto pt-md-4 pt-sm-3 text-end">
         <a type="button text-decoration-none" class="btn btn-danger btn-lg" (click)="cerrarSesion()">Cerrar sesion</a>
