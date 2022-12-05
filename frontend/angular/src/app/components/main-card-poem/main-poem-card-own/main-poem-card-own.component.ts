@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -12,9 +13,12 @@ export class MainPoemCardOwnComponent implements OnInit {
   loggedId: any
   isAdmin: any
   
-  constructor( ) { }
+  constructor( private datepipe:DatePipe) { }
 
   ngOnInit(): void {
+
+    this.poem.date=this.datepipe.transform(this.poem.date, 'dd/MM/yyyy')
+
     if (this.token) {
       this.loggedId = JSON.parse(window.atob(this.token.split('.')[1])).id;
       this.isAdmin = JSON.parse(window.atob(this.token.split('.')[1])).admin;
@@ -26,6 +30,25 @@ export class MainPoemCardOwnComponent implements OnInit {
 
   editPoem(poemId: any): void {
     localStorage.setItem("editId", poemId)
+  }
+
+  fullStar(starId: any): boolean {
+    let rating = this.poem.av_rating != null ? this.poem.av_rating : 0
+    if (parseInt(starId) <= rating) {
+      return true
+    }
+    return false
+  }
+
+  halfStar(starId: any): boolean {
+    let rating = this.poem.av_rating != null ? this.poem.av_rating : 0
+    if (rating == 0) {
+      return false
+    }
+    if ((parseInt(starId) > rating) && (Math.round(rating) != Math.trunc(rating))) {
+      return true
+    }
+    return false
   }
 
 }

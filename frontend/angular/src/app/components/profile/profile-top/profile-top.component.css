@@ -1,3 +1,81 @@
 #boxer {
     margin-top: 20px;
 }
+
+#username-box {
+    font-size: 50px;
+}
+
+#profpic {
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 990px) {
+
+    #username-box {
+        font-size: 35px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    #username-box {
+        font-size: 35px;
+    }
+
+    
+}
+
+@media (max-width: 650px) {
+
+    #username-box {
+        font-size: 30px;
+    }
+
+    
+}
+
+@media (max-width: 575px) {
+
+    #username-box {
+        font-size: 25px;
+    }
+
+    #profpic {
+        width: 90px;
+        height: 90px;
+    }
+    
+}
+
+@media (max-width: 500px) {
+
+    #username-box {
+        font-size: 20px;
+    }
+
+    #profpic {
+        width: 80px;
+        height: 80px;
+    }
+    
+
+    
+}
+
+@media (max-width: 420px) {
+
+    #username-box {
+        font-size: 18px;
+    }
+
+    #profpic {
+        width: 80px;
+        height: 80px;
+    }
+    
+
+    
+}
