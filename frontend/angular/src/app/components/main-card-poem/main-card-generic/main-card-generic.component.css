@@ -1,60 +1,452 @@
-/* If the screen size is 1200px wide or more, set the font-size to 80px */
-@media (min-width: 1200px) {
+
+
+@media (min-width: 1600.0px) {
     .poem-title {
       font-size: 25px;
+      padding-left: 15px;
     }
-  }
-  /* If the screen size is smaller than 1200px, set the font-size to 80px */
-  @media (max-width: 600px) {
-    .poem-title {
-      font-size: 19px;
-    }
-  }
-  @media (min-width: 1200px) {
+
     .card-text {
       font-size: 25px;
+      padding-left: 15px;
     }
-  }
-  /* If the screen size is smaller than 1200px, set the font-size to 80px */
-  @media (max-width: 600px) {
-    .card-text {
-      font-size: 17px;
-    }
-  }
-  @media (min-width: 1200px) {
+
     .poet-name {
       font-size: 25px;
+      margin-left: 5%;
     }
-  }
-  /* If the screen size is smaller than 1200px, set the font-size to 80px */
-  @media (max-width: 600px) {
-    .poet-name {
-      font-size: 22px;
-    }
-  }
-  @media (min-width: 1200px) {
+
     .cal {
       font-size: 20px;
     }
-  }
-  /* If the screen size is smaller than 1200px, set the font-size to 80px */
-  @media (max-width: 600px) {
-    .cal {
-      font-size: 18px;
-    }
-  }
-  @media (min-width: 1200px) {
+
     .c-prom {
       font-size: 20px;
     }
-  }
-  /* If the screen size is smaller than 1200px, set the font-size to 80px */
-  @media (max-width: 600px) {
-    .c-prom {
-      font-size: 18px;
+
+    #prof-photo {
+      width: 100px;
+      height: 100px;
     }
+
+    #date {
+      margin-left: 100%;
+    }
+
+    #ratevalue {
+      font-size: 25px;
+    }
+
+    #ratecount {
+      font-size: 25px;
+    }
+
+    #icon {
+      font-size: 25px;
+      padding-bottom: 5px;
+    }
+
+    #datevalue {
+      padding-right: 15px;
+    }
+
+    #star1, #star2, #star3, #star4, #star5 {
+      font-size: larger;
+    }
+
+  }
+  
+@media (max-width: 1599.0px) {
+  .poem-title {
+    font-size: 25px;
+    padding-left: 15px;
   }
 
-#star1, #star2, #star3, #star4, #star5 {
-  font-size: larger;
+  .card-text {
+    font-size: 25px;
+    padding-left: 15px;
+  }
+
+  .poet-name {
+    font-size: 25px;
+    margin-left: 8%;
+  }
+
+  .cal {
+    font-size: 20px;
+  }
+
+  .c-prom {
+    font-size: 20px;
+  }
+
+  #prof-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  #ratevalue {
+    font-size: 25px;
+  }
+
+  #ratecount {
+    font-size: 25px;
+  }
+
+  #icon {
+    font-size: 25px;
+    padding-bottom: 5px;
+  }
+
+  #datevalue {
+    padding-right: 15px;
+  }
+
+  #star1, #star2, #star3, #star4, #star5 {
+    font-size: larger;
+  }
+
 }
+
+  @media (max-width: 1199.0px) {
+    .poem-title {
+      font-size: 25px;
+      padding-left: 15px;
+    }
+
+    .card-text {
+      font-size: 25px;
+      padding-left: 15px;
+    }
+
+    .poet-name {
+      font-size: 25px;
+      margin-left: 12%;
+    }
+
+    .cal {
+      font-size: 20px;
+    }
+
+    .c-prom {
+      font-size: 20px;
+    }
+
+    #prof-photo {
+      width: 100px;
+      height: 100px;
+    }
+
+    #ratevalue {
+      font-size: 25px;
+    }
+
+    #ratecount {
+      font-size: 25px;
+    }
+
+    #icon {
+      font-size: 25px;
+      padding-bottom: 5px;
+    }
+
+    #datevalue {
+      padding-right: 15px;
+    }
+
+    #star1, #star2, #star3, #star4, #star5 {
+      font-size: larger;
+    }
+
+  }
+
+  @media (max-width: 990.0px) {
+    .poem-title {
+      font-size: 25px;
+      padding-left: 15px;
+    }
+
+    .card-text {
+      font-size: 25px;
+      padding-left: 15px;
+    }
+
+    .poet-name {
+      font-size: 25px;
+      margin-left: 1%;
+    }
+
+    .cal {
+      font-size: 20px;
+    }
+
+    .c-prom {
+      font-size: 20px;
+    }
+
+    #container-max {
+      width: 100%;
+    }
+
+    #prof-photo {
+      width: 100px;
+      height: 100px;
+    }
+
+    #ratevalue {
+      font-size: 25px;
+    }
+
+    #ratecount {
+      font-size: 25px;
+    }
+
+    #icon {
+      font-size: 25px;
+      padding-bottom: 5px;
+    }
+    
+    #datevalue {
+      padding-right: 15px;
+    }
+
+    #star1, #star2, #star3, #star4, #star5 {
+      font-size: larger;
+    }
+
+  }
+
+  @media (max-width: 720.0px) {
+    .poem-title {
+      font-size: 20px;
+    }
+
+    .card-text {
+      font-size: 20px;
+    }
+
+    .poet-name {
+      font-size: 20px;
+      margin-left: 0%;
+    }
+
+    .cal {
+      font-size: 15px;
+    }
+
+    .c-prom {
+      font-size: 15px;
+    }
+
+    #container-max {
+      width: 100%;
+    }
+
+    #prof-photo {
+      width: 80px;
+      height: 80px;
+    }
+
+    #ratevalue {
+      font-size: 20px;
+    }
+
+    #ratecount {
+      font-size: 20px;
+    }
+
+    #icon {
+      font-size: 20px;
+    }
+
+    #datevalue {
+      padding-right: 15px;
+    }
+
+    #star1, #star2, #star3, #star4, #star5 {
+      font-size: larger;
+    }
+
+
+  }
+
+  @media (max-width: 580.0px) {
+    .poem-title {
+      font-size: 18px;
+    }
+
+    .card-text {
+      font-size: 18px;
+    }
+
+    .poet-name {
+      font-size: 20px;
+      margin-left: 0%;
+    }
+
+    .cal {
+      font-size: 15px;
+    }
+
+    .c-prom {
+      font-size: 15px;
+    }
+
+    #container-max {
+      width: 100%;
+    }
+
+    #prof-photo {
+      width: 70px;
+      height: 70px;
+    }
+
+    .card {
+      width: 100%;
+
+    }
+
+    #ratevalue {
+      font-size: 18px;
+    }
+
+    #ratecount {
+      font-size: 18px;
+    }
+
+    #icon {
+      font-size: 18px;
+    }
+
+    #datevalue {
+      padding-right: 15px;
+    }
+
+    #container-max {
+      width: 100%;
+    }
+
+    #star1, #star2, #star3, #star4, #star5 {
+      font-size: medium;
+    }
+
+  }
+
+  @media (max-width: 480.0px) {
+    .poem-title {
+      font-size: 18px;
+    }
+
+    .card-text {
+      font-size: 18px;
+    }
+
+    .poet-name {
+      font-size: 17px;
+      margin-left: 0%;
+    }
+
+    .cal {
+      font-size: 15px;
+    }
+
+    .c-prom {
+      font-size: 15px;
+    }
+
+    #container-max {
+      width: 100%;
+    }
+
+    #prof-photo {
+      width: 70px;
+      height: 70px;
+    }
+
+    .card {
+      width: 100%;
+
+    }
+
+    #ratevalue {
+      font-size: 18px;
+    }
+
+    #ratecount {
+      font-size: 18px;
+    }
+
+    #icon {
+      font-size: 18px;
+    }
+
+    #datevalue {
+      padding-right: 15px;
+    }
+
+    #star1, #star2, #star3, #star4, #star5 {
+      font-size: medium;
+    }
+
+
+  }
+
+  @media (max-width: 460.0px) {
+    .poem-title {
+      font-size: 18px;
+    }
+
+    .card-text {
+      font-size: 18px;
+    }
+
+    .poet-name {
+      font-size: 15px;
+      margin-left: 0%;
+    }
+
+    .cal {
+      font-size: 13px;
+    }
+
+    .c-prom {
+      font-size: 13px;
+    }
+
+    #container-max {
+      width: 100%;
+    }
+
+    #prof-photo {
+      width: 60px;
+      height: 60px;
+    }
+
+    .card {
+      width: 100%;
+
+    }
+
+    #ratevalue {
+      font-size: 18px;
+    }
+
+    #ratecount {
+      font-size: 18px;
+    }
+
+    #icon {
+      font-size: 18px;
+    }
+
+    #datevalue {
+      padding-right: 15px;
+    }
+
+    #star1, #star2, #star3, #star4, #star5 {
+      font-size: medium;
+    }
+
+
+  }
+

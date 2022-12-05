@@ -1,30 +1,32 @@
-<div class="mb-4">
+<div id="container-max" class="container-fluid mb-4">
     <div class="card" id="poemPreview" style="background-color: rgb(230, 204, 178, 1)">
         <div class="card-body">
           <div class="row mb-4 ms-2 me-2 pe-5 mt-2" style="background-color: white; border-radius: 30px">
             <div class="col-lg-1 col-md-2 col-sm-3 mt-3 mb-3 p-1 col-4">
-              <img src="assets/chano_profile.png" class="img-fluid ms-3" alt="profile" width="100" height="100">
+              <img id="prof-photo" src="assets/chano_profile.png" class="img ms-3" alt="profile">
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-2 col my-auto justify-content-center ms-3">
+            <div class="col-6 my-auto justify-content-center ms-3">
               <h3 class="poet-name">{{ poem.poet.uname }}</h3>
             </div>
           </div>
+
           <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
-            <div class="col-sm-auto" *ngIf="poem.poet.user_id==loggedId || isAdmin">
+            <div class="col-12" *ngIf="poem.poet.user_id==loggedId || isAdmin">
               <a class="text-decoration-none" routerLink="/login/admin/editor" (click)="editPoem(poem.id)" data-toggle="tooltips" data-placement="bottom" title="Editar poema">
-                <i id="icon" class="bi bi-pencil" style="font-size: 1.5rem; color: rgb(0, 0, 0);"></i>
+                <i id="icon" class="bi bi-pencil" style=" color: rgb(0, 0, 0);"></i>
               </a>
             </div>
-            <div class="col-6 me-4 pe-4">
+            <div class="col-xl-6 col-6">
               <p class="poem-title" style="color: rgb(22, 20, 20); font-weight: bold;">{{ poem.title }}</p>
             </div>
-            <div class="col-5 text-end">
-              <p style="font-size: 15px; color: lightslategray;">{{ poem.date }}</p>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-end">
+              <p id="datevalue" style="font-size: 15px; color: lightslategray;">{{ poem.date }}</p>
             </div>
             <div class="col-12 p-3">
               <p class="card-text" style="text-align:left;"> {{ poem.body }} </p>
             </div>
           </div>
+
           <div class="row mt-4 mb-2 mx-1" style="background-color: white; border-radius: 30px;">
             <div class="d-flex d-block justify-content-center" id="footerTopTextRow">
               <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 pt-2 col-6 text-start">
@@ -43,11 +45,11 @@
                 <i class="fa-solid" id="star3" [ngClass]="{'fa-star' : (fullStar(3) || !halfStar(3)), 'fa-star-half-stroke' : halfStar(3)}" [ngStyle]="{'color': (fullStar(3) || halfStar(3))  ? '#ffb703' : '#ddd'}"></i>
                 <i class="fa-solid" id="star4" [ngClass]="{'fa-star' : (fullStar(4) || !halfStar(4)), 'fa-star-half-stroke' : halfStar(4)}" [ngStyle]="{'color': (fullStar(4) || halfStar(4))  ? '#ffb703' : '#ddd'}"></i>
                 <i class="fa-solid" id="star5" [ngClass]="{'fa-star' : (fullStar(5) || !halfStar(5)), 'fa-star-half-stroke' : halfStar(5)}" [ngStyle]="{'color': (fullStar(5) || halfStar(5))  ? '#ffb703' : '#ddd'}"></i>
-                <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">{{ poem.av_rating }}</label>
-                <label *ngIf="poem.av_rating==null" class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">0</label>
+                <label id="ratevalue" class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">{{ poem.av_rating }}</label>
+                <label id="ratevalue" *ngIf="poem.av_rating==null" class="ms-3" style="color: black; font-weight: 800;">0</label>
               </div>
               <div class="col-xxl-6 col-xl-8 col-lg-6 col-sm-5 pb-3 pe-5 col-4 text-end">
-                <label class="ms-3" style="font-size: 1.6rem; color: black; font-weight: 800;">{{ poem.rating_count }}</label>
+                <label id="ratecount" class="ms-3" style="color: black; font-weight: 800;">{{ poem.rating_count }}</label>
               </div>
             </div>
           </div>

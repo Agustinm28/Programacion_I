@@ -4,3 +4,22 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+#container-max {
+  width: 77%;
+}
+
+@media (max-width: 1399.0px) {
+  #container-max {
+    width: 90%;
+  }
+
+}
+
+@media (max-width: 990.0px) {
+  #container-max {
+    width: 100%;
+  }
+
+}
+

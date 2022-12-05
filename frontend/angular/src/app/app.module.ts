@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.modules';
 import { ApplicationModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common'
 
 import { AppComponent } from './app.component';
 import { HomeAdminComponent } from './pages/home-admin/home-admin.component';
@@ -151,7 +152,8 @@ import { EditprofileComponent } from './components/editprofile/editprofile.compo
     PoetService,
     RatingService,
     CookieService,
-    RestorepasswordService
+    RestorepasswordService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

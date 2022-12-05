@@ -1,10 +1,9 @@
 <nav id="nav-box" class="navbar navbar-dark sticky-top navbar-expand-xxl pt-1 pb-3 shadow-5-strong">
   <div id="container-box" class="container-fluid">
-    <a class="navbar-brand ps-5 pt-3 pb-2" routerLink="/home">
-      <img class="logo-bem" src="assets/logo_botellas_en_el_mar.png"
-        >
+    <a id="logo-container" class="navbar-brand pt-3 pb-2" routerLink="/home">
+      <img class="logo-bem" src="assets/logo_botellas_en_el_mar.png">
     </a>
-    <form id="search" class="d-flex col-xl-6 col-lg-5 col-md-4 col-xs-2">
+    <form id="search" class="d-flex col-xl-6">
       <a routerLink="/logged/filtered" class="btn btn-secondary" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #5a696d; border-color: white; border-width: 2px">
         <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
       </a>
@@ -15,9 +14,9 @@
         <span class="navbar-toggler-icon" style="color: whitesmoke;"></span>
       </button>
     </div>
-    <div class="d-none d-xxl-block">
+    <div class="d-none d-xxl-block"> 
       <ul ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item me-3">
+        <li id="abm" class="nav-item me-3">
           <a class="btn btn-dark" routerLink="/login/admin/delete_or_modify" type="submit" data-toggle="tooltip" data-placement="bottom" title="ABM" id="adminButton" *ngIf="isAdmin" style="border-radius: 30px; background-color: #bb9457; border-color: white; border-width: 2px" aria-expanded="false">
             <i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>
           </a>
@@ -28,7 +27,7 @@
           </a>
         </li>
       </ul>
-    </div>
+    </div> 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="container-fluid ms-4" style="color: white;">
         <div class="row me-auto">
@@ -55,21 +54,60 @@
           </a>
           <div class="d-none d-xxl-block">
             <div class="col">
-              <i class="bi bi-person-circle ms-auto" *ngIf="!isLogged" style="font-size: 4rem; color: white;"></i>
+              <i id="prof-photo-un" class="bi bi-person-circle ms-auto" *ngIf="!isLogged" style="color: white;"></i>
             </div>
           </div>
           <div class="d-none d-xxl-block">
             <div class="row float-start">
-              <a class="link" *ngIf="!isLogged" routerLink="/login" style="color: white;">Login</a>
+              <a id="login-un" class="link" *ngIf="!isLogged" routerLink="/login" style="color: white;">Login</a>
             </div>  
           </div>
         </div>
       </div>
-      <div class="d-xxl-none">
-        <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0">
-          <li class="nav-item me-3" *ngIf="isAdmin"><i class="bi bi-people-fill" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login/admin/pending_request" class="text-white">ABM</a></li>
-          <li class="nav-item me-3" *ngIf="isLogged"><i class="bi bi-vector-pen" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login/admin/editor" class="text-white">Editor de poemas</a></li>
-          <li class="nav-item me-3" *ngIf="!isLogged"><i class="bi bi-box-arrow-in-right" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login" class="text-white">Login</a></li>
+      <div id="toggler-container" class="d-xxl-none"> <!-- Parte del toggler -->
+        <hr>
+        <form id="toggler-search" class="d-flex col-xl-6">
+          <a routerLink="/logged/filtered" class="btn btn-secondary" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #5a696d; border-color: white; border-width: 2px">
+            <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
+          </a>
+          <input id="toggler-searchbox" class="form-control" type="search" style="background-color: whitebone;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
+        </form>
+        <hr id="hr-short">
+        <div class="container-fluid ms-4" style="color: white;">
+          <div class="row me-auto">
+            <div>
+              <div class="text-center">
+                <h3 id="hello" class="mx-auto"><b>Hola, {{ poet.uname }}!</b></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 me-auto">
+          <div class="ms-auto">
+            <a id=profPicture routerLink="/login/admin/profile">
+              <div *ngIf="isLogged">
+                <div class="text-center">
+                  <img id="prof-photo" class="rounded float-center" width="65px" src="assets/lilita_profile.png" alt="profile" data-toggle="tooltip" data-placement="bottom" title="Mi perfil">
+                </div>
+              </div>
+            </a>
+            <div>
+              <ul class="navbar-nav text-center" *ngIf="isLogged">
+                <li id="toggler-logout" class="nav-item float-center"><a active href="#" class="text-white" (click)="cerrarSesion()">Logout</a></li>
+              </ul>
+            </div>
+            <div>
+              <div class="col">
+                <i id="toggler-prof-un" class="bi bi-person-circle ms-auto" *ngIf="!isLogged" style="font-size: 4rem; color: white;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr id="hr-short">
+        <ul id="toggler-items-container" class="navbar-nav me-auto ms-3 mb-2 mb-lg-0">
+          <li class="nav-item me-3" *ngIf="isAdmin"><i id="t-item" class="bi bi-people-fill pe-2" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login/admin/pending_request" class="text-white">ABM</a></li>
+          <li class="nav-item me-3" *ngIf="isLogged"><i id="t-item" class="bi bi-vector-pen pe-2" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login/admin/editor" class="text-white">Editor de poemas</a></li>
+          <li class="nav-item me-3" *ngIf="!isLogged"><i id="t-item" class="bi bi-box-arrow-in-right pe-2" style="font-size: 1.35rem; color: white;"></i>  <a routerLink="/login" class="text-white">Login</a></li>
         </ul>
       </div>
     </div>

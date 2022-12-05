@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PoetService } from 'src/app/services/poet.service';
+import { DatePipe } from '@angular/common'
+
 
 @Component({
   selector: 'app-main-card-generic',
@@ -13,9 +15,15 @@ export class MainCardGenericComponent implements OnInit {
   loggedId: any
   isAdmin: any
   
-  constructor( ) { }
+  constructor(private datepipe:DatePipe) { 
+  }
 
   ngOnInit(): void {
+
+    console.log(this.poem.date);
+
+    this.poem.date=this.datepipe.transform(this.poem.date, 'dd/MM/yyyy')
+    
     if (this.token) {
       this.loggedId = JSON.parse(window.atob(this.token.split('.')[1])).id;
       this.isAdmin = JSON.parse(window.atob(this.token.split('.')[1])).admin;
@@ -23,7 +31,10 @@ export class MainCardGenericComponent implements OnInit {
     }
     this.loggedId = -1
     this.isAdmin = false
+    
+
   }
+
 
   editPoem(poemId: any): void {
     localStorage.setItem("editId", poemId)
