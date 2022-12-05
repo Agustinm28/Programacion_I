@@ -1,1 +1,35 @@
-<p>editprofile works!</p>
+<div id="login-form-wrap">
+    <div id="databox-profile" class="col-auto my-auto ms-4 justify-content-center">
+        <p id="labeltext-profile">Imagen de perfil</p>
+        <img src="assets/lilita_profile.png" class="rounded-circle shadow-lg" style="border-radius: 110px;" alt="profile" width="210px">
+        <p>
+            <input type="submit"  id="changepicture" value="Cambiar">
+        </p>
+    </div>
+    <div id="databox" class="col-auto my-auto ms-4 justify-content-center">
+        <p id="labeltext">Nombre de usuario</p>
+        <h3 id="datatext" class="display-4 py-3 px-3">{{ poet.uname }}</h3>
+    </div>
+    <div id="databox-mail" class="col-auto my-auto ms-4 justify-content-center">
+        <p id="labeltext">Dirección de correo electrónico</p>
+        <h3 id="datatext" class="display-4 py-3 px-3">{{ poet.mail }} </h3>
+    </div>
+    <form [formGroup]="userForm" id="userdata">
+        <p id="labeltext-act">Datos actualizables</p>
+        <p>
+        <input id="txtbox" type="text" required class="form-control" value="{{poet.name}}" formControlName="name" placeholder="Nombre" aria-label="Nombre"><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input id="txtbox" type="text" required class="form-control" value="{{poet.lname}}" formControlName="lname" placeholder="Apellido" aria-label="Apellido"><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input id="txtbox" type="password" required formControlName="passw1" class="form-control" placeholder="Nueva Contraseña" aria-label="Contraseña"><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input id="txtbox" type="password" required formControlName="passw2" class="form-control" placeholder="Repetir Contraseña" aria-label="Contraseña"><i class="validation"><span></span><span></span></i>
+        </p>
+        <p>
+        <input type="submit" id="change" value="Actualizar datos">
+        </p>
+    </form>
+</div>

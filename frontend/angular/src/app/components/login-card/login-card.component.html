@@ -1,15 +1,11 @@
-<div class="container-lg shadow-lg px-3 mx-auto pb-3" style="background-color: rgb(173, 151, 129, 0.4); border-radius: 6px;"> 
+<div id="tr-box" class="container-lg shadow-lg mx-auto pb-3" style="background-color: rgb(173, 151, 129, 0.4); border-radius: 6px;"> 
     <div class="row py-auto">
         <a routerLink="" style="text-decoration: none;">
             <i class="bi bi-arrow-left" style="color: whitesmoke; font-weight: bold; font-size: 40px;"></i>
         </a>
     </div>
     <div class="d-flex justify-content-center my-auto">
-        <div class="col-xl-6 col-lg-5 col-sm-4 mt-4 ms-5 mb-5 shadow-lg" style="background-color: rgba(73, 47, 9, 0.24); border-radius: 6px;">
-            
-            <div class="d-md-none">
-                <img src="assets/botella_login.jpg" width="250" class="rounded-circle img-fluid center-block d-block pb-4 mx-auto px-auto pt-3" alt="Botellas en el mar">
-            </div>
+        <div id="poem-box" class="col-xl-6 col-lg-5 col-sm-4 mt-4 ms-5 mb-5 shadow-lg" style="background-color: rgba(73, 47, 9, 0.24); border-radius: 6px;">
             <div class="d-none d-lg-block m-5 pt-3">
                 <img id="poet-img" src="{{random[2]}}" width="250" style="border-radius: 999em; border:2px solid #61503d;line-height: 0;width: 250px;height: 250px;padding: 5px;" class="img-fluid center-block d-block  mx-auto px-auto" alt="Botellas en el mar">
                 <p class="pt-3 mt-3" style="text-align: center; color: white; font-weight: 200; border-radius: 30px; font-size: 20px">
@@ -21,22 +17,28 @@
             </div>   
         </div>
         <div id="login-form-wrap" >
-            <img src="assets/logo_botellas_en_el_mar.png"
+            <img id="title-box" src="assets/logo_botellas_en_el_mar.png"
                     width="350"
                     height="50">
             <form id="login-form" [formGroup]="loginForm">
                 <p>
-                <input type="email" id="email" class="form-control" formControlName="mail" placeholder="Dirección email" aria-label="Email" required><i class="validation"><span></span><span></span></i>
+                <input type="email" required class="form-control" formControlName="mail" placeholder="Dirección de correo" aria-label="Dirección de correo"><i class="validation"><span></span><span></span></i>
                 </p>
                 <p>
-                <input type="password" id="password" class="form-control" formControlName="passw" placeholder="Contraseña" aria-label="Contraseña" required><i class="validation"><span></span><span></span></i>
+                <input type="password" required formControlName="passw" class="form-control" placeholder="Contraseña" aria-label="Contraseña"><i class="validation"><span></span><span></span></i>
                 </p>
+                <div class="col d-flex justify-content-center" style="size: 100px;">
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value=""/>
+                        <label class="form-check-label" style="color: white;">Recuérdame</label>
+                    </div>
+                </div>
                 <p>
                 <input type="submit" (click)="submit()" id="login" value="Iniciar Sesion">
                 </p>
             </form>
             <div id="create-account-wrap">
-                <p class="pt-3"><a routerLink="/register" class="link-light me-4">Crear cuenta</a><a routerLink="/restore" class="link-light ms-4">¿Olvidaste tu contraseña?</a><p>
+                <p class="pt-3"><a routerLink="/register" class="link-light me-4">Crear cuenta</a><a routerLink="#" class="link-light ms-4">¿Olvidaste tu contraseña?</a><p>
             </div><!--create-account-wrap-->
         </div>
     </div>
