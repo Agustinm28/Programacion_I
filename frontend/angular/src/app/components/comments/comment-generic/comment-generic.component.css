@@ -1,0 +1,94 @@
+@media (min-width: 1101px) { 
+
+    #photo-prof {
+        width: 100px;
+        height: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #username {
+        padding-left: 10%;
+    }
+
+    #bodycal {
+        font-size: 1.6rem;
+    }
+
+}
+
+@media (max-width: 1100px) { 
+
+    #photo-prof {
+        width: 100px;
+        height: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #username {
+        padding-left: 20%;
+    }
+
+    #bodycal {
+        font-size: 1.6rem;
+    }
+
+}
+
+@media (max-width: 820px) { 
+
+    #photo-prof {
+        width: 100px;
+        height: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #username {
+        padding-left: 30%;
+    }
+
+    #bodycal {
+        font-size: 1.6rem;
+    }
+
+}
+
+@media (max-width: 580px) { 
+
+    #photo-prof {
+        width: 80px;
+        height: 80px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #username {
+        padding-left: 30%;
+    }
+
+    #bodycal {
+        font-size: 1.3rem;
+    }
+
+}
+
+@media (max-width: 440px) { 
+
+    #photo-prof {
+        width: 80px;
+        height: 80px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #username {
+        padding-left: 30%;
+    }
+
+    #bodycal {
+        font-size: 1.1rem;
+    }
+
+}

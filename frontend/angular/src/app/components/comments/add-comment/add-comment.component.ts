@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RatingService } from 'src/app/services/rating.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AddCommentComponent implements OnInit {
   calForm!: FormGroup;
+ 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -21,6 +22,7 @@ export class AddCommentComponent implements OnInit {
 
   }
 
+  @Input('poem') poem: any
   rate:number=0;
   comment:string=''
   ratereset1:number=2;
@@ -28,63 +30,21 @@ export class AddCommentComponent implements OnInit {
   ratereset3:number=2;
   ratereset4:number=2;
   ratereset5:number=2;
-  currentRate:number=3;
   color:any;
   token: any = localStorage.getItem("token")
-  previousRate: any = {body: ""}
-
-  
 
   ngOnInit(): void {
     this.calForm = this.formBuilder.group({
-    comentario: ['', Validators.required]
+    comentario: ['', Validators.required],
     });
 
+    
   }
 
   sendComment(data:any) {
 
     this.comment = this.calForm.value.comentario
 
-    this.ratingService.postRatings(this.token, data).subscribe({
-      next: (rta: any) => {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'bottom-end',
-          showConfirmButton: false,
-          timer: 2000,
-          timerProgressBar: true,
-          didOpen: (toast: any) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-        
-        Toast.fire({
-          icon: 'success',
-          title: 'Se ha publicado tu poema "' + data.title + '".'
-        })
-        this.router.navigate(["/", "home"])
-      }, error: (error) =>{
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'bottom-end',
-          showConfirmButton: false,
-          timer: 3100,
-          timerProgressBar: true,
-          didOpen: (toast: any) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-        
-        Toast.fire({
-          icon: 'error',
-          title: 'Necesitas calificar más poemas antes de poder publicar uno nuevo.'
-        })
-      }, complete: () => {
-      }
-    })
     
     
   }

@@ -73,6 +73,7 @@ import { ChangepassComponent } from './pages/changepass/changepass.component';
 import { RestorepasswordService } from './services/restorepassword.service';
 import { EditprofilepageComponent } from './pages/editprofilepage/editprofilepage.component';
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
+import { CommentGenericComponent } from './components/comments/comment-generic/comment-generic.component';
 
 
 
@@ -137,7 +138,8 @@ import { EditprofileComponent } from './components/editprofile/editprofile.compo
     ChangepComponent,
     ChangepassComponent,
     EditprofilepageComponent,
-    EditprofileComponent
+    EditprofileComponent,
+    CommentGenericComponent
   ],
   imports: [
     ApplicationModule,

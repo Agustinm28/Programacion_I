@@ -1,0 +1,32 @@
+<div class="col-12 mt-4 mb-2 mx-auto"> 
+    <div class="card" style="background-color: rgb(219, 206, 199); border-radius: 40px;">
+        <div class="card-body">
+          <div class="row m-2" style="background-color: whitesmoke; border-radius: 30px">
+            <div class="col-1 p-1 my-auto ms-4">
+              <img id="photo-prof" src="assets/chano_profile.png" class="img" alt="profile">
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-md-4 col-sm-6 col-8 my-auto py-4 justify-content-center">
+              <h3 id="username">username</h3>
+            </div>
+          </div>
+          <div class="row mx-2 my-4" style="background-color: white; border-radius: 20px">
+            <div class="col-xxl-3 col-xl-3 col-md-3 col-sm-12 p-3 pb-3 my-auto">
+                <p style="background-color: rgb(238, 216, 144); outline-color: rgb(238, 216, 144); color: black; border-radius: 30px; text-align: center;">Calificación</p>
+                <div class="row" id="footerBottomTextRow">
+                    <div class="col-4 pb-3 ps-4">
+                      <i class="fa-solid" id="star1" [ngClass]="{'fa-star' : (fullStar(1) || !halfStar(1)), 'fa-star-half-stroke' : halfStar(1)}" [ngStyle]="{'color': (fullStar(1) || halfStar(1))  ? '#ffb703' : '#ddd'}"></i>
+                      <i class="fa-solid" id="star2" [ngClass]="{'fa-star' : (fullStar(2) || !halfStar(2)), 'fa-star-half-stroke' : halfStar(2)}" [ngStyle]="{'color': (fullStar(2) || halfStar(2))  ? '#ffb703' : '#ddd'}"></i>
+                      <i class="fa-solid" id="star3" [ngClass]="{'fa-star' : (fullStar(3) || !halfStar(3)), 'fa-star-half-stroke' : halfStar(3)}" [ngStyle]="{'color': (fullStar(3) || halfStar(3))  ? '#ffb703' : '#ddd'}"></i>
+                      <i class="fa-solid" id="star4" [ngClass]="{'fa-star' : (fullStar(4) || !halfStar(4)), 'fa-star-half-stroke' : halfStar(4)}" [ngStyle]="{'color': (fullStar(4) || halfStar(4))  ? '#ffb703' : '#ddd'}"></i>
+                      <i class="fa-solid" id="star5" [ngClass]="{'fa-star' : (fullStar(5) || !halfStar(5)), 'fa-star-half-stroke' : halfStar(5)}" [ngStyle]="{'color': (fullStar(5) || halfStar(5))  ? '#ffb703' : '#ddd'}"></i>
+                      <label id="ratevalue" style="font-size: 1.6rem; color: black; font-weight: 800;">rate</label>
+                      <label id="ratevalue" *ngIf="poem.av_rating==null" style="color: black; font-weight: 800;">0</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-9 col-xl-9 col-md-9 col-sm-12 py-4 px-md-5 my-auto justify-content-center border rounded" style="background-color: rgba(241, 241, 241, 0.623); border-radius: 10px;">
+                <p id="bodycal" class="card-text p-2" style="text-align:center; color: black; font-weight: 400;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur officia dolores incidunt facilis a ut doloremque labore aliquam exercitationem iusto beatae nisi aliquid perferendis optio, numquam rem nobis asperiores vero?</p>
+            </div>
+        </div>
+      </div>
+    </div> 
