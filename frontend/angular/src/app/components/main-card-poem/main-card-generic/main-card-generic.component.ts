@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PoetService } from 'src/app/services/poet.service';
 import { DatePipe } from '@angular/common'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,12 +16,10 @@ export class MainCardGenericComponent implements OnInit {
   loggedId: any
   isAdmin: any
   
-  constructor(private datepipe:DatePipe) { 
+  constructor(private datepipe:DatePipe, private router: Router) { 
   }
 
   ngOnInit(): void {
-
-    console.log(this.poem.date);
 
     this.poem.date=this.datepipe.transform(this.poem.date, 'dd/MM/yyyy')
     
@@ -35,6 +34,9 @@ export class MainCardGenericComponent implements OnInit {
 
   }
 
+  goComments(poemId:any): void {
+    this.router.navigate(["/login/admin/" + poemId + '/comments'])
+  }
 
   editPoem(poemId: any): void {
     localStorage.setItem("editId", poemId)

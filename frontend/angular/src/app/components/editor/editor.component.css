@@ -1,0 +1,35 @@
+#editor-logo {
+    font-size: 50px;
+}
+
+@media (max-width: 575px) {
+
+    #items {
+        width: 93%;
+    }
+
+    #editor-logo {
+        font-size: 40px;
+    }
+
+    #editor-title {
+        font-size: 40px;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    #items {
+        width: 92%;
+    }
+
+    #editor-logo {
+        font-size: 35px;
+    }
+
+    #editor-title {
+        font-size: 35px;
+    }
+
+}

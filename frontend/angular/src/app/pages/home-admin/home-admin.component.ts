@@ -21,8 +21,13 @@ export class HomeAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.poemService.getPoems(this.token).subscribe((data: any) => {
+
+      console.log(data);
+      
+
       this.pData = data.pages;
       this.poems = data.poem;
+      
      })
     if (this.token) {
       let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));

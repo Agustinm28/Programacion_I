@@ -1,38 +1,42 @@
 <div class="card" style="background-color: rgb(216, 216, 216); border-radius: 40px;">
     <div class="card-body">
-      <div class="row m-2" style="background-color: whitesmoke; border-radius: 20px">
-        <div class="col-xl-4 col-md-6 col-sm-8 mt-3 justify-content-center">
-          <h3>Dejá tu calificación</h3>
+      <div id="title-row" class="row m-2" style="background-color: whitesmoke; border-radius: 20px">
+        <div class="col-12 mt-3 justify-content-center">
+          <h3 id="card-title">Dejá tu calificación</h3>
         </div>
       </div>
-      <div class="row mx-2 my-4" style="background-color: white; border-radius: 20px">
+      <div id="row-cal" class="row mx-2 my-4" style="background-color: white; border-radius: 20px">
         <form class="d-flex" method="submit" action="comments_and_reviews.html">
-          <div class="col-xl-auto p-3 pb-3 my-auto">
-            <div class="col-12">
+          <div class="col-10 p-3 pb-3 my-auto"> <!-- LABEL CALIFICACION, ESTRELLAS -->
+            <div id="cal-label" class="col-12">
               <p style="background-color: rgb(238, 216, 144); outline-color: rgb(238, 216, 144); color: black; border-radius: 30px; text-align: center;">Calificación</p>
             </div>
-            <fieldset class="rating">
-              <input type="radio" id="star5" name="rating" value="5" onclick="updateStarCount('star5')"/><label class = "full" for="star5" title="Excelente"></label>
-              <input type="radio" id="star4" name="rating" value="4" onclick="updateStarCount('star4')"/><label class = "full" for="star4" title="Muy bueno"></label>
-              <input type="radio" id="star3" name="rating" value="3" onclick="updateStarCount('star3')"/><label class = "full" for="star3" title="Bueno"></label>
-              <input type="radio" id="star2" name="rating" value="2" onclick="updateStarCount('star2')"/><label class = "full" for="star2" title="Regular"></label>
-              <input type="radio" id="star1" name="rating" value="1" onclick="updateStarCount('star1')"/><label class = "full" for="star1" title="Malo"></label>
+            <fieldset id="ratingbox">
+              <button id="starb1" class="btn btn-dark" type="submit" (click)="updateStarCount('star1')"><i id="star-icon1" class="bi bi-star-fill" style=" color: #d8d4d4;"></i></button><label class="full" for="starb1" title="Malo" ></label>
+              <button id="starb2" class="btn btn-dark" type="submit" (click)="updateStarCount('star2')"><i id="star-icon2" class="bi bi-star-fill" style=" color: #d8d4d4;"></i></button><label class = "full"  for="starb2" title="Regular" ></label>
+              <button id="starb3" class="btn btn-dark" type="submit" (click)="updateStarCount('star3')"><i id="star-icon3" class="bi bi-star-fill" style=" color: #d8d4d4;"></i></button><label class = "full"  for="starb3" title="Bueno" ></label>
+              <button id="starb4" class="btn btn-dark" type="submit" (click)="updateStarCount('star4')"><i id="star-icon4" class="bi bi-star-fill" style=" color: #d8d4d4;"></i></button><label class = "full"  for="starb4" title="Muy bueno" ></label>
+              <button id="starb5" class="btn btn-dark" type="submit" (click)="updateStarCount('star5')"><i id="star-icon5" class="bi bi-star-fill" style=" color: #d8d4d4;"></i></button><label class = "full"  for="starb5" title="Excelente" ></label>
             </fieldset>
           </div>
-          <div class="col-md-1 col-sm-3 p-3 my-auto me-xl-5 me-md-2">
-            <p style="font-size: 1.6rem; color: black; font-weight: 800;" id="starCount">0</p>
+          <div class="col-2 p-3 my-auto me-xl-5 me-md-2"> <!-- RATE NUMBER -->
+            <p style="color: black; font-weight: 800;" id="starCount">{{ this.rate }}</p>
           </div>
-          <div class="col-md-7 col-sm-3 p-3 my-auto justify-content-center border rounded">
-            <input class="form-control" required type="review" style="background-color: white; border-color: rgb(255, 255, 255); border-width: 10px;" placeholder="Escribe tu comentario..." aria-label="Calificar">
+        </form>
+      </div>
+      <div class="row mx-2 my-4" style="background-color: white; border-radius: 20px">
+          <div id="comment-container" class="col-xxl-11 col-xl-11 col-md-11 col-sm-11 col-11 p-3 my-auto justify-content-center border rounded"> <!-- COMMENT SECTION -->
+            <form id="login-form" [formGroup]="calForm">
+              <input id="commentbox" type="text" required class="form-control" formControlName="comentario" placeholder="Escribe tu comentario" aria-label="Escribe tu comentario"><i class="validation"><span></span><span></span></i>
+            </form>
           </div>
-          <div class="col-md-1 my-auto ms-xl-4 ms-md-2">
-            <button class="btn btn-dark" type="submit" data-toggle="tooltips" data-placement="bottom" title="Publicar calificación" style="border-radius: 30px; background-color: rgb(238, 216, 144); border-color: black; border-width: 2px" aria-expanded="false">
+          <div id="buttoncont" class="col-1 my-auto ms-xl-4 ms-md-2"> <!-- PUBLISH BUTTON -->
+            <button id="sendbut" class="btn btn-dark" type="submit" (click)="submit()" data-toggle="tooltips" data-placement="bottom" title="Publicar calificación" style="border-radius: 30px; background-color: rgb(238, 216, 144); border-color: black; border-width: 2px" aria-expanded="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-send-fill" viewBox="0 0 16 16">
                 <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
               </svg>
             </button>
           </div>
-        </form>
       </div>
     </div>
   </div>

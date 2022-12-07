@@ -1,5 +1,5 @@
 <div id="container-max" class="container-fluid mb-4">
-    <div class="card" id="poemPreview" style="background-color: rgb(230, 204, 178, 1)">
+    <div class="card" href="#" (click)="goComments(poem.id)" id="poemPreview" style="background-color: rgb(230, 204, 178, 1)">
         <div class="card-body">
           <div class="row mb-4 ms-2 me-2 pe-5 mt-2" style="background-color: white; border-radius: 30px">
             <div class="col-lg-1 col-md-2 col-sm-3 mt-3 mb-3 p-1 col-4">
@@ -9,7 +9,6 @@
               <h3 class="poet-name">{{ poem.poet.uname }}</h3>
             </div>
           </div>
-
           <div class="row pt-1 pb-5 m-2 border rounded" style="background-color: white">
             <div class="col-12" *ngIf="poem.poet.user_id==loggedId || isAdmin">
               <a class="text-decoration-none" routerLink="/login/admin/editor" (click)="editPoem(poem.id)" data-toggle="tooltips" data-placement="bottom" title="Editar poema">

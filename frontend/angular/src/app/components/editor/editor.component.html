@@ -7,23 +7,20 @@
               <i class="bi bi-vector-pen" style="text-align: center; font-size: 70px; color: rgb(0, 0, 0);"></i>
             </div>
             <div class="d-md-none">
-              <i class="bi bi-vector-pen" style="text-align: center; font-size: 50px; color: rgb(0, 0, 0);"></i>
+              <i id="editor-logo" class="bi bi-vector-pen" style="text-align: center; color: rgb(0, 0, 0);"></i>
             </div>
           </div>
           </div>
         <div class="col-xxl-6 col-xl-7 ms-lg-2 my-auto align-items-center">
-          <div class="d-none d-lg-block">
-            <h1 class="display-1" style="text-align: center;">Poem Editor</h1>
-          </div>
-          <div class="d-lg-none">
-            <h2 class="display-2" style="text-align: center;">Poem Editor</h2>
+          <div>
+            <h2 id="editor-title" class="display-2" style="text-align: center;">Poem Editor</h2>
           </div>
         </div> 
       </div>
       <div class="row pt-1 pb-2 m-2">
         <form class="my-auto mx-auto" [formGroup]="poemForm">
           <div class="row">
-            <div class="col-xxl-3 col-xl-4 col-md-5 col-sm-7 py-2 ms-3 mx-sm-auto my-2 text-center border rounded" style="background-color: white;">
+            <div id="items" class="col-xxl-3 col-xl-4 col-md-5 col-sm-7 py-2 ms-3 mx-sm-auto my-2 text-center border rounded" style="background-color: white;">
               <i class="bi bi-type-bold" id="icon" style="font-size: 30px; color: rgb(0, 0, 0);"></i>
               <i class="bi bi-type-italic" id="icon" style="font-size: 30px; color: rgb(0, 0, 0);"></i>
               <i class="bi bi-type-underline" id="icon" style="font-size: 30px; color: rgb(0, 0, 0);"></i>
@@ -44,9 +41,9 @@
                 <button (click)="submit()" class="btn btn-outline-primary btn-lg ms-5 ms-sm-auto me-xl-2 me-lg-1 me-sm-auto" role="button" style="text-decoration: none">Publicar</button>
               </div>
             </div>
-            <div class="col-6 p-3 align-items-end">
+            <div class="col-6 p-3 align-items-start">
               <div class="text-center">
-                <button type="button" class="btn btn-outline-danger btn-lg ms-5 ms-sm-auto me-sm-3" data-bs-toggle="modal" data-bs-target="#discardConf">Descartar</button>
+                <button type="button" class="btn btn-outline-danger btn-lg" data-bs-toggle="modal" data-bs-target="#discardConf">Descartar</button>
               </div>
             </div>
           </div>

@@ -1,0 +1,582 @@
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+#ratingbox { 
+  border: none;
+  float: left;
+  padding-left: 10px;
+}
+
+#starb1, #starb2, #starb3, #starb4, #starb5 {
+  background-color: white;
+  border-color: white;
+  padding: 0 0 0 0;
+  border-radius: 100%;
+  font-size: 25px;
+  
+}
+
+#commentbox {
+  border-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#starCount {
+  font-size: 25px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#comment-container {
+  border-color: white;
+  color: white;
+}
+
+#title-row {
+  width: 30%;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+
+/* RESPONSIVE CONFIG */
+
+@media (min-width: 1800px) { 
+
+  #ratingbox { 
+    border: none;
+    float: center;
+    margin-left: 33%;
+  }
+
+  #comment-container {
+    width: 89%;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #starCount {
+    font-size: 25px;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  #row-cal {
+    width: 40%;
+  } 
+  
+
+}
+
+@media (max-width: 1799px) { 
+
+  #ratingbox { 
+    border: none;
+    float: center;
+    margin-left: 25%;
+  }
+
+  #comment-container {
+    width: 89%;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #starCount {
+    font-size: 25px;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  #row-cal {
+    width: 40%;
+  } 
+  
+
+}
+
+@media (max-width: 1410px) { 
+
+  #ratingbox { 
+    border: none;
+    float: left;
+    margin-left: 25%;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #card-title {
+    font-size: 25px;
+  }
+
+  #starCount {
+    font-size: 25px;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  #comment-container {
+    width: 89%;
+  }
+
+  #row-cal {
+    width: 40%;
+  } 
+  
+
+}
+
+@media (max-width: 1234px) { 
+
+  #ratingbox { 
+    border: none;
+    float: left;
+    margin-left: 25%;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #card-title {
+    font-size: 25px;
+  }
+
+  #starCount {
+    font-size: 25px;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  #row-cal {
+    width: 40%;
+  } 
+  
+
+}
+
+@media (max-width: 1197px) { 
+
+  #ratingbox { 
+    border: none;
+    float: left;
+    margin-left: 25%;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #comment-container {
+    width: 89%;
+  }
+
+  #card-title {
+    font-size: 25px;
+  }
+
+  #starCount {
+    font-size: 25px;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  #row-cal {
+    width: 40%;
+  } 
+
+  #title-row {
+    width: 40%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+  
+
+}
+
+@media (max-width: 990px) { 
+
+  #ratingbox { 
+    border: none;
+    float: left;
+    margin-left: 40%;
+  }
+
+  #title-row {
+    width: 98%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #card-title {
+    font-size: 25px;
+  }
+
+  #starCount {
+  font-size: 25px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#row-cal {
+    width: 98%;
+  } 
+  
+
+}
+
+@media (max-width: 800px) { 
+
+  #ratingbox { 
+    border: none;
+    float: left;
+    margin-left: 35%;
+  }
+
+  #title-row {
+    width: 98%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #card-title {
+    font-size: 25px;
+  }
+
+  #starCount {
+  font-size: 25px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#comment-container {
+  width: 85%;
+}
+
+#buttoncont {
+  padding-left: 20px;
+}
+
+#row-cal {
+  width: 98%;
+} 
+
+}
+
+@media (max-width: 690px) { 
+
+  #ratingbox { 
+    border: none;
+    float: left;
+    margin-left: 35%;
+  }
+
+  #title-row {
+    width: 98%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #card-title {
+    font-size: 20px;
+  }
+
+  #starCount {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#comment-container {
+  width: 83%;
+}
+
+#buttoncont {
+  padding-left: 20px;
+}
+
+#row-cal {
+  width: 98%;
+} 
+
+
+}
+
+@media (max-width: 560px) { 
+
+  #ratingbox { 
+    border: none;
+    float: left;
+    margin-left: 30%;
+  }
+
+  #title-row {
+    width: 98%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #card-title {
+    font-size: 20px;
+  }
+
+  #starCount {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#comment-container {
+  width: 80%;
+}
+
+#buttoncont {
+  padding-left: 20px;
+}
+
+#row-cal {
+  width: 98%;
+} 
+
+
+}
+
+@media (max-width: 470px) { 
+
+  #ratingbox { 
+    border: none;
+    float: left;
+    margin-left: 25%;
+  }
+
+  #title-row {
+    width: 98%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #card-title {
+    font-size: 20px;
+  }
+
+  #starCount {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#comment-container {
+  width: 75%;
+}
+
+#buttoncont {
+  padding-left: 20px;
+}
+
+#row-cal {
+  width: 98%;
+} 
+
+
+}
+
+@media (max-width: 410px) { 
+
+  #ratingbox { 
+    border: none;
+    float: left;
+    margin-left: 20%;
+  }
+
+  #title-row {
+    width: 98%;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    text-align: center;
+  }
+  
+  #starb1, #starb2, #starb3, #starb4, #starb5 {
+    background-color: white;
+    border-color: white;
+    padding: 0 0 0 0;
+    border-radius: 100%;
+    font-size: 20px;
+    
+  }
+  
+  #commentbox {
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #card-title {
+    font-size: 20px;
+  }
+
+  #starCount {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#comment-container {
+  width: 70%;
+}
+
+#buttoncont {
+  padding-left: 20px;
+}
+
+#row-cal {
+  width: 98%;
+} 
+
+
+}
+

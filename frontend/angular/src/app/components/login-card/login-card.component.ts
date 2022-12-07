@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import Swal from 'sweetalert2';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-card',
@@ -16,8 +15,7 @@ export class LoginCardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router,
-    private cookie:CookieService
+    private router: Router
   ) { }
 
     // MUESTRA UN POEMA AL AZAR EN EL INICIO DE SESION
@@ -81,7 +79,6 @@ export class LoginCardComponent implements OnInit {
           title: 'Usuario y/o contraseña incorrecto/s'
         })
         localStorage.removeItem('token'); // SE ELIMINA EL VALOR DEL TOKEN DEL ALMACENAMIENTO LOCAL EN CASO DE QUE EL USUARIO Y PASSWORD NO SEAN CORRECTOS
-        this.cookie.set('token', "");
       }, complete: () => {
       }
     })

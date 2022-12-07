@@ -61,10 +61,10 @@ import { FilteredPoemsBrunengoComponent } from './components/filtered/filtered-p
 import { PoemService } from './services/poem.service';
 import { PoetService } from './services/poet.service';
 import { RatingService } from './services/rating.service';
+import { LoadJSService } from './services/load-js.service'
 import { MainCardGenericComponent } from './components/main-card-poem/main-card-generic/main-card-generic.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { CookieService } from 'ngx-cookie-service';
 import { RestorepassComponent } from './pages/restorepass/restorepass.component';
 import { RestorepComponent } from './components/restorep/restorep.component';
 import { ChangepComponent } from './components/changep/changep.component';
@@ -151,9 +151,9 @@ import { EditprofileComponent } from './components/editprofile/editprofile.compo
     PoemService,
     PoetService,
     RatingService,
-    CookieService,
     RestorepasswordService,
-    DatePipe
+    DatePipe,
+    LoadJSService
   ],
   bootstrap: [AppComponent]
 })
