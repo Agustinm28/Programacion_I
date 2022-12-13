@@ -25,7 +25,9 @@ export class DeleteOrModifyComponent implements OnInit {
   }
 
   getActivatedPoets(): void {
-    this.pService.getPoets(this.token, {is_activated: 1, page: 1}).subscribe(({next: (data: any) => this.activatedPoets = data.poet}));
+    let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));
+    this.pService.getPoets(this.token, {is_activated: 1, page: 1, is_admin: 0, per_page: 10}).subscribe(({
+      next: (data: any) => this.activatedPoets = data.poet
+    }));
   }
-  
 }

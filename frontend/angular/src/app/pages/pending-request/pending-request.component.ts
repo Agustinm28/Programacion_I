@@ -19,7 +19,7 @@ export class PendingRequestComponent implements OnInit {
   ngOnInit(): void {
     let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));
     this.poService.getPoet(decodedJWT.id).subscribe((data: any) => this.loggedPoet = data)
-    this.poService.getPoets(this.token, {is_activated: 0}).subscribe((data: any) => this.unactivatedPoets = data.poet) 
+    this.poService.getPoets(this.token, {is_activated: 0, per_page: 10}).subscribe((data: any) => this.unactivatedPoets = data.poet) 
   }
 
 }

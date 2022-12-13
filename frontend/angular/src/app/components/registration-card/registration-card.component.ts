@@ -34,8 +34,6 @@ export class RegistrationCardComponent implements OnInit {
       next: (rta: any) => {
         const Toast = Swal.mixin({
           toast: true,
-
-          timerProgressBar: true,
           didOpen: (toast: any) => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
@@ -45,7 +43,7 @@ export class RegistrationCardComponent implements OnInit {
         Toast.fire({
           icon: 'success',
           title: 'Solicitud de registro exitosa',
-          text: 'Se te informara a traves de correo electronico cuando se apruebe tu solicitud',
+          text: 'Se te informara a traves de correo electronico cuando se apruebe tu solicitud.',
           showConfirmButton: true
         })
         this.router.navigate(["/", "login"])
@@ -64,7 +62,7 @@ export class RegistrationCardComponent implements OnInit {
         
         Toast.fire({
           icon: 'error',
-          title: 'El mail y/o el nombre de usuario ya han sido tomados'
+          title: 'El mail y/o el nombre de usuario ya han sido tomados.'
         })
       }, complete: () => {
       }
@@ -87,12 +85,12 @@ export class RegistrationCardComponent implements OnInit {
       
       Toast.fire({
         icon: 'error',
-        title: 'Faltan campos por completar'
+        title: 'Faltan campos por completar.'
       })
 
       return
     }
-    else if (!this.checkMatchingPassw()) {
+    if (!this.checkMatchingPassw()) {
       const Toast = Swal.mixin({
         toast: true,
         position: 'bottom-end',
@@ -107,12 +105,12 @@ export class RegistrationCardComponent implements OnInit {
       
       Toast.fire({
         icon: 'error',
-        title: 'Las contraseñas no coinciden'
+        title: 'Las contraseñas no coinciden.'
       })
 
       return
     }
-    else if (!this.checkPasswLength()) {
+    if (!this.checkPasswLength()) {
       const Toast = Swal.mixin({
         toast: true,
         position: 'bottom-end',
@@ -127,7 +125,7 @@ export class RegistrationCardComponent implements OnInit {
       
       Toast.fire({
         icon: 'error',
-        title: 'La contraseña debe tener una longitud menor a 30 caracteres'
+        title: 'La contraseña debe tener una longitud menor a 30 caracteres.'
       })
 
       return

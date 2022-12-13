@@ -62,6 +62,7 @@ class Poets(Resource):
             'ratings_count[gte]',
             'ratings_count[lte]',
             'is_activated',
+            'is_admin',
             'order_by'
         ]
         
@@ -83,6 +84,7 @@ class Poets(Resource):
                 'ratings_count[gte]': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) >= value)',
                 'ratings_count[lte]': 'poets.outerjoin(PoetModel.rating).group_by(PoetModel.id).having(func.count(RatingModel.id) <= value)',
                 'is_activated': 'poets.filter(PoetModel.activated == value)',
+                'is_admin': 'poets.filter(PoetModel.admin == value)',
                 'order_by': {
                     'uname': 'poets.order_by(PoetModel.uname)',
                     'uname[desc]': 'poets.order_by(PoetModel.uname.desc())',

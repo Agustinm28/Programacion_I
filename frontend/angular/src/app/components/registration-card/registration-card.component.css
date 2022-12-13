@@ -1,4 +1,4 @@
-body {
+  body {
     background-color: #9f9da7;
     font-size: 1.6rem;
     font-family: "Open Sans", sans-serif;
@@ -77,23 +77,27 @@ body {
     display: inline-block;
     background: white;
   }
+  
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="password"]:focus {
     border-color: rgb(100, 149, 126);
   }
+  
   input[type="text"]:focus:invalid,
   input[type="email"]:focus:invalid,
   input[type="password"]:focus:invalid {
     color: #cc1e2b;
     border-color: #cc1e2b;
   }
+  
   input[type="text"]:valid ~ .validation,
   input[type="email"]:valid ~ .validation,
   input[type="password"]:valid ~ .validation {
     display: block;
     border-color: #0C0;
   }
+  
   input[type="text"]:valid ~ .validation span,
   input[type="email"]:valid ~ .validation span,
   input[type="password"]:valid ~ .validation span {
@@ -101,6 +105,7 @@ body {
     position: absolute;
     border-radius: 6px;
   }
+  
   input[type="text"]:valid ~ .validation span:first-child,
   input[type="email"]:valid ~ .validation span:first-child,
   input[type="password"]:valid ~ .validation span:first-child {
@@ -111,6 +116,7 @@ body {
     -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
   }
+  
   input[type="text"]:valid ~ .validation span:last-child,
   input[type="email"]:valid ~ .validation span:last-child,
   input[type="password"]:valid ~ .validation span:last-child {
@@ -148,6 +154,7 @@ body {
     cursor: pointer;
     text-align: center;
   }
+  
   input[type="submit"]:hover {
     background-color: #329dd5;
     -webkit-transition: all 0.2s ease;
@@ -165,9 +172,9 @@ body {
 
 /*  RESPONSIVE CONFIG   */
 
-@media (max-width: 770px) {
-  #login-form-wrap {
-    width: 100%;
-    flex-grow: 10;
+  @media (max-width: 770px) {
+    #login-form-wrap {
+      width: 100%;
+      flex-grow: 10;
+    }
   }
-}

@@ -4,18 +4,18 @@
         <div class="d-flex justify-content-between">
             <h5 class="text-gray-dark"> {{ poet.uname }} </h5>
             <div class="col-lg-2 col-md-3 col-sm-4">      
-                <button data-bs-toggle="modal" data-bs-target="#acceptUser" class="btn btn-dark" id="acceptNewUser" type="submit" data-toggle="tooltips" data-display="bottom" title="Aceptar" style="border-radius: 20px; background-color: #3ed68a; border-color: rgb(156, 153, 153); border-width: 2px" aria-expanded="false">
+                <button data-bs-toggle="modal" [attr.data-bs-target]="'#acceptUser-' + poet.id" class="btn btn-dark" id="acceptNewUser" type="submit" data-toggle="tooltips" data-display="bottom" title="Aceptar" style="border-radius: 20px; background-color: #3ed68a; border-color: rgb(156, 153, 153); border-width: 2px" aria-expanded="false">
                     <i class="bi bi-hand-thumbs-up"></i>
                 </button>
-                <button data-bs-toggle="modal" data-bs-target="#rejectUser" class="btn btn-dark" id="rejectNewUser" type="submit" data-toggle="tooltips" data-display="bottom" title="Rechazar" style="border-radius: 20px; background-color: #c93461; border-color: rgb(156, 153, 153); border-width: 2px" aria-expanded="false">
+                <button data-bs-toggle="modal" [attr.data-bs-target]="'#rejectUser-' + poet.id" class="btn btn-dark" id="rejectNewUser" type="submit" data-toggle="tooltips" data-display="bottom" title="Rechazar" style="border-radius: 20px; background-color: #c93461; border-color: rgb(156, 153, 153); border-width: 2px" aria-expanded="false">
                     <i class="bi bi-hand-thumbs-down"></i>
                 </button>
-                <button class="btn btn-primary mt-2" id="displayMore" type="button" style="border-radius: 20px; background-color: #3470c9; border-color: rgb(156, 153, 153); border-width: 2px" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">
+                <button class="btn btn-primary mt-2" id="displayMore" type="button" style="border-radius: 20px; background-color: #3470c9; border-color: rgb(156, 153, 153); border-width: 2px" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + poet.id" aria-expanded="false" aria-controls="collapse">
                     Ampliar
                 </button>
             </div>
         </div>
-        <div class="collapse" id="collapse">
+        <div class="collapse" [attr.id]="'collapse-' + poet.id">
             <div class="card card-body" style="border-width: 0px;">
                 <ul class="list-group">
                     <li class="list-group-item"><strong>Name: </strong> {{ poet.name }} </li>
@@ -27,7 +27,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="rejectUser" role="alertdialog" tabindex="-1" aria-labelledby="rejectUser" aria-hidden="true">
+<div class="modal fade" [attr.id]="'rejectUser-' + poet.id" role="alertdialog" tabindex="-1" [attr.aria-labelledby]="'rejectUser-' + poet.id" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -44,7 +44,7 @@
       </div>
     </div>
 </div>
-<div class="modal fade" id="acceptUser" role="alertdialog" tabindex="-1" aria-labelledby="acceptUser" aria-hidden="true">
+<div class="modal fade" [attr.id]="'acceptUser-' + poet.id" role="alertdialog" tabindex="-1" [attr.aria-labelledby]="'acceptUser-' + poet.id" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

@@ -45,7 +45,8 @@ class Ratings(Resource):
         # Obtener valores del request
         keys = [
             'page',
-            'per_page'
+            'per_page',
+            'poet_id'
         ]
         
         #Obtiene los filtros especificados de la URL
@@ -63,11 +64,14 @@ class Ratings(Resource):
                     page = int(value)
                 elif key == 'per_page':
                     per_page = int(value)
+                elif key == 'poet_id':
+                    ratings = ratings.filter(RatingModel.poet_id == value)
 
         # Obtener valor paginado
         ratings = ratings.paginate(page, per_page, True, 20)
         ratingList = [rating.to_json() for rating in ratings.items] if user_id is not None else [
             rating.to_json_public() for rating in ratings.items]
+        print(ratingList)
         return jsonify({'rating': ratingList,
                         'total': ratings.total,
                         'pages': ratings.pages,

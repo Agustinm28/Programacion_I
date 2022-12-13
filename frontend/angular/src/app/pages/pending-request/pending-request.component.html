@@ -6,6 +6,7 @@
                 <div class="my-3 p-3 bg-body rounded shadow-sm">
                     <h6 class="border-bottom pb-2 mb-0">Peticiones</h6>
                     <app-approval-req [poet]="poet" *ngFor="let poet of unactivatedPoets"></app-approval-req>
+                    <h4 class="text-muted text-center py-5 mt-3" *ngIf="unactivatedPoets.length==0">No hay solicitudes pendientes</h4>
                 </div>
             </div>
         </div>

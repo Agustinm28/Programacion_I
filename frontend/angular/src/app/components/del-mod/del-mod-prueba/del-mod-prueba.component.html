@@ -1,19 +1,37 @@
-<ng-container *ngIf="poet">
-    <div class="d-flex text-muted pt-3">      
+<div class="d-flex text-muted pt-3">      
         <img src="assets/chano_profile.png" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="60" height="60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
         <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
             <div class="d-flex justify-content-between">
-                <strong class="text-gray-dark">{{ poet.name }} {{ poet.lname }}</strong>
+                <strong class="text-gray-dark">{{ poet.uname }}</strong> 
                 <div class="col-sm-1.5">
                     <button class="btn btn-dark" id="modifyUser" type="button" data-toggle="tooltips" data-display="bottom" title="Modificar" style="border-radius: 20px; background-color: #c397e7; border-color: black; border-width: 2px" aria-expanded="false">
                         <i class="bi bi-wrench"></i>
                     </button>
-                    <button (click)="deletePoet()" class="btn btn-dark"  id="deleteUser" type="button" data-toggle="tooltips" data-display="bottom" title="Eliminar" style="border-radius: 20px; background-color: #591a8d; border-color: black; border-width: 2px" aria-expanded="false">
+                    <button class="btn btn-dark" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteModal-' + poet.id" id="deleteUser" data-toggle="tooltips" data-display="bottom" type="button" title="Eliminar" style="border-radius: 20px; background-color: #591a8d; border-color: black; border-width: 2px" aria-expanded="false">
                         <i class="bi bi-trash-fill"></i>
                     </button>
                 </div>
             </div>
             <span class="d-block"> {{ poet.mail }} </span>
         </div>
-    </div>
-</ng-container>
+        <div class="modal fade" [attr.id]="'deleteModal-' + poet.id" role="alertdialog" tabindex="-1" [attr.aria-labelledby]="'#deleteModal-' + poet.id" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteUserLabel">Eliminar usuario</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Al confirmar esta acción, se eliminará permanentemente la cuenta de <b>{{ poet.uname }}</b>, junto con todos sus poemas y calificaciones.
+                    Esta acción NO es reversible.<br><br>¿Estás seguro que deseas eliminar a <b>{{ poet.uname }}</b>?
+                </div>
+                <div class="modal-footer">
+                  <a type="button" class="btn btn-danger" (click)="deletePoet()" data-bs-dismiss="modal">Sí, eliminar</a>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No, cancelar</button>
+                </div>
+              </div>
+            </div>
+        </div>
+</div>
+
+
