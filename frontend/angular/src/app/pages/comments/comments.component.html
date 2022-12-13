@@ -9,7 +9,7 @@
           <app-add-comment></app-add-comment>
         </div>
         <div class="col-11 mb-1">
-          <app-comment-generic></app-comment-generic>
+          <app-comment-generic [rating]="rating" *ngFor="let rating of currentPoemRatings"></app-comment-generic>
         </div>
       </div>
     </div>

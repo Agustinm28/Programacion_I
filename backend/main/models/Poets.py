@@ -13,6 +13,8 @@ class Poet(db.Model):
     passw = db.Column(db.String(30), nullable=False) #* INTERES EN PASSWORD (RESTORE)
     admin = db.Column(db.Boolean(), nullable=False, default=False)
     activated = db.Column(db.Boolean(), nullable=False, default=False)
+    createdOn = db.Column(db.Date())
+    lastSeen = db.Column(db.Date())
     poems = db.relationship('Poem', back_populates='poet', # Relacion con poemas
                             cascade='all, delete-orphan')
     rating = db.relationship('Rating', back_populates='poet', # Relacion con rating
@@ -48,6 +50,8 @@ class Poet(db.Model):
             'mail': str(self.mail),
             'admin': bool(self.admin),
             'activated': bool(self.activated),
+            'createdOn': str(self.createdOn),
+            'lastSeen': str(self.lastSeen),
             'poems': poems,
             'poems_count': len(poems),
             'ratings_count': len(rating)
@@ -83,6 +87,8 @@ class Poet(db.Model):
         passw = poet_json.get('passw')
         admin = poet_json.get('admin')
         activated = poet_json.get('activated')
+        createdOn = poet_json.get('createdOn')
+        lastSeen = poet_json.get('lastSeen')
         return Poet(id=id,
                     name=name,
                     lname=lname,
@@ -90,5 +96,7 @@ class Poet(db.Model):
                     mail=mail,
                     plain_password=passw,
                     admin=admin,
-                    activated=activated
+                    activated=activated,
+                    createdOn=createdOn,
+                    lastSeen=lastSeen
                     )

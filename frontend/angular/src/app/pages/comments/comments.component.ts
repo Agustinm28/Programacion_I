@@ -12,9 +12,9 @@ import { RatingService } from 'src/app/services/rating.service';
 })
 export class CommentsComponent implements OnInit {
 
-  id:number;
+  poemId: number;
   poem: any;
-  rating:any; 
+  currentPoemRatings: any; 
   token: any = localStorage.getItem("token")
   loggedPoet: any
 
@@ -23,11 +23,10 @@ export class CommentsComponent implements OnInit {
     private route:ActivatedRoute,
     private poemService: PoemService,
     private poetService: PoetService,
-    private ratingService: RatingService,
-    private datepipe:DatePipe
+    private ratingService: RatingService
     ) { 
 
-    this.id=this.route.snapshot.params['poemId']
+    this.poemId = this.route.snapshot.params['poemId']
 
   }
 
@@ -36,16 +35,11 @@ export class CommentsComponent implements OnInit {
     window.scrollTo(0, 0);
     let id = JSON.parse(window.atob(this.token.split('.')[1])).id;
     this.poetService.getPoet(id, this.token).subscribe((data: any) => this.loggedPoet = data)
-    this.poemService.getPoem(this.id ,this.token).subscribe((data: any) => {
-
+    this.poemService.getPoem(this.poemId ,this.token).subscribe((data: any) => {
       this.poem = data;
-      
-     })
-
-    this.ratingService.getRatings(this.token, {[this.id]:this.id}).subscribe((data: any) => {
-
-      this.rating = data;
-      
+    })
+    this.ratingService.getRatings(this.token, {poem_id: this.poemId}).subscribe((data: any) => {
+      this.currentPoemRatings = data.rating;
      })
     
   }

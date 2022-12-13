@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
@@ -129,6 +130,7 @@ class Poets(Resource):
         if len([poet.to_json() for poet in sameUser]) > 0:
             return 'Username already taken', 400
         poet.admin, poet.activated = False, False
+        poet.createdOn = datetime.date()
         db.session.add(poet)
         db.session.commit()
         return poet.to_json(), 201

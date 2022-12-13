@@ -20,14 +20,14 @@
             </fieldset>
           </div>
           <div class="col-2 p-3 my-auto me-xl-5 me-md-2"> <!-- RATE NUMBER -->
-            <p style="color: black; font-weight: 800;" id="starCount">{{ this.rate }}</p>
+            <p style="color: black; font-weight: 800;" id="starCount">{{ this.score }}</p>
           </div>
         </form>
       </div>
       <div class="row mx-2 my-4" style="background-color: white; border-radius: 20px">
           <div id="comment-container" class="col-xxl-11 col-xl-11 col-md-11 col-sm-11 col-11 p-3 my-auto justify-content-center border rounded"> <!-- COMMENT SECTION -->
-            <form id="login-form" [formGroup]="calForm">
-              <input id="commentbox" type="text" required class="form-control" formControlName="comentario" placeholder="Escribe tu comentario" aria-label="Escribe tu comentario"><i class="validation"><span></span><span></span></i>
+            <form id="login-form" [formGroup]="reviewForm">
+              <input id="commentbox" type="text" required class="form-control" formControlName="comment" placeholder="Escribe tu comentario" aria-label="Escribe tu comentario"><i class="validation"><span></span><span></span></i>
             </form>
           </div>
           <div id="buttoncont" class="col-1 my-auto ms-xl-4 ms-md-2"> <!-- PUBLISH BUTTON -->

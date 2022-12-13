@@ -16,12 +16,12 @@ export class MainCardGenericComponent implements OnInit {
   loggedId: any
   isAdmin: any
   
-  constructor(private datepipe:DatePipe, private router: Router) { 
+  constructor(private datepipe: DatePipe, private router: Router) { 
   }
 
   ngOnInit(): void {
 
-    this.poem.date=this.datepipe.transform(this.poem.date, 'dd/MM/yyyy')
+    this.poem.date = this.datepipe.transform(this.poem.date, 'dd/MM/yyyy')
     
     if (this.token) {
       this.loggedId = JSON.parse(window.atob(this.token.split('.')[1])).id;
@@ -30,8 +30,6 @@ export class MainCardGenericComponent implements OnInit {
     }
     this.loggedId = -1
     this.isAdmin = false
-    
-
   }
 
   goComments(poemId:any): void {
@@ -52,10 +50,7 @@ export class MainCardGenericComponent implements OnInit {
 
   halfStar(starId: any): boolean {
     let rating = this.poem.av_rating != null ? this.poem.av_rating : 0
-    if (rating == 0) {
-      return false
-    }
-    if ((parseInt(starId) > rating) && (Math.round(rating) != Math.trunc(rating))) {
+    if ((parseInt(starId) == Math.ceil(rating)) && (Math.round(rating) != Math.trunc(rating))) {
       return true
     }
     return false

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import Swal from 'sweetalert2';
+import { PoetService } from 'src/app/services/poet.service';
 
 @Component({
   selector: 'app-login-card',
@@ -15,6 +16,7 @@ export class LoginCardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private poetService: PoetService,
     private router: Router
   ) { }
 
@@ -38,8 +40,6 @@ export class LoginCardComponent implements OnInit {
     });
   }
 
-  rme:any
-
   login(data: any) {
     this.authService.login(data).subscribe({ // SE LLAMA A AUTHSERVICE PARA LOGEAR AL USUARIO
       next: (rta: any) => {
@@ -60,6 +60,10 @@ export class LoginCardComponent implements OnInit {
           title: 'Logueado exitosamente'
         })
         localStorage.setItem('token', rta.access_token) // GUARDA EL TOKEN CON PERSISTENCIA
+        let token: any = localStorage.getItem('token')
+        let loggedId: any = JSON.parse(window.atob(token.split('.')[1])).id
+        let today = new Date()
+        this.poetService.putPoet(token, loggedId, {lastSeen: today.toLocaleDateString()})
         this.router.navigate(["/", "home"]) // TE DEVUELVE AL HOME SI EL LOGIN FUE EXITOSO
       }, error: (error) =>{
         const Toast = Swal.mixin({

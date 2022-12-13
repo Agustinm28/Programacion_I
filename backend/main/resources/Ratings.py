@@ -46,7 +46,8 @@ class Ratings(Resource):
         keys = [
             'page',
             'per_page',
-            'poet_id'
+            'poet_id',
+            'poem_id'
         ]
         
         #Obtiene los filtros especificados de la URL
@@ -66,6 +67,8 @@ class Ratings(Resource):
                     per_page = int(value)
                 elif key == 'poet_id':
                     ratings = ratings.filter(RatingModel.poet_id == value)
+                else:
+                    ratings = ratings.filter(RatingModel.poem_id == value)
 
         # Obtener valor paginado
         ratings = ratings.paginate(page, per_page, True, 20)
@@ -83,8 +86,6 @@ class Ratings(Resource):
         user_id = get_jwt_identity()
         rating = RatingModel.from_json(request.get_json())
         rating.poet_id = user_id
-        print(rating.poet_id)
-        print(rating.poem_id)
         poem = db.session.query(PoemModel).get(rating.poem_id)
         ratings = db.session.query(RatingModel).filter(
             RatingModel.poem_id == rating.poem_id)

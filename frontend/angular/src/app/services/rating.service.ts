@@ -37,9 +37,9 @@ export class RatingService {
     return this.httpClient.get(this.url, { headers: heads, params: httpP })
   }
 
-  postRatings(token: string, params: { [key: string]: any }) {
+  postRatings(token: string, body: { [key: string]: any }) {
     let heads = new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*').set('Authorization', 'Bearer ' + token)
-    return this.httpClient.post(this.url, { headers: heads, params: params })
+    return this.httpClient.post(this.url, body, { headers: heads })
   }
 
 }
