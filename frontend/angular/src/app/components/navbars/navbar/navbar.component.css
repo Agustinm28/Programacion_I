@@ -1,48 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 #searchButton:hover {
-	background-color: #330c0c !important;
-}
-
-#acceptNewUser:hover {
-	background-color: #247c50 !important;
-}
-
-#modifyUser:hover {
-	background-color: #7c6292 !important;
-}
-
-#deleteUser:hover {
-	background-color: #290d41 !important;
-}
-
-#rejectNewUser:hover {
-	background-color: #5f172d !important;
-}
-
-#displayMore:hover {
-	background-color: #22457a !important;
-}
-
-#configButton:hover {
-	background-color: #160d08 !important;
+	background-color: #312352 !important;
 }
 
 #pEditorButton:hover {
-	background-color: #5a3419 !important;
+	background-color: #2f5868 !important;
 }
 
 #adminButton:hover {
 	background-color: #584629 !important;
-}
-
-#poemPreview:hover {
-	background-color: #c0a58a !important;
-	transition: 0.2s ease-out !important;
-}
-
-#poemPreview:hover .row:not(#footerTopTextRow, #footerBottomTextRow){
-	background-color: beige !important;
-	transition: 0.2s ease-out !important;
 }
 
 #icon:hover {
@@ -57,28 +22,6 @@
 #profPicture:hover {
 	border-color: rgb(0, 0, 0) !important;
 	transition: 0.2s ease-out !important;
-}
-
-.modal {
-	z-index: 4 !important;
-}
-
-hr {
-	width: 100%;
-	color: white;
-	margin-left: 40px;
-	size: 10;
-	margin-top: 30px;
-}
-
-.text-white {
-	text-decoration: none;
-	font-size: 20px;
-}
-
-#toggler-container {
-	justify-content: center;
-	text-align: center;
 }
 
 #toggler-search {

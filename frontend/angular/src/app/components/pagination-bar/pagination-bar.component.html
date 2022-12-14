@@ -1,15 +1,15 @@
 <nav>
     <ul class="pagination justify-content-center">
       <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous" style="color: #432818">
+          <button class="page-link" (click)="changePage(currentPage-1)" aria-label="Previous" style="color: #432818">
           <span aria-hidden="true">&laquo;</span>
-          </a>
+        </button>
       </li>
-      <li *ngFor="let page of pageAmount" class="page-item"><a class="page-link" href="#" style="color: #432818">{{ page }}</a></li>
+      <li *ngFor="let page of pageAmount" class="page-item"><button class="page-link" (click)="changePage(page)" style="color: #432818">{{ page }}</button></li>
       <li class="page-item" style="color: #432818">
-          <a class="page-link" href="#" aria-label="Next" style="color: #432818">
+          <button class="page-link" (click)="changePage(currentPage+1)" aria-label="Next" style="color: #432818">
           <span aria-hidden="true">&raquo;</span>
-          </a>
+        </button>
       </li>
     </ul>
 </nav>

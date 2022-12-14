@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-poem-card-own',
@@ -13,7 +14,7 @@ export class MainPoemCardOwnComponent implements OnInit {
   loggedId: any
   isAdmin: any
   
-  constructor( private datepipe:DatePipe) { }
+  constructor( private datepipe: DatePipe, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -28,6 +29,10 @@ export class MainPoemCardOwnComponent implements OnInit {
     this.isAdmin = false
   }
 
+  goComments(poemId:any): void {
+    this.router.navigate(["/login/admin/" + poemId + '/comments'])
+  }
+  
   editPoem(poemId: any): void {
     localStorage.setItem("editId", poemId)
   }

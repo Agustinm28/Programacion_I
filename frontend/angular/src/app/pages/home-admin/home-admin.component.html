@@ -7,5 +7,7 @@
         </div>
       </div>
   </div>
-  <app-pagination-bar [pData]="pData"></app-pagination-bar> 
+  <div *ngIf="pData">
+    <app-pagination-bar *ngIf="pData>1" [pData]="pData" (newItemEvent)="changePage($event)"></app-pagination-bar> 
+  </div>
 </body>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { PoemService } from 'src/app/services/poem.service';
 import { PoetService } from 'src/app/services/poet.service';
 
@@ -10,7 +10,8 @@ import { PoetService } from 'src/app/services/poet.service';
 export class HomeAdminComponent implements OnInit {
 
   poems: any = []
-  pData: any 
+  pData: number
+  selectedPage: number = 1
   token: any = localStorage.getItem("token")
   loggedPoet: any
   
@@ -20,11 +21,7 @@ export class HomeAdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.poemService.getPoems(this.token).subscribe((data: any) => {
-
-      console.log(data);
-      
-
+    this.poemService.getPoems(this.token, {page: this.selectedPage, order_by: "ratings_count"}).subscribe((data: any) => {
       this.pData = data.pages;
       this.poems = data.poem;
       
@@ -36,6 +33,15 @@ export class HomeAdminComponent implements OnInit {
     else {
       this.loggedPoet = {uname: "usuario"}
     }
+  }
+
+  changePage(page: number): void {
+    this.poemService.getPoems(this.token, {page: page, order_by: "ratings_count"}).subscribe((data: any) => {
+      this.poems = data.poem
+      this.selectedPage = page
+    }
+    )
+    window.scrollTo(0, 0)
   }
 
 }

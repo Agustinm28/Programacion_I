@@ -10,6 +10,7 @@
         <a class="btn btn-dark mb-3" routerLink="/login/admin/pending_request" role="button">Ir a altas</a>
     </div>
 </div>
+<app-pagination-bar *ngIf="pData>1" [pData]="pData" (newItemEvent)="changePage($event)"></app-pagination-bar>
 </body>
 
     

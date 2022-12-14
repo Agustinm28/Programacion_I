@@ -11,6 +11,8 @@ export class DeleteOrModifyComponent implements OnInit {
   activatedPoets: any = []
   token: any = localStorage.getItem("token")
   loggedPoet: any
+  pData: number
+  selectedPage: number = 1
 
   constructor(
 
@@ -20,14 +22,28 @@ export class DeleteOrModifyComponent implements OnInit {
 
   ngOnInit(): void {
     let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));
-    this.pService.getPoet(decodedJWT.id).subscribe((data: any) => this.loggedPoet = data)
-    this.getActivatedPoets()
+    this.pService.getPoet(decodedJWT.id).subscribe((data: any) => {
+      this.loggedPoet = data
+    }
+    )
+    this.getActivatedPoets(this.selectedPage)
   }
 
-  getActivatedPoets(): void {
-    let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));
-    this.pService.getPoets(this.token, {is_activated: 1, page: 1, is_admin: 0, per_page: 10}).subscribe(({
-      next: (data: any) => this.activatedPoets = data.poet
+  getActivatedPoets(pageNum: number): void {
+    this.pService.getPoets(this.token, {is_activated: 1, page: pageNum, is_admin: 0, per_page: 10}).subscribe(({
+      next: (data: any) => {
+        this.activatedPoets = data.poet
+        this.pData = data.pages
+      }
     }));
+  }
+
+  changePage(pageNum: number): void {
+    this.pService.getPoets(this.token, {is_activated: 1, page: pageNum, is_admin: 0, per_page: 10}).subscribe(({
+      next: (data: any) => {
+        this.activatedPoets = data.poet
+      }
+    }));
+    this.selectedPage = pageNum
   }
 }

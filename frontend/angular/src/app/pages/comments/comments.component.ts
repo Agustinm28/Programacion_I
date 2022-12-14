@@ -23,7 +23,8 @@ export class CommentsComponent implements OnInit {
     private route:ActivatedRoute,
     private poemService: PoemService,
     private poetService: PoetService,
-    private ratingService: RatingService
+    private ratingService: RatingService,
+    private datepipe: DatePipe
     ) { 
 
     this.poemId = this.route.snapshot.params['poemId']
@@ -31,17 +32,16 @@ export class CommentsComponent implements OnInit {
   }
 
   ngOnInit(): void { 
-
     window.scrollTo(0, 0);
     let id = JSON.parse(window.atob(this.token.split('.')[1])).id;
     this.poetService.getPoet(id, this.token).subscribe((data: any) => this.loggedPoet = data)
     this.poemService.getPoem(this.poemId ,this.token).subscribe((data: any) => {
       this.poem = data;
+      this.poem.date = this.datepipe.transform(this.poem.date, 'dd/MM/yyyy')
     })
     this.ratingService.getRatings(this.token, {poem_id: this.poemId}).subscribe((data: any) => {
       this.currentPoemRatings = data.rating;
      })
-    
   }
 
 }
