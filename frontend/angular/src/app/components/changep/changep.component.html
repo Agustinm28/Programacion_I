@@ -4,13 +4,13 @@
         <p>{{'Username'}}</p>
         <form [formGroup]="cpassForm" id="registro">
             <p>
-            <input type="password" required formControlName="passw1" class="form-control" placeholder="Contraseña" aria-label="Contraseña"><i class="validation"><span></span><span></span></i>
+            <input type="password" required formControlName="pass1" class="form-control" placeholder="Contraseña" aria-label="Contraseña"><i class="validation"><span></span><span></span></i>
             </p>
             <p>
-            <input id="pass2" type="password" required formControlName="passw2" class="form-control" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña"><i class="validation"><span></span><span></span></i>
+            <input id="pass2" type="password" required formControlName="pass2" class="form-control" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña"><i class="validation"><span></span><span></span></i>
             </p>
             <p>
-            <input type="submit" id="cpass" value="Cambiar contraseña">
+            <input type="submit" (click)="changePassword()" id="cpass" value="Cambiar contraseña">
             </p>
         </form>
     </div>

@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 })
 export class PoetService {
   url = 'poets'
+  url_i = 'poet'
   
   constructor(
     private httpClient: HttpClient,
@@ -43,8 +44,9 @@ export class PoetService {
   }
   
   putPoet(token: string, id: number, body: { [key: string]: any }) {
+    console.log(body)
     let heads = new HttpHeaders().set('Content-Type', 'application/json').set('Access-Control-Allow-Origin', '*').set('Authorization', 'Bearer ' + token)
-    return this.httpClient.put(this.url + '/' + id.toString(), body, {headers: heads})
+    return this.httpClient.put(this.url_i + '/' + id.toString(), body, {headers: heads})
   }
 
   delPoet(token: string, id: number) {

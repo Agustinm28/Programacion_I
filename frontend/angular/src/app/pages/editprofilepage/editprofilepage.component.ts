@@ -19,6 +19,9 @@ export class EditprofilepageComponent implements OnInit {
   ngOnInit(): void {
     let id = JSON.parse(window.atob(this.token.split('.')[1])).id;
     this.poetService.getPoet(id, this.token).subscribe((data: any) => this.loggedPoet = data)
+
+    console.log(this.loggedPoet);
+    
   }
 
 }

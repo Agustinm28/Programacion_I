@@ -172,7 +172,7 @@ body {
 
 #databox-mail {
   height: 60px;
-  padding-top: 70px;
+  padding-top: 20px;
   padding-bottom: 40px;
   padding-right: 30px;
 }
@@ -213,6 +213,9 @@ body {
   background-color: rgb(207, 160, 136,0.95);
 }
 
+#databox-passw {
+  padding-top: 80px;
+}
 
 /*  RESPONSIVE CONFIG   */
 

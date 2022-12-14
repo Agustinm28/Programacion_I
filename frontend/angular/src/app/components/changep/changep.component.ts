@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class ChangepComponent implements OnInit {
   cpassForm!: FormGroup;
+  token: any = localStorage.getItem("token")
+  id:any
 
   constructor(
     private poetService: PoetService,
@@ -18,10 +20,33 @@ export class ChangepComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+
+    this.id = JSON.parse(window.atob(this.token.split('.')[1])).id;
+
     this.cpassForm = this.formBuilder.group({
       pass1: ['', Validators.required],
       pass2: ['', Validators.required]
     });
+  }
+
+  changePassword() {
+
+    if (this.cpassForm.valid) {
+      if (this.cpassForm.value.pass1 == this.cpassForm.value.pass2) {
+        this.poetService.putPoet(this.token, this.id, {'passw':this.cpassForm.value.pass1});
+      }
+      else {
+        console.log('contraseñas no son iguales');
+        
+      }
+    }
+    else {
+      console.log('error en formulario');
+      
+    }
+
+    //this.router.navigate(["/login/admin/profile"])
+
   }
 
 }
