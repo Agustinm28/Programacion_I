@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PoetService } from 'src/app/services/poet.service';
 import { AuthService } from '../../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +11,24 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  searchdataForm!: FormGroup
   @Input('loggedPoet') poet: any
-  
+    
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.searchdataForm = this.formBuilder.group({
+      searchTerm: ['']
+    });
+  }
+
+  goFiltered(): void {
+    localStorage.setItem("searchTerm", this.searchdataForm.value.searchTerm)
+    this.router.navigate(["/login/admin/filtered/"])
   }
 
   get isLogged() {

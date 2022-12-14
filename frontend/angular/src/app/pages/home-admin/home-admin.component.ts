@@ -22,9 +22,8 @@ export class HomeAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.poemService.getPoems(this.token, {page: this.selectedPage, order_by: "ratings_count"}).subscribe((data: any) => {
-      this.pData = data.pages;
       this.poems = data.poem;
-      
+      this.pData = data.pages;
      })
     if (this.token) {
       let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));

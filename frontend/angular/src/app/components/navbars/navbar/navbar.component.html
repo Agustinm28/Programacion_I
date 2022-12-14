@@ -3,11 +3,11 @@
     <a id="logo-container" class="navbar-brand pt-3 pb-2" routerLink="/home">
       <img class="logo-bem" src="assets/logo_botellas_en_el_mar.png">
     </a>
-    <form id="search" class="d-flex col-xl-6">
-      <a routerLink="/logged/filtered" class="btn btn-secondary" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #5a5a6d; border-color: white; border-width: 2px">
+    <form id="search" [formGroup]="searchdataForm" class="d-flex col-xl-6">
+      <a (click)="goFiltered()" class="btn btn-secondary" type="submit" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="Buscar" style="border-radius: 30px; background-color: #5a5a6d; border-color: white; border-width: 2px">
         <i class="bi bi-search" style="font-size: 1.35rem; color: white;"></i>
       </a>
-      <input id="searchbox" class="form-control" type="search" style="background-color: whitebone;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
+      <input id="searchbox" class="form-control" formControlName="searchTerm" type="search" style="background-color: whitebone;" placeholder="Buscar usuarios, poemas..." aria-label="Buscar">
     </form>
     <div class="text-end pe-3">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

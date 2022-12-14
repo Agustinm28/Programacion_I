@@ -60,10 +60,6 @@ export class LoginCardComponent implements OnInit {
           title: 'Logueado exitosamente'
         })
         localStorage.setItem('token', rta.access_token) // GUARDA EL TOKEN CON PERSISTENCIA
-        let token: any = localStorage.getItem('token')
-        let loggedId: any = JSON.parse(window.atob(token.split('.')[1])).id
-        let today = new Date()
-        this.poetService.putPoet(token, loggedId, {lastSeen: today.toLocaleDateString()})
         this.router.navigate(["/", "home"]) // TE DEVUELVE AL HOME SI EL LOGIN FUE EXITOSO
       }, error: (error) =>{
         const Toast = Swal.mixin({

@@ -8,27 +8,28 @@
     </div>
     <div id="databox-mail" class="col-auto my-auto ms-4 justify-content-center">
         <p id="labeltext">Dirección de correo electrónico</p>
-        <h3 id="datatext" class="display-4 py-3 px-3">{{ poet.mail }} </h3>
+        <h3 id="datatext" class="display-4 py-3 px-3">{{ loggedPoet.mail }} </h3>
     </div>
-    <div id="databox-passw" class="col-auto my-auto ms-4 justify-content-center">
+    <div id="databox-passw" class="col-auto my-auto ms-4 justify-content-left">
         <p id="labeltext">Contraseña</p>
         <p>
         <input type="submit" (click)="goPass()" id="changepassw" value="Cambiar Contraseña">
         </p>
     </div>
+    <hr>
+    <p id="labeltext-act">Datos actualizables</p>
     <form [formGroup]="userForm" id="userdata">
-        <p id="labeltext-act">Datos actualizables</p>
         <p>
-        <input id="txtbox" type="text" required class="form-control" value="{{poet.uname}}" formControlName="uname" placeholder="Nombre" aria-label="Nombre"><i class="validation"><span></span><span></span></i>
+        <input class="form-control" id="txtbox" type="text" formControlName="uname" placeholder="Nombre de usuario" aria-label="Nombre de usuario"><i class="validation"><span></span><span></span></i>
         </p>
         <p>
-        <input id="txtbox" type="text" required class="form-control" value="{{poet.name}}" formControlName="name" placeholder="Nombre" aria-label="Nombre"><i class="validation"><span></span><span></span></i>
+        <input class="form-control" id="txtbox" type="text" formControlName="name" placeholder="Nombre" aria-label="Nombre"><i class="validation"><span></span><span></span></i>
         </p>
         <p>
-        <input id="txtbox" type="text" required class="form-control" value="{{poet.lname}}" formControlName="lname" placeholder="Apellido" aria-label="Apellido"><i class="validation"><span></span><span></span></i>
+        <input class="form-control" id="txtbox" type="text" formControlName="lname" placeholder="Apellido" aria-label="Apellido"><i class="validation"><span></span><span></span></i>
         </p>
         <p>
-        <input type="submit" id="change" (click)="change_data()" value="Actualizar datos">
+        <input type="submit" id="change" (click)="submit()" value="Actualizar datos">
         </p>
     </form>
 </div>

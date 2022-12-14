@@ -3,7 +3,7 @@ from flask_restful import Resource
 from flask import request, jsonify
 from .. import db
 from main.models import PoetModel, PoemModel, RatingModel
-from sqlalchemy import func
+from sqlalchemy import func, not_
 from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from main.auth.decorators import admin_required
 
@@ -29,6 +29,7 @@ class Poet(Resource):
     @jwt_required()
     def put(self, id): # Se agrega un nuevo poeta
         poet = db.session.query(PoetModel).get_or_404(id)
+        poets = db.session.query(PoetModel)
         data = request.get_json().items()
         poetId = get_jwt_identity()
         claims = get_jwt()
@@ -39,6 +40,11 @@ class Poet(Resource):
                     return 'You don\'t have permission to perform this action.', 403
                 setattr(poet, key, value)
             db.session.add(poet)
+            sameUser = poets.filter((PoetModel.uname.like(poet.uname)))
+            sameUser = sameUser.filter(not_(PoetModel.id.like(poetId)))
+            if len([poet.to_json() for poet in sameUser]) > 0:
+                db.session.rollback()
+                return 'Username already taken', 400
             db.session.commit()
             return poet.to_json(), 201
         return 'You don\'t have permission to perform this action.', 403
@@ -130,7 +136,6 @@ class Poets(Resource):
         if len([poet.to_json() for poet in sameUser]) > 0:
             return 'Username already taken', 400
         poet.admin, poet.activated = False, False
-        poet.createdOn = datetime.date()
         db.session.add(poet)
         db.session.commit()
         return poet.to_json(), 201

@@ -25,14 +25,14 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'restore', component: RestorepassComponent },
   { path: 'change_password', component: ChangepassComponent },
-  { path: 'logged/:username', component: HomeRegUserComponent, canActivate:[AuthsessionGuard] },
+  { path: 'logged/:username', component: HomeAdminComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/profile', component: ProfileComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/profile/edit', component: EditprofilepageComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/editor', component: PoemEditorComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/:poemId/comments', component: CommentsComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/delete_or_modify', component: DeleteOrModifyComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/pending_request', component: PendingRequestComponent, canActivate:[AuthsessionGuard] },
-  { path: 'logged/:username/filtered', component: FilteredComponent, canActivate:[AuthsessionGuard] },
+  { path: 'login/admin/filtered', component: FilteredComponent, canActivate:[AuthsessionGuard] },
   { path: '**', component: Error404Component },
 ];
 

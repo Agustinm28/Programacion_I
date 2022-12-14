@@ -1,34 +1,7 @@
-<app-not-admin-navbar></app-not-admin-navbar>
-<div class="container-md shadow-lg p-3 mb-5 justify-content-center" style="background-color: #f9dcc4">
-      
+<app-navbar [loggedPoet]="loggedPoet"></app-navbar>
+<body>
+  <div class="container-md shadow-lg p-3 mb-5 justify-content-center " style="background-color: rgb(249, 220, 196, 0.2)">
     <app-filtered-dropdowns></app-filtered-dropdowns>
-    <app-filtered-poems-lil></app-filtered-poems-lil>
-    <app-poem-one></app-poem-one>
-    <app-poem-two></app-poem-two>
-    <app-filtered-poems-henry-c></app-filtered-poems-henry-c>
-    <app-filtered-poems-chano></app-filtered-poems-chano>
-    <app-filtered-poems-brunengo></app-filtered-poems-brunengo>
+  </div>
+</body>
 
-
-  
- 
- 
-    <div class="row ms-3 mt-3 me-3 mb-3">
-      <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
-        <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
-          <div class="col-xxl-3 col-lg-3 col-md-auto ms-lg-3 ms-md-1 me-md-2 my-auto text-center"><h2>Lorem ipsum</h2></div>
-          <div class="col-auto my-auto"><h1>|</h1></div>
-          <div class="col-md-3 ms-xxl-4 ms-xl-3 ms-lg-2 me-1 my-auto text-center"><h3 style="font-weight: 300;">19-05-2022</h3></div>
-          <div class="col-auto my-auto"><h1>|</h1></div>
-          <div class="col-xxl-3 col-lg-2 col-md-2 ms-xxl-4 ms-xl-3 ms-md-2 me-lg-1 me-sm-0 my-auto text-center"><h4><b>Brunengo</b></h4></div>
-          <div class="col-xl-1 col-md-2 py-2 justify-content-center">
-            <img src="assets/brunengo_profile.png" width="80" height="80" alt="profile">
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <app-monti-poem-one></app-monti-poem-one>
-    <app-monti-poem-two></app-monti-poem-two>
-
-    <app-pagination-bar></app-pagination-bar> 
