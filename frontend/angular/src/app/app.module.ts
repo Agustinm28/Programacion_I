@@ -48,7 +48,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import { PendingRequestComponent } from './pages/pending-request/pending-request.component';
 import { DeleteOrModifyComponent } from './pages/delete-or-modify/delete-or-modify.component';
 import { FilteredComponent } from './pages/filtered/filtered.component';
-import { FilteredPoemsLilComponent } from './components/filtered/filtered-poems-lil/filtered-poems-lil.component';
+import { FilteredPoemsGenericComponent } from './components/filtered/filtered-poems-generic/filtered-poems-generic.component';
 import { PoemOneComponent } from './components/filtered/filtered_poems_luismi/poem-one/poem-one.component';
 import { PoemTwoComponent } from './components/filtered/filtered_poems_luismi/poem-two/poem-two.component';
 import { MontiPoemOneComponent } from './components/filtered/filtered_poems_monti28/monti-poem-one/monti-poem-one.component';
@@ -123,7 +123,7 @@ import { CommentGenericComponent } from './components/comments/comment-generic/c
     PendingRequestComponent,
     DeleteOrModifyComponent,
     FilteredComponent,
-    FilteredPoemsLilComponent,
+    FilteredPoemsGenericComponent,
     PoemOneComponent,
     PoemTwoComponent,
     MontiPoemOneComponent,

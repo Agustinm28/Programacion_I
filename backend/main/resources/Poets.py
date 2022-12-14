@@ -28,6 +28,7 @@ class Poet(Resource):
 
     @jwt_required()
     def put(self, id): # Se agrega un nuevo poeta
+        checkUniqueUser = False # si se está modificando el campo de nombre de usuario, esta bandera se pone en alto
         poet = db.session.query(PoetModel).get_or_404(id)
         poets = db.session.query(PoetModel)
         data = request.get_json().items()
@@ -38,13 +39,17 @@ class Poet(Resource):
             for key, value in data:
                 if claims['activated'] == False or (key in ('admin','activated') and claims['admin'] == False):
                     return 'You don\'t have permission to perform this action.', 403
+                if key == 'uname':
+                    checkUniqueUser = True # verificar que no haya un usuario ya existente con ese nombtre
                 setattr(poet, key, value)
             db.session.add(poet)
-            sameUser = poets.filter((PoetModel.uname.like(poet.uname)))
-            sameUser = sameUser.filter(not_(PoetModel.id.like(poetId)))
-            if len([poet.to_json() for poet in sameUser]) > 0:
-                db.session.rollback()
-                return 'Username already taken', 400
+            if checkUniqueUser:
+                sameUser = poets.filter((PoetModel.uname.like(poet.uname)))
+                sameUser = sameUser.filter(not_(PoetModel.id.like(poetId)))
+                print([poet.to_json() for poet in sameUser])
+                if len([poet.to_json() for poet in sameUser]) > 0:
+                    db.session.rollback()
+                    return 'Username already taken', 400
             db.session.commit()
             return poet.to_json(), 201
         return 'You don\'t have permission to perform this action.', 403

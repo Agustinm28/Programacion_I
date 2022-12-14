@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PoetService } from 'src/app/services/poet.service';
 import { AuthService } from '../../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
 
   searchdataForm!: FormGroup
   @Input('loggedPoet') poet: any
+  @Output() newItemEvent = new EventEmitter<number>();
     
   constructor(
     private authService: AuthService,
@@ -22,13 +23,14 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchdataForm = this.formBuilder.group({
-      searchTerm: ['']
+      searchTerm: [localStorage.getItem("previousSearch")]
     });
   }
 
   goFiltered(): void {
-    localStorage.setItem("searchTerm", this.searchdataForm.value.searchTerm)
     this.router.navigate(["/login/admin/filtered/"])
+    localStorage.setItem("previousSearch", this.searchdataForm.value.searchTerm)
+    this.newItemEvent.emit(this.searchdataForm.value.searchTerm)
   }
 
   get isLogged() {
