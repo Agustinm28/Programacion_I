@@ -54,6 +54,11 @@
       font-size: larger;
     }
 
+    #trash {
+      text-align: right;
+      padding-left: 95%;
+    }
+
   }
   
 @media (max-width: 1599.0px) {
@@ -106,6 +111,11 @@
     font-size: larger;
   }
 
+  #trash {
+    text-align: right;
+    padding-left: 95%;
+  }
+
 }
 
   @media (max-width: 1199.0px) {
@@ -156,6 +166,11 @@
 
     #star1, #star2, #star3, #star4, #star5 {
       font-size: larger;
+    }
+
+    #trash {
+      text-align: right;
+      padding-left: 93%;
     }
 
   }
@@ -214,6 +229,11 @@
       font-size: larger;
     }
 
+    #trash {
+      text-align: right;
+      padding-left: 90%;
+    }
+
   }
 
   @media (max-width: 720.0px) {
@@ -265,6 +285,11 @@
 
     #star1, #star2, #star3, #star4, #star5 {
       font-size: larger;
+    }
+
+    #trash {
+      text-align: right;
+      padding-left: 90%;
     }
 
 
@@ -330,6 +355,11 @@
       font-size: medium;
     }
 
+    #trash {
+      text-align: right;
+      padding-left: 87%;
+    }
+
   }
 
   @media (max-width: 480.0px) {
@@ -386,6 +416,11 @@
 
     #star1, #star2, #star3, #star4, #star5 {
       font-size: medium;
+    }
+
+    #trash {
+      text-align: right;
+      padding-left: 87%;
     }
 
 
@@ -445,6 +480,11 @@
 
     #star1, #star2, #star3, #star4, #star5 {
       font-size: medium;
+    }
+
+    #trash {
+      text-align: right;
+      padding-left: 87%;
     }
 
 

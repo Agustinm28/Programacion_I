@@ -37,8 +37,11 @@ export class FilteredComponent implements OnInit {
     window.scrollTo(0, 0)
     let id = JSON.parse(window.atob(this.token.split('.')[1])).id;
     this.poetService.getPoet(id, this.token).subscribe((data: any) => this.loggedPoet = data)
-    if(localStorage.getItem("previousSearch")) {
+    if (localStorage.getItem("previousSearch")) {
       this.search(localStorage.getItem("previousSearch"))
+    }
+    else {
+      this.search()
     }
   }
 

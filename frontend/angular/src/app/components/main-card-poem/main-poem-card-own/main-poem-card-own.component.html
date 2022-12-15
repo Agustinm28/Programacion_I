@@ -15,6 +15,9 @@
             <a class="text-decoration-none" routerLink="/login/admin/editor" (click)="editPoem(poem.id)" data-toggle="tooltips" data-placement="bottom" title="Editar poema">
               <i id="icon" class="bi bi-pencil" style=" color: rgb(0, 0, 0);"></i>
             </a>
+            <a id="trash" data-bs-toggle="modal" [attr.data-bs-target]="'#deletePoem-' + poem.id" class="btn btn-dark" type="submit" class="text-decoration-none" data-toggle="tooltips" data-placement="bottom" title="Eliminar poema">
+              <i id="icon" class="bi bi-trash" style=" color: rgb(0, 0, 0);"></i>
+            </a>
           </div>
           <div class="col-xl-6 col-6">
             <p class="poem-title" style="color: rgb(22, 20, 20); font-weight: bold;">{{ poem.title }}</p>
@@ -54,5 +57,22 @@
           </div>
         </div>
       </div>
+  </div>
+</div>
+<div class="modal fade" [attr.id]="'deletePoem-' + poem.id" role="alertdialog" tabindex="-1" [attr.aria-labelledby]="'deletePoem-' + poem.id" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deletePoemLabel">Eliminar poema</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Al confirmar esta acción, se eliminará permanentemente el poema <b>{{poem.title}}</b> y se enviará un mail de notificación al autor. <br> ¿Seguro que deseas eliminarlo?
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-danger" (click)="delPoem(poem.id)" data-bs-dismiss="modal">Sí, eliminar</a>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No, cancelar</button>
+      </div>
+    </div>
   </div>
 </div>

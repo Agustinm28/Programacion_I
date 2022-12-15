@@ -22,9 +22,17 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.searchdataForm = this.formBuilder.group({
-      searchTerm: [localStorage.getItem("previousSearch")]
-    });
+    let prevSearch: any = localStorage.getItem("previousSearch")
+    if (prevSearch && prevSearch != null) {
+      this.searchdataForm = this.formBuilder.group({
+        searchTerm: [localStorage.getItem("previousSearch")]
+      });
+    }
+    else {
+      this.searchdataForm = this.formBuilder.group({
+        searchTerm: ['']
+      });
+    }
   }
 
   goFiltered(): void {

@@ -50,7 +50,7 @@ class Poet(Resource):
             db.session.add(poet)
             if checkUniqueUser:
                 sameUser = poets.filter((PoetModel.uname.like(poet.uname)))
-                sameUser = sameUser.filter(not_(PoetModel.id.like(poetId)))
+                sameUser = sameUser.filter(not_(PoetModel.id.like(id)))
                 print([poet.to_json() for poet in sameUser])
                 if len([poet.to_json() for poet in sameUser]) > 0:
                     db.session.rollback()

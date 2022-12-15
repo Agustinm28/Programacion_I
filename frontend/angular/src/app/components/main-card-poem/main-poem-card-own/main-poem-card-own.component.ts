@@ -1,6 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PoemService } from 'src/app/services/poem.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-main-poem-card-own',
@@ -14,7 +16,7 @@ export class MainPoemCardOwnComponent implements OnInit {
   loggedId: any
   isAdmin: any
   
-  constructor( private datepipe: DatePipe, private router: Router) { }
+  constructor( private datepipe: DatePipe, private router: Router, private poemService: PoemService) { }
 
   ngOnInit(): void {
 
@@ -35,6 +37,48 @@ export class MainPoemCardOwnComponent implements OnInit {
   
   editPoem(poemId: any): void {
     localStorage.setItem("editId", poemId)
+  }
+
+  delPoem(poemId:any): void {
+    this.poemService.delPoem(this.token, poemId).subscribe({ 
+      next: (rta: any) => {
+        const Toast = Swal.mixin({
+          toast: true,
+          showConfirmButton: false,
+          position: 'bottom-end',
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast: any) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'success',
+          title: 'Se ha eliminado el poema.',
+        })
+        location.reload()
+      }, error: (error) =>{
+        const Toast = Swal.mixin({
+          toast: true,
+          showConfirmButton: false,
+          position: 'bottom-end',
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast: any) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
+        
+        Toast.fire({
+          icon: 'error',
+          title: 'Error al intentar eliminar el poema.'
+        })
+      }, complete: () => {
+      }
+    })
   }
 
   fullStar(starId: any): boolean {
