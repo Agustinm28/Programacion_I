@@ -21,6 +21,7 @@ export class DeleteOrModifyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    localStorage.removeItem('PoetModId')
     let decodedJWT = JSON.parse(window.atob(this.token.split('.')[1]));
     this.pService.getPoet(decodedJWT.id).subscribe((data: any) => {
       this.loggedPoet = data

@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between">
                 <strong class="text-gray-dark">{{ poet.uname }}</strong> 
                 <div class="col-sm-1.5">
-                    <button class="btn btn-dark" id="modifyUser" type="button" data-toggle="tooltips" data-display="bottom" title="Modificar" style="border-radius: 20px; background-color: #c397e7; border-color: black; border-width: 2px" aria-expanded="false">
+                    <button class="btn btn-dark" id="modifyUser" (click)="modifyPoet()" type="button" data-toggle="tooltips" data-display="bottom" title="Modificar" style="border-radius: 20px; background-color: #c397e7; border-color: black; border-width: 2px" aria-expanded="false">
                         <i class="bi bi-wrench"></i>
                     </button>
                     <button class="btn btn-dark" data-bs-toggle="modal" [attr.data-bs-target]="'#deleteModal-' + poet.id" id="deleteUser" data-toggle="tooltips" data-display="bottom" type="button" title="Eliminar" style="border-radius: 20px; background-color: #591a8d; border-color: black; border-width: 2px" aria-expanded="false">

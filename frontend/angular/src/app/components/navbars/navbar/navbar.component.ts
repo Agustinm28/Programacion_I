@@ -31,6 +31,28 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["/login/admin/filtered/"])
     localStorage.setItem("previousSearch", this.searchdataForm.value.searchTerm)
     this.newItemEvent.emit(this.searchdataForm.value.searchTerm)
+    localStorage.removeItem("PoetModId")
+  }
+
+  goHome() {
+    this.router.navigate(["/home"])
+    localStorage.removeItem("previousSearch")
+    localStorage.removeItem("PoetModId")
+  }
+
+  goEditor() {
+    this.router.navigate(['/login/admin/editor'])
+    localStorage.removeItem("PoetModId")
+  }
+
+  goProfile() {
+    this.router.navigate(['/login/admin/profile'])
+    localStorage.removeItem("PoetModId")
+  }
+
+  goDeleteOrModify() {
+    this.router.navigate(['/login/admin/delete_or_modify'])
+    localStorage.removeItem("PoetModId")
   }
 
   get isLogged() {
@@ -48,6 +70,7 @@ export class NavbarComponent implements OnInit {
   }
 
   cerrarSesion() {
+    localStorage.removeItem("PoetModId")
     this.authService.logout();
     window.location.reload()
   }

@@ -15,6 +15,8 @@ import { AuthsessionGuard } from './guards/authsession.guard';
 import { RestorepassComponent } from './pages/restorepass/restorepass.component'
 import { ChangepassComponent } from './pages/changepass/changepass.component'
 import { EditprofilepageComponent } from './pages/editprofilepage/editprofilepage.component'
+import { EditprofilepageadminComponent } from './pages/editprofilepageadmin/editprofilepageadmin.component'
+import { ChangeuserpassComponent } from './pages/changeuserpass/changeuserpass.component'
 
 const routes: Routes = [
   { path: '', component: HomeAdminComponent},
@@ -23,9 +25,11 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'restore', component: RestorepassComponent },
   { path: 'change_password', component: ChangepassComponent },
+  { path: 'change_upassword', component: ChangeuserpassComponent },
   { path: 'logged/:username', component: HomeAdminComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/profile', component: ProfileComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/profile/edit', component: EditprofilepageComponent, canActivate:[AuthsessionGuard] },
+  { path: 'login/admin/profile/edituser', component: EditprofilepageadminComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/editor', component: PoemEditorComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/:poemId/comments', component: CommentsComponent, canActivate:[AuthsessionGuard] },
   { path: 'login/admin/delete_or_modify', component: DeleteOrModifyComponent, canActivate:[AuthsessionGuard] },

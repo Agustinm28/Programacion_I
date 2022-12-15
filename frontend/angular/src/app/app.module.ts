@@ -68,6 +68,10 @@ import { EditprofilepageComponent } from './pages/editprofilepage/editprofilepag
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
 import { CommentGenericComponent } from './components/comments/comment-generic/comment-generic.component';
 import { ImageUploadModule } from 'angular2-image-upload';
+import { EdituserprofileComponent } from './components/edituserprofile/edituserprofile.component';
+import { EditprofilepageadminComponent } from './pages/editprofilepageadmin/editprofilepageadmin.component';
+import { ChangeuserpassComponent } from './pages/changeuserpass/changeuserpass.component';
+import { ChangeuserpComponent } from './components/changeuserp/changeuserp.component';
 
 
 
@@ -126,7 +130,11 @@ import { ImageUploadModule } from 'angular2-image-upload';
     ChangepassComponent,
     EditprofilepageComponent,
     EditprofileComponent,
-    CommentGenericComponent
+    CommentGenericComponent,
+    EdituserprofileComponent,
+    EditprofilepageadminComponent,
+    ChangeuserpassComponent,
+    ChangeuserpComponent
   ],
   imports: [
     ApplicationModule,
