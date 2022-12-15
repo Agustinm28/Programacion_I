@@ -1,6 +1,6 @@
 <app-navbar [loggedPoet]="loggedPoet" (newItemEvent)="search($event)"></app-navbar>
 <body>
-  <div class="container-md shadow-lg p-3 mb-5 justify-content-center " style="background-color: rgb(249, 220, 196, 0.2)">
+  <div id="cards-container" class="container-fluid shadow-lg p-3 mb-5 justify-content-center " style="background-color: rgb(249, 220, 196, 0.2)">
     <app-filtered-dropdowns (newItemEvent)="orderBy($event)"></app-filtered-dropdowns>
     <app-filtered-poems-generic [poem]="poem" *ngFor="let poem of poems"></app-filtered-poems-generic>
   </div>

@@ -42,6 +42,11 @@ class Poet(Resource):
                 if key == 'uname':
                     checkUniqueUser = True # verificar que no haya un usuario ya existente con ese nombtre
                 setattr(poet, key, value)
+                if key == 'passw':
+                    hash = poet.change_pass(value)
+                    setattr(poet,key,hash)
+                else:
+                    setattr(poet,key,value)
             db.session.add(poet)
             if checkUniqueUser:
                 sameUser = poets.filter((PoetModel.uname.like(poet.uname)))

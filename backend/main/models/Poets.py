@@ -28,6 +28,9 @@ class Poet(db.Model):
     @plain_password.setter
     def plain_password(self, passw):
         self.passw = generate_password_hash(passw) # Password encriptada
+
+    def change_pass(self, passw):
+        return generate_password_hash(passw)
     
     # Método que compara una contraseña en texto plano con el hash guardado en la db para validarla
     

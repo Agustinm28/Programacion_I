@@ -49,14 +49,7 @@ import { PendingRequestComponent } from './pages/pending-request/pending-request
 import { DeleteOrModifyComponent } from './pages/delete-or-modify/delete-or-modify.component';
 import { FilteredComponent } from './pages/filtered/filtered.component';
 import { FilteredPoemsGenericComponent } from './components/filtered/filtered-poems-generic/filtered-poems-generic.component';
-import { PoemOneComponent } from './components/filtered/filtered_poems_luismi/poem-one/poem-one.component';
-import { PoemTwoComponent } from './components/filtered/filtered_poems_luismi/poem-two/poem-two.component';
-import { MontiPoemOneComponent } from './components/filtered/filtered_poems_monti28/monti-poem-one/monti-poem-one.component';
-import { MontiPoemTwoComponent } from './components/filtered/filtered_poems_monti28/monti-poem-two/monti-poem-two.component';
-import { FilteredPoemsHenryCComponent } from './components/filtered/filtered-poems-henry-c/filtered-poems-henry-c.component';
 import { FilteredDropdownsComponent } from './components/filtered/filtered-dropdowns/filtered-dropdowns.component';
-import { FilteredPoemsChanoComponent } from './components/filtered/filtered-poems-chano/filtered-poems-chano.component';
-import { FilteredPoemsBrunengoComponent } from './components/filtered/filtered-poems-brunengo/filtered-poems-brunengo.component';
 
 import { PoemService } from './services/poem.service';
 import { PoetService } from './services/poet.service';
@@ -74,6 +67,7 @@ import { RestorepasswordService } from './services/restorepassword.service';
 import { EditprofilepageComponent } from './pages/editprofilepage/editprofilepage.component';
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
 import { CommentGenericComponent } from './components/comments/comment-generic/comment-generic.component';
+import { ImageUploadModule } from 'angular2-image-upload';
 
 
 
@@ -124,14 +118,7 @@ import { CommentGenericComponent } from './components/comments/comment-generic/c
     DeleteOrModifyComponent,
     FilteredComponent,
     FilteredPoemsGenericComponent,
-    PoemOneComponent,
-    PoemTwoComponent,
-    MontiPoemOneComponent,
-    MontiPoemTwoComponent,
-    FilteredPoemsHenryCComponent,
     FilteredDropdownsComponent,
-    FilteredPoemsChanoComponent,
-    FilteredPoemsBrunengoComponent,
     MainCardGenericComponent,
     RestorepassComponent,
     RestorepComponent,
@@ -147,7 +134,8 @@ import { CommentGenericComponent } from './components/comments/comment-generic/c
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [
     PoemService,

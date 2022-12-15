@@ -1,19 +1,26 @@
     <div class="row ms-3 mt-3 me-3 mb-3">
-        <div class="card" id="poemPreview" style="background-color: #e6ccb2" >
-          <div class="row justify-content-center m-3" style="background-color: white; border-radius: 30px">
-            <div class="col-xxl-3 col-lg-3 col-md-auto ms-lg-3 ms-md-1 me-md-2 my-auto text-center"><h2>{{ poem.title }}</h2></div>
-            <div class="col-auto my-auto"><h1>|</h1></div>
-            <div class="col-md-3 ms-xxl-4 ms-xl-3 ms-lg-2 me-1 my-auto text-center"><h3 style="font-weight: 300;">{{ poem.date }}</h3></div>
-            <div class="col-auto my-auto"><h1>|</h1></div>
-            <div class="col-xxl-2 col-lg-2 col-md-2 ms-xxl-4 ms-xl-3 ms-md-2 me-lg-1 me-sm-0 my-auto text-center">
-              <h4>
-                <b>{{ poem.av_rating }}</b>
-                <i class="fa-solid fa-star" style="color: #ffb703"></i></h4>
+        <div class="card" (click)="goComments(poem.id)" id="poemPreview" style="background-color: #e6ccb2" >
+          <div id="card-container" class="row justify-content-center m-3">
+            <div id="title-container" class="col-xxl-5 col-xl-5 col-lg-8 col-md-8 col-sm-8 col-12">
+              <h2 id="title">{{ poem.title }}</h2>
             </div>
-            <div class="col-auto Smy-auto"><h1>|</h1></div>
-            <div class="col-xxl-3 col-lg-2 col-md-2 ms-xxl-4 ms-xl-3 ms-md-2 me-lg-1 me-sm-0 my-auto text-center"><h4><b>{{ poem.poet.uname }}</b></h4></div>
-            <div class="col-xl-1 col-md-2 py-2 justify-content-center">
-              <img src="assets/brunengo_profile.png" width="80" height="80" alt="profile">
+            <div id="date-container" class="col-xxl-2 col-xl-2 col-lg-4 col-md-4 col-sm-4 col-9">
+              <h3 id="date">{{ poem.date }}</h3>
+            </div>
+            <div id="rating-container" class="col-xxl-1 col-xl-1 col-lg-3 col-md-3 col-sm-3 col-3">
+              <h4 id="rating">
+                <b id="rate">{{ poem.av_rating }}</b>
+                <label id="rate" *ngIf="poem.av_rating==null">0</label>
+                <i class="fa-solid fa-star" style="color: #ffb703"></i>
+              </h4>
+            </div>
+            <div id="uname-container" class="col-xxl-3 col-xl-3 col-lg-5 col-md-5 col-sm-5 col-8">
+              <h4 id="unameh">
+                <b id="uname">{{ poem.poet.uname }}</b>
+              </h4>
+            </div>
+            <div id="profile-container" class="col-xxl-1 col-xl-1 col-lg-4 col-md-4 col-sm-4 col-4">
+              <img id="profile" src="assets/brunengo_profile.png" width="80" height="80" alt="profile">
             </div>
           </div>
         </div>

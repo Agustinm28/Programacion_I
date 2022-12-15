@@ -41,6 +41,10 @@ export class EditprofileComponent implements OnInit {
     this.router.navigate(['/change_password'])
   }
 
+  onUploadFinish(event: any) {
+    console.log(event)
+  }
+
   putData(data: any) {
     this.poetService.putPoet(this.token, this.id, data).subscribe({ 
       next: (rta: any) => {

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class FilteredPoemsGenericComponent implements OnInit {
 
   @Input("poem") poem: any
+  token: any = localStorage.getItem("token")
     
   constructor(private datepipe: DatePipe, private router: Router) { }
 

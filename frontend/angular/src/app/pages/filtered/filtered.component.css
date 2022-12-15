@@ -4,3 +4,35 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+@media (min-width: 1601px) {
+
+  #cards-container {
+    width: 75%;
+  }
+
+}
+
+@media (max-width: 1600px) {
+
+  #cards-container {
+    width: 85%;
+  }
+
+}
+
+@media (max-width: 1300px) {
+
+  #cards-container {
+    width: 90%;
+  }
+
+}
+
+@media (max-width: 1200px) {
+
+  #cards-container {
+    width: 100%;
+  }
+
+}
